@@ -1,24 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ABCTraders.Dto
+﻿namespace ABCTraders.Dto
 {
     internal class AddCarDto
     {
-        public int ID { get; set; }
-        public string Model { get; set; }
-
-        public string Manufacturer { get; set; }
-
         public string VIN { get; set; }
 
-        public string Transmission { get; set; }
+        public int Transmission { get; set; }
 
-        public string Color { get; set; }
+        public int Color { get; set; }
 
         public string Description { get; set; }
 
@@ -28,8 +16,10 @@ namespace ABCTraders.Dto
 
         public decimal Price { get; set; }
 
-        public byte[] ImagePath { get; set; }
+        public byte[] Picture { get; set; }
 
         public int Condition { get; set; }
+        public int ModelId { get; set; }
+        public int ManufacturerId { get; set; }
     }
 }

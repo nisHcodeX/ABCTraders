@@ -37,7 +37,7 @@ namespace ABCTraders.Controllers
             return false;
         }
 
-        public List<AddCarModel> GetAllCars()
+        public List<CarDetailsModel> GetAllCars()
         {
             var adminRepository = new AdminRepository();
             return adminRepository.GetAllCars();

@@ -35,7 +35,6 @@ namespace ABCTraders.Repository
                                     Email = reader["Email"].ToString(),
                                     Password = reader["Password"].ToString(),
                                     CreatedDate = Convert.ToDateTime(reader["CreatedDate"]),
-                                    LastLoginDate = reader["LastLoginDate"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(reader["LastLoginDate"]) : (DateTime?)null,
                                     IsActive = Convert.ToBoolean(reader["IsActive"]),
                                     PhoneNumber = reader["PhoneNumber"] != DBNull.Value ? reader["PhoneNumber"].ToString() : null
                                 };
@@ -73,21 +72,21 @@ namespace ABCTraders.Repository
                     connection.Open();
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = @"INSERT INTO AddCar(Model, Manufacturer, VIN, Transmission, Year, FuelType, Color, Price, Condition, Description, Status, IsActive, CreatedDate, LastLoginDate, ImagePath)
-                        VALUES(@Model, @Manufacturer, @VIN, @Transmission, @Year, @FuelType, @Color, @Price, @Condition, @Description, 0, 1, GETDATE(), GETDATE(), @ImagePath)";
+                        command.CommandText = @"INSERT INTO Cars(VIN, Transmission, Year, FuelType, Color, Price, Condition, Description, Status, IsActive, CreatedDate, Picture, ModelId, ManufacturerId)
+                        VALUES(@VIN, @Transmission, @Year, @FuelType, @Color, @Price, @Condition, @Description, 0, 1, GETDATE(), @Picture, @ModelId, @ManufacturerId)";
 
-                        command.Parameters.Add("@Model", SqlDbType.NVarChar).Value = dto.Model;
-                        command.Parameters.Add("@Manufacturer", SqlDbType.NVarChar).Value = dto.Manufacturer;
                         command.Parameters.Add("@VIN", SqlDbType.NVarChar).Value = dto.VIN;
-                        command.Parameters.Add("@Transmission", SqlDbType.NVarChar).Value = dto.Transmission;
+                        command.Parameters.Add("@Transmission", SqlDbType.Int).Value = dto.Transmission;
                         command.Parameters.Add("@Year", SqlDbType.Int).Value = dto.Year;
                         command.Parameters.Add("@FuelType", SqlDbType.Int).Value = dto.FuelType;
-                        command.Parameters.Add("@Color", SqlDbType.NVarChar).Value = dto.Color;
+                        command.Parameters.Add("@Color", SqlDbType.Int).Value = dto.Color;
                         command.Parameters.Add("@Price", SqlDbType.Decimal).Value = dto.Price;
-                        command.Parameters.Add("@Condition", SqlDbType.NVarChar).Value = dto.Condition;
+                        command.Parameters.Add("@Condition", SqlDbType.Int).Value = dto.Condition;
                         command.Parameters.Add("@Description", SqlDbType.NVarChar).Value = dto.Description;
-                        command.Parameters.Add("@ImagePath", SqlDbType.Image).Value = dto.ImagePath;
-          
+                        command.Parameters.Add("@Picture", SqlDbType.Image).Value = dto.Picture;
+                        command.Parameters.Add("@ModelId", SqlDbType.Int).Value = dto.ModelId;
+                        command.Parameters.Add("@ManufacturerId", SqlDbType.Int).Value = dto.ManufacturerId;
+
 
                         var reader = command.ExecuteReader();
                     }
@@ -138,36 +137,36 @@ namespace ABCTraders.Repository
             }
         }
 
-        public List<AddCarModel> GetAllCars()
+        public List<CarDetailsModel> GetAllCars()
         {
             try
             {
-                var carList = new List<AddCarModel>();
+                var carList = new List<CarDetailsModel>();
 
                 using (var connection = GetConnection())
                 {
                     connection.Open();
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = @"SELECT * FROM AddCar WHERE IsActive = 1";
+                        command.CommandText = @"SELECT C.*, M.Name AS ModelName, MN.Name AS ManufacturerName FROM Cars C INNER JOIN Models M on C.ModelId = M.Id INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id";
 
                         var reader = command.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            var car = new AddCarModel
+                            var car = new CarDetailsModel
                             {
-                                Id = Convert.ToInt32(reader["ID"].ToString()),
-                                Model = reader["Model"].ToString(),
-                                Manufacturer = reader["Manufacturer"].ToString(),
+                                Id = Convert.ToInt32(reader["Id"].ToString()),
                                 VIN = reader["VIN"].ToString(),
-                                Transmission = reader["Transmission"].ToString(),
+                                Transmission = (Transmission)Convert.ToInt32(reader["Transmission"].ToString()),
                                 Year = Convert.ToInt32(reader["Year"].ToString()),
                                 FuelType = (FuelTypes)Convert.ToInt32(reader["FuelType"].ToString()),
-                                Color = reader["Color"].ToString(),
+                                Color = (CarColors)Convert.ToInt32(reader["Color"].ToString()),
                                 Price = Convert.ToDecimal(reader["Price"].ToString()),
                                 Condition = (CarCondition)Convert.ToInt32(reader["Condition"].ToString()),
                                 Description = reader["Description"].ToString(),
+                                ModelName = reader["ModelName"].ToString(),
+                                ManufacturerName = reader["ManufacturerName"].ToString(),
                             };
                             carList.Add(car);
                         }

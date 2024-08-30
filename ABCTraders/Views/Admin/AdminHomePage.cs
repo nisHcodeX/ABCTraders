@@ -19,7 +19,7 @@ namespace ABCTraders.Views.Admin
         }
         private void AdminHomePage_Load(object sender, EventArgs e)
         {
-            SetCustomerChildForm(new AdminOrderList(), AdminHomeBtn, "Orders List");
+            SetCustomerChildForm(new AdminOrderList(), AdminHomeBtn, "Home Page");
         }
         private void AdminFormContainerPnl_Paint(object sender, PaintEventArgs e)
         {
@@ -27,7 +27,7 @@ namespace ABCTraders.Views.Admin
         }
         private void AdminHomeBtn_Click(object sender, EventArgs e)
         {
-            SetCustomerChildForm(new AdminOrderList(), AdminHomeBtn, "Orders List");
+            SetCustomerChildForm(new AdminOrderList(), AdminHomeBtn, "Home Page");
         }
 
         private void AdminAddCarBtn_Click(object sender, EventArgs e)
@@ -111,6 +111,11 @@ namespace ABCTraders.Views.Admin
                 this.Hide();
                 new Login().Show();
             }
+        }
+
+        private void customerHeaderPnl_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

@@ -39,7 +39,6 @@ namespace ABCTraders.Repository
                                 Email = reader["Email"].ToString(),
                                 Password = reader["Password"].ToString(),
                                 CreatedDate = Convert.ToDateTime(reader["CreatedDate"]),
-                                LastLoginDate = reader["LastLoginDate"] != DBNull.Value ? (DateTime?)Convert.ToDateTime(reader["LastLoginDate"]) : (DateTime?)null,
                                 IsActive = Convert.ToBoolean(reader["IsActive"]),
                                 Contact = reader["Contact"].ToString()
                             };

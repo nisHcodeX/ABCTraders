@@ -23,6 +23,8 @@ namespace ABCTraders.Views.Admin
             InitializeComponent();
             AddCarFuelTypeDrop.SelectedIndex = 0;
             AddCarConditionDrop.SelectedIndex = 0;
+            AddCarTransmissionDrop.SelectedIndex = 0;
+            AddCarColorDrop.SelectedIndex = 0;
         }
 
         private void AddCarModelCombBx_SelectedIndexChanged(object sender, EventArgs e)
@@ -110,26 +112,37 @@ namespace ABCTraders.Views.Admin
             if (validation.IsValid)
             {
                 var carImage = ABCPhotConvertor();
+
                 var addCarController = new AdminController();
+
+                var manufacturerIdx = Combo_Manufac.SelectedIndex;
+                var manufac = (ComboBoxFields)Combo_Manufac.Items[manufacturerIdx];
+
+                var modelIdx = Combo_CarModel.SelectedIndex;
+                var model = (ComboBoxFields)Combo_CarModel.Items[modelIdx];
+
                 var addCarDto = new AddCarDto
                 {
-                    Model = Combo_CarModel.Text,
-                    Manufacturer = Combo_Manufac.Text,
                     VIN = AddCartVINTxt.Text,
-                    Transmission = AddCarTransmiCombBx.Text, 
+                    Transmission = AddCarTransmissionDrop.SelectedIndex, 
                     Year = (int)AddCarYearNumeric.Value,
-                    Color = AddCarColorCombBx.Text,
+                    Color = AddCarColorDrop.SelectedIndex,
                     Description = AddCarDescriptionTxt.Text,
                     FuelType = AddCarFuelTypeDrop.SelectedIndex,
-                    ImagePath = carImage,
+                    Picture = carImage,
                     Price = AddCarPriceNumeric.Value,
                     Condition = AddCarConditionDrop.SelectedIndex,
+                    ModelId = model.Value,
+                    ManufacturerId = manufac.Value
                 };
+
                 var carAddingSuccess = addCarController.AddCar(addCarDto);
 
                 if (carAddingSuccess)
                 {
                     MessageBox.Show(validation.Message);
+                    AddCarTbl.Rows.Clear();
+                    PopulateCarTable();
                 }
                 else
                 {
@@ -152,21 +165,17 @@ namespace ABCTraders.Views.Admin
 
         private Validation ValidateAddCar()
         {
-            var model = Combo_CarModel.Text;
-            var manufacturer  = Combo_Manufac.Text;
             var vin = AddCartVINTxt.Text;
-            var transmission = AddCarTransmiCombBx.Text;
+            var transmission = AddCarTransmissionDrop.SelectedIndex;
             var year = AddCarYearNumeric.Value;
             var fuelType = AddCarFuelTypeDrop.SelectedIndex;
-            var color = AddCarColorCombBx.Text;
+            var color = AddCarColorDrop.SelectedIndex;
             var price = AddCarPriceNumeric.Value;
             var condtion = AddCarConditionDrop.SelectedIndex;
             var description = AddCarDescriptionTxt.Text;
             var picture = AddCarPicutureBox.Image;
 
-            if (
-                string.IsNullOrEmpty(model) || string.IsNullOrEmpty(manufacturer) || string.IsNullOrEmpty(manufacturer) || 
-                string.IsNullOrEmpty(vin) || string.IsNullOrEmpty(transmission) || year < 0 || fuelType < 0 || string.IsNullOrEmpty(color) || 
+            if (string.IsNullOrEmpty(vin) || transmission < 0 || year < 0 || fuelType < 0 || color < 0 || 
                 price < 0 || condtion < 0 || string.IsNullOrEmpty(description) || picture == null
                 )
             {
@@ -212,9 +221,9 @@ namespace ABCTraders.Views.Admin
             {
                 AddCarTbl.Rows.Add(new object[] 
                 { 
-                    car.Id, 
-                    car.Model,
-                    car.Manufacturer, 
+                    car.Id,
+                    car.ModelName,
+                    car.ManufacturerName,
                     car.VIN,
                     car.Transmission,
                     car.Year,
@@ -222,7 +231,8 @@ namespace ABCTraders.Views.Admin
                     car.Color,
                     car.Price,
                     car.Condition,
-                    car.Description,  
+                    car.Description,
+
                 });
             }
         }
@@ -265,6 +275,16 @@ namespace ABCTraders.Views.Admin
             }
 
             Combo_CarModel.DataSource = list;
+        }
+
+        private void AddCarTransmissionLabel_Click(object sender, EventArgs e)
+        {
+                
+        }
+
+        private void AddCarTransmissionDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

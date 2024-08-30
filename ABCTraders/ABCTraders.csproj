@@ -56,10 +56,11 @@
     <Compile Include="Dto\AddCarPartDto.cs" />
     <Compile Include="Dto\CustomerDto.cs" />
     <Compile Include="Mappings\ComboBoxFields.cs" />
-    <Compile Include="Model\AddCarModel.cs" />
+    <Compile Include="Model\Car.cs" />
     <Compile Include="Model\AddCarPartModel.cs" />
     <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
+    <Compile Include="Model\CarDetailsModel.cs" />
     <Compile Include="Model\CustomerModel.cs" />
     <Compile Include="Model\Manufacturer.cs" />
     <Compile Include="Model\CarModel.cs" />

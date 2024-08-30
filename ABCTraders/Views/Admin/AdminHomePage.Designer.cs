@@ -57,70 +57,62 @@
             this.customerBtnContainerPnl.Dock = System.Windows.Forms.DockStyle.Left;
             this.customerBtnContainerPnl.Location = new System.Drawing.Point(0, 0);
             this.customerBtnContainerPnl.Name = "customerBtnContainerPnl";
-            this.customerBtnContainerPnl.Size = new System.Drawing.Size(284, 957);
+            this.customerBtnContainerPnl.Size = new System.Drawing.Size(284, 754);
             this.customerBtnContainerPnl.TabIndex = 4;
             // 
             // AdminProfileBtn
             // 
-            this.AdminProfileBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminProfileBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminProfileBtn.Image = global::ABCTraders.Properties.Resources.icons8_user_secured_48;
-            this.AdminProfileBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.AdminProfileBtn.Location = new System.Drawing.Point(30, 661);
+            this.AdminProfileBtn.Location = new System.Drawing.Point(30, 503);
             this.AdminProfileBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AdminProfileBtn.Name = "AdminProfileBtn";
             this.AdminProfileBtn.Padding = new System.Windows.Forms.Padding(12);
-            this.AdminProfileBtn.Size = new System.Drawing.Size(220, 122);
+            this.AdminProfileBtn.Size = new System.Drawing.Size(220, 80);
             this.AdminProfileBtn.TabIndex = 11;
-            this.AdminProfileBtn.Text = "Profile";
-            this.AdminProfileBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.AdminProfileBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AdminProfileBtn.UseVisualStyleBackColor = true;
             this.AdminProfileBtn.Click += new System.EventHandler(this.AdminProfileBtn_Click);
             // 
             // AdminCustomerBtn
             // 
-            this.AdminCustomerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminCustomerBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminCustomerBtn.Image = global::ABCTraders.Properties.Resources.icons8_users_settings_481;
-            this.AdminCustomerBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.AdminCustomerBtn.Location = new System.Drawing.Point(30, 540);
+            this.AdminCustomerBtn.Location = new System.Drawing.Point(30, 422);
             this.AdminCustomerBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AdminCustomerBtn.Name = "AdminCustomerBtn";
             this.AdminCustomerBtn.Padding = new System.Windows.Forms.Padding(12);
-            this.AdminCustomerBtn.Size = new System.Drawing.Size(220, 122);
+            this.AdminCustomerBtn.Size = new System.Drawing.Size(220, 80);
             this.AdminCustomerBtn.TabIndex = 4;
-            this.AdminCustomerBtn.Text = "Customer List";
-            this.AdminCustomerBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.AdminCustomerBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AdminCustomerBtn.UseVisualStyleBackColor = true;
             this.AdminCustomerBtn.Click += new System.EventHandler(this.AdminCustomerBtn_Click);
             // 
             // AdminAddCarPartsBtn
             // 
-            this.AdminAddCarPartsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminAddCarPartsBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminAddCarPartsBtn.Image = global::ABCTraders.Properties.Resources.icons8_edit_car_48;
-            this.AdminAddCarPartsBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.AdminAddCarPartsBtn.Location = new System.Drawing.Point(30, 420);
+            this.AdminAddCarPartsBtn.Location = new System.Drawing.Point(30, 341);
             this.AdminAddCarPartsBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AdminAddCarPartsBtn.Name = "AdminAddCarPartsBtn";
             this.AdminAddCarPartsBtn.Padding = new System.Windows.Forms.Padding(12);
-            this.AdminAddCarPartsBtn.Size = new System.Drawing.Size(220, 122);
+            this.AdminAddCarPartsBtn.Size = new System.Drawing.Size(220, 80);
             this.AdminAddCarPartsBtn.TabIndex = 10;
-            this.AdminAddCarPartsBtn.Text = "Add Car Parts";
-            this.AdminAddCarPartsBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.AdminAddCarPartsBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AdminAddCarPartsBtn.UseVisualStyleBackColor = true;
             this.AdminAddCarPartsBtn.Click += new System.EventHandler(this.AdminAddCarPartsBtn_Click);
             // 
             // AdminAddCarBtn
             // 
-            this.AdminAddCarBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminAddCarBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminAddCarBtn.Image = global::ABCTraders.Properties.Resources.icons8_add_car_481;
-            this.AdminAddCarBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.AdminAddCarBtn.Location = new System.Drawing.Point(30, 300);
+            this.AdminAddCarBtn.Location = new System.Drawing.Point(30, 260);
             this.AdminAddCarBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AdminAddCarBtn.Name = "AdminAddCarBtn";
             this.AdminAddCarBtn.Padding = new System.Windows.Forms.Padding(12);
-            this.AdminAddCarBtn.Size = new System.Drawing.Size(220, 122);
+            this.AdminAddCarBtn.Size = new System.Drawing.Size(220, 80);
             this.AdminAddCarBtn.TabIndex = 9;
-            this.AdminAddCarBtn.Text = "Add Car";
-            this.AdminAddCarBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.AdminAddCarBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AdminAddCarBtn.UseVisualStyleBackColor = true;
             this.AdminAddCarBtn.Click += new System.EventHandler(this.AdminAddCarBtn_Click);
             // 
@@ -137,33 +129,28 @@
             // 
             // AdminHomeBtn
             // 
-            this.AdminHomeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminHomeBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminHomeBtn.Image = global::ABCTraders.Properties.Resources.icons8_car_insurance_481;
-            this.AdminHomeBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.AdminHomeBtn.Location = new System.Drawing.Point(30, 180);
             this.AdminHomeBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AdminHomeBtn.Name = "AdminHomeBtn";
             this.AdminHomeBtn.Padding = new System.Windows.Forms.Padding(12);
-            this.AdminHomeBtn.Size = new System.Drawing.Size(220, 122);
+            this.AdminHomeBtn.Size = new System.Drawing.Size(220, 80);
             this.AdminHomeBtn.TabIndex = 2;
-            this.AdminHomeBtn.Text = "Home";
-            this.AdminHomeBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.AdminHomeBtn.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.AdminHomeBtn.UseVisualStyleBackColor = true;
             this.AdminHomeBtn.Click += new System.EventHandler(this.AdminHomeBtn_Click);
             // 
             // AdminLogoutBtn
             // 
-            this.AdminLogoutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AdminLogoutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminLogoutBtn.Image = global::ABCTraders.Properties.Resources.icons8_logout_481;
-            this.AdminLogoutBtn.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.AdminLogoutBtn.Location = new System.Drawing.Point(30, 815);
+            this.AdminLogoutBtn.Location = new System.Drawing.Point(30, 650);
             this.AdminLogoutBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AdminLogoutBtn.Name = "AdminLogoutBtn";
             this.AdminLogoutBtn.Padding = new System.Windows.Forms.Padding(12);
-            this.AdminLogoutBtn.Size = new System.Drawing.Size(220, 124);
+            this.AdminLogoutBtn.Size = new System.Drawing.Size(220, 80);
             this.AdminLogoutBtn.TabIndex = 3;
-            this.AdminLogoutBtn.Text = "logout";
-            this.AdminLogoutBtn.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.AdminLogoutBtn.UseVisualStyleBackColor = true;
             this.AdminLogoutBtn.Click += new System.EventHandler(this.AdminLogoutBtn_Click);
             // 
@@ -172,7 +159,7 @@
             this.AdminFormContainerPnl.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.AdminFormContainerPnl.Location = new System.Drawing.Point(284, 74);
             this.AdminFormContainerPnl.Name = "AdminFormContainerPnl";
-            this.AdminFormContainerPnl.Size = new System.Drawing.Size(1249, 883);
+            this.AdminFormContainerPnl.Size = new System.Drawing.Size(1187, 680);
             this.AdminFormContainerPnl.TabIndex = 7;
             this.AdminFormContainerPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.AdminFormContainerPnl_Paint);
             // 
@@ -183,8 +170,9 @@
             this.customerHeaderPnl.Dock = System.Windows.Forms.DockStyle.Top;
             this.customerHeaderPnl.Location = new System.Drawing.Point(284, 0);
             this.customerHeaderPnl.Name = "customerHeaderPnl";
-            this.customerHeaderPnl.Size = new System.Drawing.Size(1249, 74);
+            this.customerHeaderPnl.Size = new System.Drawing.Size(1187, 74);
             this.customerHeaderPnl.TabIndex = 6;
+            this.customerHeaderPnl.Paint += new System.Windows.Forms.PaintEventHandler(this.customerHeaderPnl_Paint);
             // 
             // AdminHeaderLbl
             // 
@@ -201,7 +189,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1533, 957);
+            this.ClientSize = new System.Drawing.Size(1471, 754);
             this.Controls.Add(this.AdminFormContainerPnl);
             this.Controls.Add(this.customerHeaderPnl);
             this.Controls.Add(this.customerBtnContainerPnl);
