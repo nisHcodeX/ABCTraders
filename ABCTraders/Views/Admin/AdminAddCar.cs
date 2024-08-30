@@ -1,6 +1,7 @@
 ﻿using ABCTraders.Common;
 using ABCTraders.Controllers;
 using ABCTraders.Dto;
+using ABCTraders.Mappings;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,7 +52,7 @@ namespace ABCTraders.Views.Admin
 
         private void AddCarManufCombBx_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            PopulateModels();
         }
 
         private void AddCarPhotoBtn_Click(object sender, EventArgs e)
@@ -112,8 +113,8 @@ namespace ABCTraders.Views.Admin
                 var addCarController = new AdminController();
                 var addCarDto = new AddCarDto
                 {
-                    Model = AddCarModelCombBx.Text,
-                    Manufacturer = AddCarManufCombBx.Text,
+                    Model = Combo_CarModel.Text,
+                    Manufacturer = Combo_Manufac.Text,
                     VIN = AddCartVINTxt.Text,
                     Transmission = AddCarTransmiCombBx.Text, 
                     Year = (int)AddCarYearNumeric.Value,
@@ -151,8 +152,8 @@ namespace ABCTraders.Views.Admin
 
         private Validation ValidateAddCar()
         {
-            var model = AddCarModelCombBx.Text;
-            var manufacturer  = AddCarManufCombBx.Text;
+            var model = Combo_CarModel.Text;
+            var manufacturer  = Combo_Manufac.Text;
             var vin = AddCartVINTxt.Text;
             var transmission = AddCarTransmiCombBx.Text;
             var year = AddCarYearNumeric.Value;
@@ -193,5 +194,77 @@ namespace ABCTraders.Views.Admin
                 Message = "Successfully New Car Added to The System"
             };
         }
+
+        //main
+        private void AdminAddCar_Load(object sender, EventArgs e)
+        {
+            PopulateManufacturers();
+            PopulateModels();
+            PopulateCarTable();
         }
+
+        private void PopulateCarTable()
+        {
+            var getAllCarsController = new AdminController();
+            var cars = getAllCarsController.GetAllCars();
+
+            foreach (var car in cars)
+            {
+                AddCarTbl.Rows.Add(new object[] 
+                { 
+                    car.Id, 
+                    car.Model,
+                    car.Manufacturer, 
+                    car.VIN,
+                    car.Transmission,
+                    car.Year,
+                    car.FuelType,
+                    car.Color,
+                    car.Price,
+                    car.Condition,
+                    car.Description,  
+                });
+            }
+        }
+
+        private void PopulateManufacturers()
+        {
+            var controller = new AdminController();
+            var manufactures = controller.GetAllManufacturers();
+
+            var list = new List<ComboBoxFields>();
+
+            Combo_Manufac.DisplayMember = "Name";
+            Combo_Manufac.ValueMember = "Value";
+
+            foreach (var manufacturer in manufactures)
+            {
+                list.Add(new ComboBoxFields { Value = manufacturer.Id, Name = manufacturer.Name });
+            }
+
+            Combo_Manufac.DataSource = list;
+            if (list.Count > 0) Combo_Manufac.SelectedIndex = 0;
+        }
+
+        private void PopulateModels()
+        {
+            var idx = Combo_Manufac.SelectedIndex;
+            var item = (ComboBoxFields)Combo_Manufac.Items[idx];
+
+            var controller = new AdminController();
+            var models = controller.GetAllModels(item.Value);
+
+            var list = new List<ComboBoxFields>();
+
+            Combo_CarModel.DisplayMember = "Name";
+            Combo_CarModel.ValueMember = "Value";
+
+            foreach (var model in models)
+            {
+                list.Add(new ComboBoxFields { Value = model.Id, Name = model.Name });
+            }
+
+            Combo_CarModel.DataSource = list;
+        }
+    }
 }

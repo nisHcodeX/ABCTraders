@@ -8,7 +8,7 @@ namespace ABCTraders.Model
 {
     internal class BaseModel
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public bool IsActive { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime? LastLoginDate { get; set; }

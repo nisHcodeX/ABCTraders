@@ -32,7 +32,7 @@ namespace ABCTraders.Repository
                         {
                             customer = new CustomerModel
                             {
-                                ID = Convert.ToInt32(reader["ID"]),
+                                Id = Convert.ToInt32(reader["ID"]),
                                 FirstName = reader["FirstName"].ToString(),
                                 LastName = reader["LastName"].ToString(),
                                 Address = reader["Address"].ToString(),

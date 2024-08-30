@@ -1,4 +1,5 @@
 ﻿using ABCTraders.Dto;
+using ABCTraders.Model;
 using ABCTraders.Repository;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,30 @@ namespace ABCTraders.Controllers
                 return true;
             }
             return false;
+        }
+
+        public List<AddCarModel> GetAllCars()
+        {
+            var adminRepository = new AdminRepository();
+            return adminRepository.GetAllCars();
+        }
+
+        public List<AddCarPartModel> GetAllCarParts()
+        {
+            var adminRepository = new AdminRepository();
+            return adminRepository.GetAllCarParts();
+        }
+
+        public List<Manufacturer> GetAllManufacturers()
+        {
+            var adminRepository = new AdminRepository();
+            return adminRepository.GetAllManufacturers();
+        }
+
+        public List<CarModel> GetAllModels(int id)
+        {
+            var adminRepository = new AdminRepository();
+            return adminRepository.GetAllModels(id);
         }
     }
 }

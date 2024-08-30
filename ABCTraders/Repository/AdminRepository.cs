@@ -2,9 +2,11 @@
 using ABCTraders.Dto;
 using ABCTraders.Model;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using static ABCTraders.Common.AbcEnums;
 
 namespace ABCTraders.Repository
 {
@@ -29,7 +31,7 @@ namespace ABCTraders.Repository
                             {
                                 admin = new AdminModel
                                 {
-                                    ID = Convert.ToInt32(reader["ID"]),
+                                    Id = Convert.ToInt32(reader["ID"]),
                                     Email = reader["Email"].ToString(),
                                     Password = reader["Password"].ToString(),
                                     CreatedDate = Convert.ToDateTime(reader["CreatedDate"]),
@@ -133,6 +135,167 @@ namespace ABCTraders.Repository
             {
                 MessageBox.Show(ex.Message);
                 return 0;
+            }
+        }
+
+        public List<AddCarModel> GetAllCars()
+        {
+            try
+            {
+                var carList = new List<AddCarModel>();
+
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = @"SELECT * FROM AddCar WHERE IsActive = 1";
+
+                        var reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            var car = new AddCarModel
+                            {
+                                Id = Convert.ToInt32(reader["ID"].ToString()),
+                                Model = reader["Model"].ToString(),
+                                Manufacturer = reader["Manufacturer"].ToString(),
+                                VIN = reader["VIN"].ToString(),
+                                Transmission = reader["Transmission"].ToString(),
+                                Year = Convert.ToInt32(reader["Year"].ToString()),
+                                FuelType = (FuelTypes)Convert.ToInt32(reader["FuelType"].ToString()),
+                                Color = reader["Color"].ToString(),
+                                Price = Convert.ToDecimal(reader["Price"].ToString()),
+                                Condition = (CarCondition)Convert.ToInt32(reader["Condition"].ToString()),
+                                Description = reader["Description"].ToString(),
+                            };
+                            carList.Add(car);
+                        }
+                    }
+                    connection.Close();
+                }
+                return carList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public List<AddCarPartModel> GetAllCarParts()
+        {
+            try
+            {
+                var carPartsList = new List<AddCarPartModel>();
+
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = @"SELECT * FROM AddCarPart WHERE IsActive = 1";
+
+                        var reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            var car = new AddCarPartModel
+                            {
+                                Id = Convert.ToInt32(reader["ID"].ToString()),
+                                PartName = reader["PartName"].ToString(),
+                                Manufacturer = reader["Manufacturer"].ToString(),
+                                PartCode = reader["PartCode"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Description = reader["Description"].ToString(),
+                                Price = Convert.ToDecimal(reader["Price"].ToString()),
+                                Condition = (CarCondition)Convert.ToInt32(reader["Condition"].ToString()),
+                                StockQuantity = Convert.ToInt32(reader["StockQuantity"].ToString()),
+                            };
+                            carPartsList.Add(car);
+                        }
+                    }
+                    connection.Close();
+                }
+                return carPartsList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public List<Manufacturer> GetAllManufacturers()
+        {
+            try
+            {
+                var list = new List<Manufacturer>();
+
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = @"SELECT * FROM Manufacturers";
+
+                        var reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            var car = new Manufacturer
+                            {
+                                Id = Convert.ToInt32(reader["Id"].ToString()),
+                                Name = reader["Name"].ToString(),
+                            };
+                            list.Add(car);
+                        }
+                    }
+                    connection.Close();
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public List<CarModel> GetAllModels(int manufactureId)
+        {
+            try
+            {
+                var list = new List<CarModel>();
+
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = $@"SELECT * FROM Models WHERE ManufacturerId = {manufactureId}";
+
+                        var reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            var model = new CarModel
+                            {
+                                Id = Convert.ToInt32(reader["Id"].ToString()),
+                                Name = reader["Name"].ToString(),
+                                ManufacturerId = Convert.ToInt32(reader["ManufacturerId"].ToString()),
+                            };
+                            list.Add(model);
+                        }
+                    }
+                    connection.Close();
+                }
+                return list;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
             }
         }
     }

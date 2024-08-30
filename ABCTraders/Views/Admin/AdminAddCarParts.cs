@@ -113,5 +113,37 @@ namespace ABCTraders.Views.Admin
 
             }
         }
+
+        private void AdminAddCarParts_Load(object sender, EventArgs e)
+        {
+            PopulateCarTable();
+        }
+
+        private void PopulateCarTable()
+        {
+            var getAllCarPartsController = new AdminController();
+            var cars = getAllCarPartsController.GetAllCarParts();
+
+            foreach (var car in cars)
+            {
+                AddCarPartsTbl.Rows.Add(new object[]
+                {
+                    car.Id,
+                    car.PartName,
+                    car.Manufacturer,
+                    car.PartCode,
+                    car.Category,
+                    car.Description,
+                    car.Price,
+                    car.Condition,
+                    car.StockQuantity,
+                });
+            }
+        }
+
+        private void AddCarPartsTbl_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

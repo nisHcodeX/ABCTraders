@@ -9,6 +9,7 @@ namespace ABCTraders.Dto
 {
     internal class AddCarDto
     {
+        public int ID { get; set; }
         public string Model { get; set; }
 
         public string Manufacturer { get; set; }

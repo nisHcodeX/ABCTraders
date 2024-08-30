@@ -55,11 +55,14 @@
     <Compile Include="Dto\AddCarDto.cs" />
     <Compile Include="Dto\AddCarPartDto.cs" />
     <Compile Include="Dto\CustomerDto.cs" />
+    <Compile Include="Mappings\ComboBoxFields.cs" />
     <Compile Include="Model\AddCarModel.cs" />
     <Compile Include="Model\AddCarPartModel.cs" />
     <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\CustomerModel.cs" />
+    <Compile Include="Model\Manufacturer.cs" />
+    <Compile Include="Model\CarModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

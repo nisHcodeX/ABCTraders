@@ -34,8 +34,8 @@
             System.Windows.Forms.Label AddCarColorLabel;
             System.Windows.Forms.Label AddCarImageLabel;
             this.label1 = new System.Windows.Forms.Label();
-            this.AddCarModelCombBx = new System.Windows.Forms.ComboBox();
-            this.AddCarManufCombBx = new System.Windows.Forms.ComboBox();
+            this.Combo_CarModel = new System.Windows.Forms.ComboBox();
+            this.Combo_Manufac = new System.Windows.Forms.ComboBox();
             this.AddCarColorCombBx = new System.Windows.Forms.ComboBox();
             this.AddCarTransmiCombBx = new System.Windows.Forms.ComboBox();
             this.AddCarFuelTypeLabel = new System.Windows.Forms.Label();
@@ -52,9 +52,20 @@
             this.AddCarDeleteBtn = new System.Windows.Forms.Button();
             this.AddCarDescriptionTxt = new System.Windows.Forms.TextBox();
             this.AddCarDescriptionLabel = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.AddCarYearNumeric = new System.Windows.Forms.NumericUpDown();
             this.AddCarYearLabel = new System.Windows.Forms.Label();
+            this.AddCarTbl = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Manufacturer = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.VIN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Transmission = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Year = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FuelType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             AddCarModelLabel = new System.Windows.Forms.Label();
             AddCarManufLabel = new System.Windows.Forms.Label();
             AddCarTransmissionLabel = new System.Windows.Forms.Label();
@@ -63,13 +74,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPriceNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPicutureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarYearNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddCarTbl)).BeginInit();
             this.SuspendLayout();
             // 
             // AddCarModelLabel
             // 
             AddCarModelLabel.AutoSize = true;
             AddCarModelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            AddCarModelLabel.Location = new System.Drawing.Point(449, 15);
+            AddCarModelLabel.Location = new System.Drawing.Point(449, 81);
             AddCarModelLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             AddCarModelLabel.Name = "AddCarModelLabel";
             AddCarModelLabel.Size = new System.Drawing.Size(58, 22);
@@ -80,7 +92,7 @@
             // 
             AddCarManufLabel.AutoSize = true;
             AddCarManufLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            AddCarManufLabel.Location = new System.Drawing.Point(450, 81);
+            AddCarManufLabel.Location = new System.Drawing.Point(449, 18);
             AddCarManufLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             AddCarManufLabel.Name = "AddCarManufLabel";
             AddCarManufLabel.Size = new System.Drawing.Size(120, 22);
@@ -130,25 +142,25 @@
             this.label1.Size = new System.Drawing.Size(0, 29);
             this.label1.TabIndex = 3;
             // 
-            // AddCarModelCombBx
+            // Combo_CarModel
             // 
-            this.AddCarModelCombBx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarModelCombBx.FormattingEnabled = true;
-            this.AddCarModelCombBx.Location = new System.Drawing.Point(447, 44);
-            this.AddCarModelCombBx.Name = "AddCarModelCombBx";
-            this.AddCarModelCombBx.Size = new System.Drawing.Size(356, 30);
-            this.AddCarModelCombBx.TabIndex = 14;
-            this.AddCarModelCombBx.SelectedIndexChanged += new System.EventHandler(this.AddCarModelCombBx_SelectedIndexChanged);
+            this.Combo_CarModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Combo_CarModel.FormattingEnabled = true;
+            this.Combo_CarModel.Location = new System.Drawing.Point(446, 108);
+            this.Combo_CarModel.Name = "Combo_CarModel";
+            this.Combo_CarModel.Size = new System.Drawing.Size(356, 30);
+            this.Combo_CarModel.TabIndex = 14;
+            this.Combo_CarModel.SelectedIndexChanged += new System.EventHandler(this.AddCarModelCombBx_SelectedIndexChanged);
             // 
-            // AddCarManufCombBx
+            // Combo_Manufac
             // 
-            this.AddCarManufCombBx.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarManufCombBx.FormattingEnabled = true;
-            this.AddCarManufCombBx.Location = new System.Drawing.Point(447, 110);
-            this.AddCarManufCombBx.Name = "AddCarManufCombBx";
-            this.AddCarManufCombBx.Size = new System.Drawing.Size(356, 30);
-            this.AddCarManufCombBx.TabIndex = 16;
-            this.AddCarManufCombBx.SelectedIndexChanged += new System.EventHandler(this.AddCarManufCombBx_SelectedIndexChanged);
+            this.Combo_Manufac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Combo_Manufac.FormattingEnabled = true;
+            this.Combo_Manufac.Location = new System.Drawing.Point(446, 48);
+            this.Combo_Manufac.Name = "Combo_Manufac";
+            this.Combo_Manufac.Size = new System.Drawing.Size(356, 30);
+            this.Combo_Manufac.TabIndex = 16;
+            this.Combo_Manufac.SelectedIndexChanged += new System.EventHandler(this.AddCarManufCombBx_SelectedIndexChanged);
             // 
             // AddCarColorCombBx
             // 
@@ -348,17 +360,6 @@
             this.AddCarDescriptionLabel.TabIndex = 38;
             this.AddCarDescriptionLabel.Text = "Description";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(585, 848);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 25);
-            this.label2.TabIndex = 40;
-            this.label2.Text = "Description";
-            // 
             // AddCarYearNumeric
             // 
             this.AddCarYearNumeric.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -394,15 +395,115 @@
             this.AddCarYearLabel.TabIndex = 41;
             this.AddCarYearLabel.Text = "Year";
             // 
+            // AddCarTbl
+            // 
+            this.AddCarTbl.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.AddCarTbl.ColumnHeadersHeight = 29;
+            this.AddCarTbl.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Model,
+            this.Manufacturer,
+            this.VIN,
+            this.Transmission,
+            this.Year,
+            this.FuelType,
+            this.Color,
+            this.Price,
+            this.Condition,
+            this.Description});
+            this.AddCarTbl.Location = new System.Drawing.Point(53, 458);
+            this.AddCarTbl.Name = "AddCarTbl";
+            this.AddCarTbl.RowHeadersWidth = 51;
+            this.AddCarTbl.RowTemplate.Height = 24;
+            this.AddCarTbl.Size = new System.Drawing.Size(1177, 225);
+            this.AddCarTbl.TabIndex = 43;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.Width = 125;
+            // 
+            // Model
+            // 
+            this.Model.HeaderText = "Model";
+            this.Model.MinimumWidth = 6;
+            this.Model.Name = "Model";
+            this.Model.Width = 125;
+            // 
+            // Manufacturer
+            // 
+            this.Manufacturer.HeaderText = "Manufacturer";
+            this.Manufacturer.MinimumWidth = 6;
+            this.Manufacturer.Name = "Manufacturer";
+            this.Manufacturer.Width = 125;
+            // 
+            // VIN
+            // 
+            this.VIN.HeaderText = "VIN";
+            this.VIN.MinimumWidth = 6;
+            this.VIN.Name = "VIN";
+            this.VIN.Width = 125;
+            // 
+            // Transmission
+            // 
+            this.Transmission.HeaderText = "Transmission";
+            this.Transmission.MinimumWidth = 6;
+            this.Transmission.Name = "Transmission";
+            this.Transmission.Width = 125;
+            // 
+            // Year
+            // 
+            this.Year.HeaderText = "Year";
+            this.Year.MinimumWidth = 6;
+            this.Year.Name = "Year";
+            this.Year.Width = 125;
+            // 
+            // FuelType
+            // 
+            this.FuelType.HeaderText = "FuelType";
+            this.FuelType.MinimumWidth = 6;
+            this.FuelType.Name = "FuelType";
+            this.FuelType.Width = 125;
+            // 
+            // Color
+            // 
+            this.Color.HeaderText = "Color";
+            this.Color.MinimumWidth = 6;
+            this.Color.Name = "Color";
+            this.Color.Width = 125;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.Width = 125;
+            // 
+            // Condition
+            // 
+            this.Condition.HeaderText = "Condition";
+            this.Condition.MinimumWidth = 6;
+            this.Condition.Name = "Condition";
+            this.Condition.Width = 125;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.Width = 125;
+            // 
             // AdminAddCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1258, 899);
+            this.ClientSize = new System.Drawing.Size(1242, 721);
             this.ControlBox = false;
+            this.Controls.Add(this.AddCarTbl);
             this.Controls.Add(this.AddCarYearNumeric);
             this.Controls.Add(this.AddCarYearLabel);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.AddCarDescriptionTxt);
             this.Controls.Add(this.AddCarDescriptionLabel);
             this.Controls.Add(this.AddCarDeleteBtn);
@@ -422,16 +523,18 @@
             this.Controls.Add(this.AddCarTransmiCombBx);
             this.Controls.Add(AddCarTransmissionLabel);
             this.Controls.Add(this.AddCarColorCombBx);
-            this.Controls.Add(this.AddCarManufCombBx);
+            this.Controls.Add(this.Combo_Manufac);
             this.Controls.Add(AddCarManufLabel);
-            this.Controls.Add(this.AddCarModelCombBx);
+            this.Controls.Add(this.Combo_CarModel);
             this.Controls.Add(AddCarModelLabel);
             this.Controls.Add(this.label1);
             this.Name = "AdminAddCar";
             this.Text = "AdminAddCar";
+            this.Load += new System.EventHandler(this.AdminAddCar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPriceNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPicutureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarYearNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.AddCarTbl)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,8 +543,8 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox AddCarModelCombBx;
-        private System.Windows.Forms.ComboBox AddCarManufCombBx;
+        private System.Windows.Forms.ComboBox Combo_CarModel;
+        private System.Windows.Forms.ComboBox Combo_Manufac;
         private System.Windows.Forms.ComboBox AddCarColorCombBx;
         private System.Windows.Forms.ComboBox AddCarTransmiCombBx;
         private System.Windows.Forms.Label AddCarFuelTypeLabel;
@@ -458,8 +561,19 @@
         private System.Windows.Forms.Button AddCarDeleteBtn;
         private System.Windows.Forms.TextBox AddCarDescriptionTxt;
         private System.Windows.Forms.Label AddCarDescriptionLabel;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown AddCarYearNumeric;
         private System.Windows.Forms.Label AddCarYearLabel;
+        private System.Windows.Forms.DataGridView AddCarTbl;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Model;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Manufacturer;
+        private System.Windows.Forms.DataGridViewTextBoxColumn VIN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Transmission;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Year;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FuelType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Color;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Condition;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
     }
 }
