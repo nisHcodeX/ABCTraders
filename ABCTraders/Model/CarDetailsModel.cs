@@ -27,5 +27,7 @@ namespace ABCTraders.Model
         public int Status { get; set; }
 
         public byte[] Picture { get; set; }
+        public int ModelId { get; set; }
+        public int ManufacturerId { get; set; }
     }
 }

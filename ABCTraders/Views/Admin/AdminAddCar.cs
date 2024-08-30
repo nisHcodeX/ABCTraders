@@ -2,6 +2,7 @@
 using ABCTraders.Controllers;
 using ABCTraders.Dto;
 using ABCTraders.Mappings;
+using ABCTraders.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -21,10 +23,6 @@ namespace ABCTraders.Views.Admin
         public AdminAddCar()
         {
             InitializeComponent();
-            AddCarFuelTypeDrop.SelectedIndex = 0;
-            AddCarConditionDrop.SelectedIndex = 0;
-            AddCarTransmissionDrop.SelectedIndex = 0;
-            AddCarColorDrop.SelectedIndex = 0;
         }
 
         private void AddCarModelCombBx_SelectedIndexChanged(object sender, EventArgs e)
@@ -124,7 +122,7 @@ namespace ABCTraders.Views.Admin
                 var addCarDto = new AddCarDto
                 {
                     VIN = AddCartVINTxt.Text,
-                    Transmission = AddCarTransmissionDrop.SelectedIndex, 
+                    Transmission = AddCarTransmissionDrop.SelectedIndex,
                     Year = (int)AddCarYearNumeric.Value,
                     Color = AddCarColorDrop.SelectedIndex,
                     Description = AddCarDescriptionTxt.Text,
@@ -136,7 +134,20 @@ namespace ABCTraders.Views.Admin
                     ManufacturerId = manufac.Value
                 };
 
-                var carAddingSuccess = addCarController.AddCar(addCarDto);
+                bool carAddingSuccess;
+
+                if (AddCarTbl.SelectedRows.Count > 0)
+                {
+                    var selectedIdx = AddCarTbl.CurrentCell.RowIndex;
+                    var selectedCar = AddCarTbl.Rows[selectedIdx];
+                    var carId = (int)selectedCar.Cells[0].Value;
+
+                    carAddingSuccess = addCarController.UpdateCar(carId, addCarDto);
+                }
+                else
+                {
+                    carAddingSuccess = addCarController.AddCar(addCarDto);
+                }
 
                 if (carAddingSuccess)
                 {
@@ -210,6 +221,8 @@ namespace ABCTraders.Views.Admin
             PopulateManufacturers();
             PopulateModels();
             PopulateCarTable();
+            AddCarTbl.ClearSelection();
+            ResetForm();
         }
 
         private void PopulateCarTable()
@@ -285,6 +298,58 @@ namespace ABCTraders.Views.Admin
         private void AddCarTransmissionDrop_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void AddCarTbl_SelectionChanged(object sender, EventArgs e)
+        {
+            if (AddCarTbl.Rows.Count > 0)
+            {
+                var selectedIdx = AddCarTbl.CurrentCell.RowIndex;
+                var selectedCar = AddCarTbl.Rows[selectedIdx];
+                var carId = (int)selectedCar.Cells[0].Value;
+
+                var controller = new AdminController();
+                var car = controller.GetAllCars().Find(x => x.Id == carId);
+
+                AddCartVINTxt.Text = car.VIN;
+                AddCarDescriptionTxt.Text = car.Description;
+
+                for (int i = 0; i < Combo_Manufac.Items.Count; i++)
+                {
+                    var item = (ComboBoxFields)Combo_Manufac.Items[i];
+
+                    if (item.Value == car.ManufacturerId)
+                    {
+                        Combo_Manufac.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                for (int i = 0; i < Combo_CarModel.Items.Count; i++)
+                {
+                    var item = (ComboBoxFields)Combo_CarModel.Items[i];
+
+                    if (item.Value == car.ModelId)
+                    {
+                        Combo_CarModel.SelectedIndex = i;
+                        break;
+                    }
+                }
+
+                AddCarPicutureBox.Image = System.Drawing.Image.FromStream(new MemoryStream(car.Picture));
+
+                AddCarPriceNumeric.Value = car.Price;
+            }
+        }
+
+        private void ResetForm()
+        {
+            AddCartVINTxt.Text = string.Empty;
+            AddCarFuelTypeDrop.SelectedIndex = 0;
+            AddCarConditionDrop.SelectedIndex = 0;
+            AddCarTransmissionDrop.SelectedIndex = 0;
+            AddCarColorDrop.SelectedIndex = 0;
+            
         }
     }
 }

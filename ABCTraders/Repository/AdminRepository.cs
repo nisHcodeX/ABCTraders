@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Linq;
 using System.Windows.Forms;
 using static ABCTraders.Common.AbcEnums;
 
@@ -101,6 +102,43 @@ namespace ABCTraders.Repository
             }
         }
 
+        public int UpdateCarToSystem(int id, AddCarDto dto)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = @"UPDATE Cars SET VIN = @VIN, Transmission = @Transmission, Year = @Year, FuelType = @FuelType, Color = @Color, Price = @Price, Condition = @Condition, Description = @Description, Picture = @Picture, ModelId = @ModelId, ManufacturerId = @ManufacturerId WHERE Id = @Id";
+
+                        command.Parameters.Add("@Id", SqlDbType.NVarChar).Value = id;
+                        command.Parameters.Add("@VIN", SqlDbType.NVarChar).Value = dto.VIN;
+                        command.Parameters.Add("@Transmission", SqlDbType.Int).Value = dto.Transmission;
+                        command.Parameters.Add("@Year", SqlDbType.Int).Value = dto.Year;
+                        command.Parameters.Add("@FuelType", SqlDbType.Int).Value = dto.FuelType;
+                        command.Parameters.Add("@Color", SqlDbType.Int).Value = dto.Color;
+                        command.Parameters.Add("@Price", SqlDbType.Decimal).Value = dto.Price;
+                        command.Parameters.Add("@Condition", SqlDbType.Int).Value = dto.Condition;
+                        command.Parameters.Add("@Description", SqlDbType.NVarChar).Value = dto.Description;
+                        command.Parameters.Add("@Picture", SqlDbType.Image).Value = dto.Picture;
+                        command.Parameters.Add("@ModelId", SqlDbType.Int).Value = dto.ModelId;
+                        command.Parameters.Add("@ManufacturerId", SqlDbType.Int).Value = dto.ManufacturerId;
+
+                        var reader = command.ExecuteReader();
+                    }
+                    connection.Close();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
         public int AddCarPartToSystem(AddCarPartDto dto)
         {
             try
@@ -167,6 +205,9 @@ namespace ABCTraders.Repository
                                 Description = reader["Description"].ToString(),
                                 ModelName = reader["ModelName"].ToString(),
                                 ManufacturerName = reader["ManufacturerName"].ToString(),
+                                ModelId = Convert.ToInt32(reader["ModelId"].ToString()),
+                                ManufacturerId = Convert.ToInt32(reader["ManufacturerId"].ToString()),
+                                Picture = (byte[])reader["picture"]
                             };
                             carList.Add(car);
                         }

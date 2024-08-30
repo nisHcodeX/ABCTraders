@@ -399,6 +399,7 @@
             this.AddCarTbl.RowTemplate.Height = 24;
             this.AddCarTbl.Size = new System.Drawing.Size(1060, 192);
             this.AddCarTbl.TabIndex = 43;
+            this.AddCarTbl.SelectionChanged += new System.EventHandler(this.AddCarTbl_SelectionChanged);
             // 
             // AddCarTransmissionDrop
             // 
@@ -573,7 +574,6 @@
         private System.Windows.Forms.Label AddCarVINLabel;
         private System.Windows.Forms.Label AddCarPriceLabel;
         private System.Windows.Forms.NumericUpDown AddCarPriceNumeric;
-        private System.Windows.Forms.PictureBox AddCarPicutureBox;
         private System.Windows.Forms.Button AddCarPhotoBtn;
         private System.Windows.Forms.Button AddCarSaveBtn;
         private System.Windows.Forms.Button AddCarDeleteBtn;
@@ -595,5 +595,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Condition;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
+        private System.Windows.Forms.PictureBox AddCarPicutureBox;
     }
 }

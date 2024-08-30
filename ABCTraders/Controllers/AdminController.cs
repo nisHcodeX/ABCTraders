@@ -24,6 +24,19 @@ namespace ABCTraders.Controllers
             return false;
         }
 
+        public bool UpdateCar(int id, AddCarDto dto)
+        {
+
+            var adminRepository = new AdminRepository();
+            var addCarSucces = adminRepository.UpdateCarToSystem(id, dto);
+
+            if (addCarSucces > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool AddCarPart(AddCarPartDto dto)
         {
 
