@@ -32,8 +32,10 @@ namespace ABCTraders
         private void LoginFormLoginBtn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            AdminHomePage adminHomePage = new AdminHomePage();
-            adminHomePage.Show();
+            //AdminHomePage adminHomePage = new AdminHomePage();
+            //adminHomePage.Show();
+            HomePage customerPage = new HomePage();
+            customerPage.Show();
             var email = LoginFormEmail.Text.Trim();
             var password = LoginFormPassword.Text;
             var userType = LoginFormCombo.SelectedItem.ToString();

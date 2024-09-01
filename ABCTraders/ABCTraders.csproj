@@ -133,6 +133,18 @@
     <Compile Include="Views\Customer\CustomerProfile.Designer.cs">
       <DependentUpon>CustomerProfile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Customer\CustomerUpdateCarPart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerUpdateCarPart.Designer.cs">
+      <DependentUpon>CustomerUpdateCarPart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerUpdatePartOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\CustomerUpdatePartOrder.Designer.cs">
+      <DependentUpon>CustomerUpdatePartOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Customer\SearchCarParts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -194,6 +206,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Customer\CustomerProfile.resx">
       <DependentUpon>CustomerProfile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customer\CustomerUpdateCarPart.resx">
+      <DependentUpon>CustomerUpdateCarPart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customer\CustomerUpdatePartOrder.resx">
+      <DependentUpon>CustomerUpdatePartOrder.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Customer\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>

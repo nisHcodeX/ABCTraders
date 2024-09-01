@@ -16,5 +16,31 @@ namespace ABCTraders.Views.Customer
         {
             InitializeComponent();
         }
+
+        private void label15_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Btn_updateCarOrder_Click(object sender, EventArgs e)
+        {
+            CustomerUpdateCarPart customerUpdateStatus = new CustomerUpdateCarPart();
+            customerUpdateStatus.Show();
+        }
+
+        private void Btn_updateCarPartOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CustomerOrder_Load(object sender, EventArgs e)
+        {
+            Drop_OrderType.SelectedIndex = 0;
+        }
     }
 }

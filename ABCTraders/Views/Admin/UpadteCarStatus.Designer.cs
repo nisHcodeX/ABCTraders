@@ -55,6 +55,28 @@
             ((System.ComponentModel.ISupportInitialize)(this.AddCarTbl)).BeginInit();
             this.SuspendLayout();
             // 
+            // AddCarManufLabel
+            // 
+            AddCarManufLabel.AutoSize = true;
+            AddCarManufLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            AddCarManufLabel.Location = new System.Drawing.Point(461, 115);
+            AddCarManufLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            AddCarManufLabel.Name = "AddCarManufLabel";
+            AddCarManufLabel.Size = new System.Drawing.Size(120, 22);
+            AddCarManufLabel.TabIndex = 107;
+            AddCarManufLabel.Text = "Manufacturer ";
+            // 
+            // AddCarModelLabel
+            // 
+            AddCarModelLabel.AutoSize = true;
+            AddCarModelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            AddCarModelLabel.Location = new System.Drawing.Point(857, 115);
+            AddCarModelLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            AddCarModelLabel.Name = "AddCarModelLabel";
+            AddCarModelLabel.Size = new System.Drawing.Size(58, 22);
+            AddCarModelLabel.TabIndex = 106;
+            AddCarModelLabel.Text = "Model";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -140,6 +162,7 @@
             this.Drop_CarOrderStatus.Name = "Drop_CarOrderStatus";
             this.Drop_CarOrderStatus.Size = new System.Drawing.Size(326, 30);
             this.Drop_CarOrderStatus.TabIndex = 96;
+            this.Drop_CarOrderStatus.SelectedIndexChanged += new System.EventHandler(this.Drop_CarOrderStatus_SelectedIndexChanged);
             // 
             // AddCarTbl
             // 
@@ -240,28 +263,6 @@
             this.Description.MinimumWidth = 6;
             this.Description.Name = "Description";
             this.Description.Width = 125;
-            // 
-            // AddCarManufLabel
-            // 
-            AddCarManufLabel.AutoSize = true;
-            AddCarManufLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            AddCarManufLabel.Location = new System.Drawing.Point(461, 115);
-            AddCarManufLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            AddCarManufLabel.Name = "AddCarManufLabel";
-            AddCarManufLabel.Size = new System.Drawing.Size(120, 22);
-            AddCarManufLabel.TabIndex = 107;
-            AddCarManufLabel.Text = "Manufacturer ";
-            // 
-            // AddCarModelLabel
-            // 
-            AddCarModelLabel.AutoSize = true;
-            AddCarModelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            AddCarModelLabel.Location = new System.Drawing.Point(857, 115);
-            AddCarModelLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            AddCarModelLabel.Name = "AddCarModelLabel";
-            AddCarModelLabel.Size = new System.Drawing.Size(58, 22);
-            AddCarModelLabel.TabIndex = 106;
-            AddCarModelLabel.Text = "Model";
             // 
             // Btn_UpadteCarCancel
             // 

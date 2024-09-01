@@ -21,5 +21,15 @@ namespace ABCTraders.Views
         {
 
         }
+
+        private void SearchCar_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void AddCarPartQuantityNumeric_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
