@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ABCTraders.Common.AbcEnums;
 
 namespace ABCTraders.Repository
 {
@@ -23,7 +24,7 @@ namespace ABCTraders.Repository
                     connection.Open();
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = "SELECT * FROM Customer WHERE Email = @Email AND IsActive = 1";
+                        command.CommandText = "SELECT * FROM Customers WHERE Email = @Email AND IsActive = 1";
                         command.Parameters.Add("@Email", SqlDbType.NVarChar).Value = email;
 
                         var reader = command.ExecuteReader();
@@ -61,7 +62,7 @@ namespace ABCTraders.Repository
                     connection.Open();
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = @"INSERT INTO Customer(FirstName, LastName, Email, Address, Contact, Password, IsActive, UserType,  CreatedDate, LastLoginDate)
+                        command.CommandText = @"INSERT INTO Customers(FirstName, LastName, Email, Address, Contact, Password, IsActive, UserType,  CreatedDate, LastLoginDate)
                         VALUES(@FirstName, @LastName, @Email, @Address, @Contact, @Password, 1, 0, GETDATE(), GETDATE())";
 
                         command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = dto.FirstName;
@@ -79,6 +80,49 @@ namespace ABCTraders.Repository
             }catch (Exception ex) {
                 MessageBox.Show(ex.Message);
                 return 0;
+            }
+        }
+
+        public List<CustomerModel> GetAllCustomers()
+        {
+            try
+            {
+                var carList = new List<CustomerModel>();
+
+                using (var connection = GetConnection())
+                {
+
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = @"SELECT * FROM Customers WHERE IsActive = 1";
+
+                        var reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            var car = new CustomerModel
+                            {
+                                Id = Convert.ToInt32(reader["Id"].ToString()),
+                                FirstName = reader["FirstName"].ToString(),
+                                LastName = reader["LastName"].ToString(),
+                                Address = reader["Address"].ToString(),
+                                Email = reader["Email"].ToString(),
+                                Password = reader["Password"].ToString(),
+                                CreatedDate = Convert.ToDateTime(reader["CreatedDate"]),
+                                Contact = reader["Contact"].ToString()
+                            };
+                            carList.Add(car);
+                        }
+                    }
+                    connection.Close();
+                }
+                return carList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
             }
         }
     }

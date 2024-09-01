@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ABCTraders.Controllers
 {
@@ -50,16 +51,16 @@ namespace ABCTraders.Controllers
             return false;
         }
 
-        public List<CarDetailsModel> GetAllCars()
+        public List<CarDetailsModel> GetAllCars(int status)
         {
             var adminRepository = new AdminRepository();
-            return adminRepository.GetAllCars();
+            return adminRepository.GetAllCars(status);
         }
 
-        public List<AddCarPartModel> GetAllCarParts()
+        public List<AddCarPartModel> GetAllCarParts(int status)
         {
             var adminRepository = new AdminRepository();
-            return adminRepository.GetAllCarParts();
+            return adminRepository.GetAllCarParts(status);
         }
 
         public List<Manufacturer> GetAllManufacturers()

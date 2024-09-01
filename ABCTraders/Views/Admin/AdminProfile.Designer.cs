@@ -28,25 +28,110 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.TxtBox_LastName = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.TxtBox_Password = new System.Windows.Forms.TextBox();
+            this.TxtBox_Email = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
+            // 
+            // TxtBox_LastName
+            // 
+            this.TxtBox_LastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBox_LastName.Location = new System.Drawing.Point(164, 56);
+            this.TxtBox_LastName.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtBox_LastName.Name = "TxtBox_LastName";
+            this.TxtBox_LastName.Size = new System.Drawing.Size(359, 30);
+            this.TxtBox_LastName.TabIndex = 36;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(30, 56);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(80, 25);
+            this.label7.TabIndex = 35;
+            this.label7.Text = "Contact";
+            // 
+            // TxtBox_Password
+            // 
+            this.TxtBox_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBox_Password.Location = new System.Drawing.Point(763, 58);
+            this.TxtBox_Password.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtBox_Password.Name = "TxtBox_Password";
+            this.TxtBox_Password.Size = new System.Drawing.Size(352, 30);
+            this.TxtBox_Password.TabIndex = 34;
+            // 
+            // TxtBox_Email
+            // 
+            this.TxtBox_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtBox_Email.Location = new System.Drawing.Point(164, 109);
+            this.TxtBox_Email.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtBox_Email.Name = "TxtBox_Email";
+            this.TxtBox_Email.Size = new System.Drawing.Size(359, 30);
+            this.TxtBox_Email.TabIndex = 33;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(591, 61);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 25);
+            this.label3.TabIndex = 31;
+            this.label3.Text = "Password";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(30, 112);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 25);
+            this.label2.TabIndex = 30;
+            this.label2.Text = "Email";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(763, 112);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(352, 30);
+            this.textBox1.TabIndex = 38;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(295, 211);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(591, 115);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(273, 36);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Admin Profile List";
+            this.label1.Size = new System.Drawing.Size(214, 31);
+            this.label1.TabIndex = 37;
+            this.label1.Text = "Confirm Password";
             // 
             // AdminProfile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1170, 529);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.TxtBox_LastName);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.TxtBox_Password);
+            this.Controls.Add(this.TxtBox_Email);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
             this.Name = "AdminProfile";
             this.Text = "AdminProfile";
             this.ResumeLayout(false);
@@ -56,6 +141,13 @@
 
         #endregion
 
+        private System.Windows.Forms.TextBox TxtBox_LastName;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox TxtBox_Password;
+        private System.Windows.Forms.TextBox TxtBox_Email;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
     }
 }

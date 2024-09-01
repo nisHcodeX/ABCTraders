@@ -32,7 +32,6 @@
             System.Windows.Forms.Label AddCarManufLabel;
             System.Windows.Forms.Label AddCarTransmissionLabel;
             System.Windows.Forms.Label AddCarColorLabel;
-            System.Windows.Forms.Label AddCarImageLabel;
             this.label1 = new System.Windows.Forms.Label();
             this.Combo_CarModel = new System.Windows.Forms.ComboBox();
             this.Combo_Manufac = new System.Windows.Forms.ComboBox();
@@ -53,8 +52,6 @@
             this.AddCarYearNumeric = new System.Windows.Forms.NumericUpDown();
             this.AddCarYearLabel = new System.Windows.Forms.Label();
             this.AddCarTbl = new System.Windows.Forms.DataGridView();
-            this.AddCarTransmissionDrop = new System.Windows.Forms.ComboBox();
-            this.AddCarColorDrop = new System.Windows.Forms.ComboBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ManufacturerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,22 +63,27 @@
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.AddCarTransmissionDrop = new System.Windows.Forms.ComboBox();
+            this.AddCarColorDrop = new System.Windows.Forms.ComboBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Drop_CarStatus = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             AddCarModelLabel = new System.Windows.Forms.Label();
             AddCarManufLabel = new System.Windows.Forms.Label();
             AddCarTransmissionLabel = new System.Windows.Forms.Label();
             AddCarColorLabel = new System.Windows.Forms.Label();
-            AddCarImageLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPriceNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPicutureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarYearNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarTbl)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // AddCarModelLabel
             // 
             AddCarModelLabel.AutoSize = true;
             AddCarModelLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            AddCarModelLabel.Location = new System.Drawing.Point(395, 83);
+            AddCarModelLabel.Location = new System.Drawing.Point(382, 115);
             AddCarModelLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             AddCarModelLabel.Name = "AddCarModelLabel";
             AddCarModelLabel.Size = new System.Drawing.Size(58, 22);
@@ -92,7 +94,7 @@
             // 
             AddCarManufLabel.AutoSize = true;
             AddCarManufLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            AddCarManufLabel.Location = new System.Drawing.Point(395, 20);
+            AddCarManufLabel.Location = new System.Drawing.Point(381, 56);
             AddCarManufLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             AddCarManufLabel.Name = "AddCarManufLabel";
             AddCarManufLabel.Size = new System.Drawing.Size(120, 22);
@@ -104,7 +106,7 @@
             // 
             AddCarTransmissionLabel.AutoSize = true;
             AddCarTransmissionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            AddCarTransmissionLabel.Location = new System.Drawing.Point(395, 218);
+            AddCarTransmissionLabel.Location = new System.Drawing.Point(382, 234);
             AddCarTransmissionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             AddCarTransmissionLabel.Name = "AddCarTransmissionLabel";
             AddCarTransmissionLabel.Size = new System.Drawing.Size(117, 22);
@@ -116,23 +118,12 @@
             // 
             AddCarColorLabel.AutoSize = true;
             AddCarColorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            AddCarColorLabel.Location = new System.Drawing.Point(809, 82);
+            AddCarColorLabel.Location = new System.Drawing.Point(781, 172);
             AddCarColorLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             AddCarColorLabel.Name = "AddCarColorLabel";
             AddCarColorLabel.Size = new System.Drawing.Size(53, 22);
             AddCarColorLabel.TabIndex = 24;
             AddCarColorLabel.Text = "Color";
-            // 
-            // AddCarImageLabel
-            // 
-            AddCarImageLabel.AutoSize = true;
-            AddCarImageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            AddCarImageLabel.Location = new System.Drawing.Point(58, 21);
-            AddCarImageLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            AddCarImageLabel.Name = "AddCarImageLabel";
-            AddCarImageLabel.Size = new System.Drawing.Size(66, 25);
-            AddCarImageLabel.TabIndex = 33;
-            AddCarImageLabel.Text = "Image";
             // 
             // label1
             // 
@@ -147,7 +138,7 @@
             // 
             this.Combo_CarModel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Combo_CarModel.FormattingEnabled = true;
-            this.Combo_CarModel.Location = new System.Drawing.Point(392, 110);
+            this.Combo_CarModel.Location = new System.Drawing.Point(383, 141);
             this.Combo_CarModel.Name = "Combo_CarModel";
             this.Combo_CarModel.Size = new System.Drawing.Size(320, 30);
             this.Combo_CarModel.TabIndex = 14;
@@ -157,7 +148,7 @@
             // 
             this.Combo_Manufac.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Combo_Manufac.FormattingEnabled = true;
-            this.Combo_Manufac.Location = new System.Drawing.Point(392, 50);
+            this.Combo_Manufac.Location = new System.Drawing.Point(383, 81);
             this.Combo_Manufac.Name = "Combo_Manufac";
             this.Combo_Manufac.Size = new System.Drawing.Size(320, 30);
             this.Combo_Manufac.TabIndex = 16;
@@ -167,7 +158,7 @@
             // 
             this.AddCarFuelTypeLabel.AutoSize = true;
             this.AddCarFuelTypeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarFuelTypeLabel.Location = new System.Drawing.Point(808, 17);
+            this.AddCarFuelTypeLabel.Location = new System.Drawing.Point(385, 402);
             this.AddCarFuelTypeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AddCarFuelTypeLabel.Name = "AddCarFuelTypeLabel";
             this.AddCarFuelTypeLabel.Size = new System.Drawing.Size(91, 22);
@@ -184,7 +175,7 @@
             "Diesel",
             "Electric",
             "Hybrid"});
-            this.AddCarFuelTypeDrop.Location = new System.Drawing.Point(803, 45);
+            this.AddCarFuelTypeDrop.Location = new System.Drawing.Point(387, 427);
             this.AddCarFuelTypeDrop.Name = "AddCarFuelTypeDrop";
             this.AddCarFuelTypeDrop.Size = new System.Drawing.Size(320, 30);
             this.AddCarFuelTypeDrop.TabIndex = 25;
@@ -194,7 +185,7 @@
             // 
             this.AddCarConditionLabel.AutoSize = true;
             this.AddCarConditionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarConditionLabel.Location = new System.Drawing.Point(813, 213);
+            this.AddCarConditionLabel.Location = new System.Drawing.Point(785, 290);
             this.AddCarConditionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AddCarConditionLabel.Name = "AddCarConditionLabel";
             this.AddCarConditionLabel.Size = new System.Drawing.Size(86, 22);
@@ -209,7 +200,7 @@
             this.AddCarConditionDrop.Items.AddRange(new object[] {
             "Brand New",
             "Used"});
-            this.AddCarConditionDrop.Location = new System.Drawing.Point(807, 241);
+            this.AddCarConditionDrop.Location = new System.Drawing.Point(788, 316);
             this.AddCarConditionDrop.Name = "AddCarConditionDrop";
             this.AddCarConditionDrop.Size = new System.Drawing.Size(320, 30);
             this.AddCarConditionDrop.TabIndex = 27;
@@ -219,7 +210,7 @@
             // 
             this.AddCartVINTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.AddCartVINTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCartVINTxt.Location = new System.Drawing.Point(393, 182);
+            this.AddCartVINTxt.Location = new System.Drawing.Point(384, 201);
             this.AddCartVINTxt.Margin = new System.Windows.Forms.Padding(4);
             this.AddCartVINTxt.MaxLength = 17;
             this.AddCartVINTxt.Name = "AddCartVINTxt";
@@ -231,7 +222,7 @@
             // 
             this.AddCarVINLabel.AutoSize = true;
             this.AddCarVINLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarVINLabel.Location = new System.Drawing.Point(396, 152);
+            this.AddCarVINLabel.Location = new System.Drawing.Point(385, 176);
             this.AddCarVINLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AddCarVINLabel.Name = "AddCarVINLabel";
             this.AddCarVINLabel.Size = new System.Drawing.Size(288, 22);
@@ -243,7 +234,7 @@
             // 
             this.AddCarPriceLabel.AutoSize = true;
             this.AddCarPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarPriceLabel.Location = new System.Drawing.Point(812, 148);
+            this.AddCarPriceLabel.Location = new System.Drawing.Point(784, 232);
             this.AddCarPriceLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AddCarPriceLabel.Name = "AddCarPriceLabel";
             this.AddCarPriceLabel.Size = new System.Drawing.Size(51, 22);
@@ -254,7 +245,7 @@
             // 
             this.AddCarPriceNumeric.DecimalPlaces = 2;
             this.AddCarPriceNumeric.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarPriceNumeric.Location = new System.Drawing.Point(807, 178);
+            this.AddCarPriceNumeric.Location = new System.Drawing.Point(788, 257);
             this.AddCarPriceNumeric.Maximum = new decimal(new int[] {
             10000000,
             0,
@@ -269,7 +260,7 @@
             // 
             this.AddCarPhotoBtn.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.AddCarPhotoBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarPhotoBtn.Location = new System.Drawing.Point(63, 225);
+            this.AddCarPhotoBtn.Location = new System.Drawing.Point(63, 245);
             this.AddCarPhotoBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AddCarPhotoBtn.Name = "AddCarPhotoBtn";
             this.AddCarPhotoBtn.Size = new System.Drawing.Size(267, 50);
@@ -283,9 +274,9 @@
             this.AddCarPicutureBox.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.AddCarPicutureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.AddCarPicutureBox.InitialImage = global::ABCTraders.Properties.Resources.icons8_add_car_48;
-            this.AddCarPicutureBox.Location = new System.Drawing.Point(63, 50);
+            this.AddCarPicutureBox.Location = new System.Drawing.Point(63, 59);
             this.AddCarPicutureBox.Name = "AddCarPicutureBox";
-            this.AddCarPicutureBox.Size = new System.Drawing.Size(267, 160);
+            this.AddCarPicutureBox.Size = new System.Drawing.Size(267, 164);
             this.AddCarPicutureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.AddCarPicutureBox.TabIndex = 34;
             this.AddCarPicutureBox.TabStop = false;
@@ -296,10 +287,10 @@
             // 
             this.AddCarSaveBtn.BackColor = System.Drawing.SystemColors.Highlight;
             this.AddCarSaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarSaveBtn.Location = new System.Drawing.Point(392, 408);
+            this.AddCarSaveBtn.Location = new System.Drawing.Point(63, 348);
             this.AddCarSaveBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AddCarSaveBtn.Name = "AddCarSaveBtn";
-            this.AddCarSaveBtn.Size = new System.Drawing.Size(324, 50);
+            this.AddCarSaveBtn.Size = new System.Drawing.Size(267, 50);
             this.AddCarSaveBtn.TabIndex = 36;
             this.AddCarSaveBtn.Text = "Save";
             this.AddCarSaveBtn.UseVisualStyleBackColor = false;
@@ -310,10 +301,10 @@
             this.AddCarDeleteBtn.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.AddCarDeleteBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AddCarDeleteBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.AddCarDeleteBtn.Location = new System.Drawing.Point(807, 408);
+            this.AddCarDeleteBtn.Location = new System.Drawing.Point(63, 405);
             this.AddCarDeleteBtn.Margin = new System.Windows.Forms.Padding(4);
             this.AddCarDeleteBtn.Name = "AddCarDeleteBtn";
-            this.AddCarDeleteBtn.Size = new System.Drawing.Size(320, 50);
+            this.AddCarDeleteBtn.Size = new System.Drawing.Size(267, 50);
             this.AddCarDeleteBtn.TabIndex = 37;
             this.AddCarDeleteBtn.Text = "Delete";
             this.AddCarDeleteBtn.UseVisualStyleBackColor = false;
@@ -322,7 +313,7 @@
             // 
             this.AddCarDescriptionTxt.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.AddCarDescriptionTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarDescriptionTxt.Location = new System.Drawing.Point(807, 308);
+            this.AddCarDescriptionTxt.Location = new System.Drawing.Point(389, 318);
             this.AddCarDescriptionTxt.Margin = new System.Windows.Forms.Padding(4);
             this.AddCarDescriptionTxt.MaxLength = 100000;
             this.AddCarDescriptionTxt.Multiline = true;
@@ -335,7 +326,7 @@
             // 
             this.AddCarDescriptionLabel.AutoSize = true;
             this.AddCarDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarDescriptionLabel.Location = new System.Drawing.Point(812, 278);
+            this.AddCarDescriptionLabel.Location = new System.Drawing.Point(385, 291);
             this.AddCarDescriptionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AddCarDescriptionLabel.Name = "AddCarDescriptionLabel";
             this.AddCarDescriptionLabel.Size = new System.Drawing.Size(100, 22);
@@ -345,7 +336,7 @@
             // AddCarYearNumeric
             // 
             this.AddCarYearNumeric.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarYearNumeric.Location = new System.Drawing.Point(396, 307);
+            this.AddCarYearNumeric.Location = new System.Drawing.Point(784, 375);
             this.AddCarYearNumeric.Maximum = new decimal(new int[] {
             3000,
             0,
@@ -370,7 +361,7 @@
             // 
             this.AddCarYearLabel.AutoSize = true;
             this.AddCarYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarYearLabel.Location = new System.Drawing.Point(392, 278);
+            this.AddCarYearLabel.Location = new System.Drawing.Point(781, 349);
             this.AddCarYearLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AddCarYearLabel.Name = "AddCarYearLabel";
             this.AddCarYearLabel.Size = new System.Drawing.Size(48, 22);
@@ -393,51 +384,14 @@
             this.Price,
             this.Condition,
             this.Description});
-            this.AddCarTbl.Location = new System.Drawing.Point(63, 474);
+            this.AddCarTbl.Location = new System.Drawing.Point(63, 484);
             this.AddCarTbl.Name = "AddCarTbl";
             this.AddCarTbl.RowHeadersWidth = 51;
             this.AddCarTbl.RowTemplate.Height = 24;
-            this.AddCarTbl.Size = new System.Drawing.Size(1060, 192);
+            this.AddCarTbl.Size = new System.Drawing.Size(1045, 137);
             this.AddCarTbl.TabIndex = 43;
+            this.AddCarTbl.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AddCarTbl_CellContentClick);
             this.AddCarTbl.SelectionChanged += new System.EventHandler(this.AddCarTbl_SelectionChanged);
-            // 
-            // AddCarTransmissionDrop
-            // 
-            this.AddCarTransmissionDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AddCarTransmissionDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarTransmissionDrop.FormattingEnabled = true;
-            this.AddCarTransmissionDrop.Items.AddRange(new object[] {
-            "Automatic ",
-            "Manual ",
-            "Automated & Manual",
-            "CVT"});
-            this.AddCarTransmissionDrop.Location = new System.Drawing.Point(393, 241);
-            this.AddCarTransmissionDrop.Name = "AddCarTransmissionDrop";
-            this.AddCarTransmissionDrop.Size = new System.Drawing.Size(320, 30);
-            this.AddCarTransmissionDrop.TabIndex = 44;
-            this.AddCarTransmissionDrop.SelectedIndexChanged += new System.EventHandler(this.AddCarTransmissionDrop_SelectedIndexChanged);
-            // 
-            // AddCarColorDrop
-            // 
-            this.AddCarColorDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.AddCarColorDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarColorDrop.FormattingEnabled = true;
-            this.AddCarColorDrop.Items.AddRange(new object[] {
-            "Red",
-            "Blue",
-            "White",
-            "Black",
-            "Silver ",
-            "Grey ",
-            "Green",
-            "Yellow ",
-            "Orange",
-            "Brown",
-            "Other"});
-            this.AddCarColorDrop.Location = new System.Drawing.Point(803, 110);
-            this.AddCarColorDrop.Name = "AddCarColorDrop";
-            this.AddCarColorDrop.Size = new System.Drawing.Size(320, 30);
-            this.AddCarColorDrop.TabIndex = 45;
             // 
             // Id
             // 
@@ -516,12 +470,89 @@
             this.Description.Name = "Description";
             this.Description.Width = 125;
             // 
+            // AddCarTransmissionDrop
+            // 
+            this.AddCarTransmissionDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AddCarTransmissionDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddCarTransmissionDrop.FormattingEnabled = true;
+            this.AddCarTransmissionDrop.Items.AddRange(new object[] {
+            "Automatic ",
+            "Manual ",
+            "Automated & Manual",
+            "CVT"});
+            this.AddCarTransmissionDrop.Location = new System.Drawing.Point(384, 257);
+            this.AddCarTransmissionDrop.Name = "AddCarTransmissionDrop";
+            this.AddCarTransmissionDrop.Size = new System.Drawing.Size(320, 30);
+            this.AddCarTransmissionDrop.TabIndex = 44;
+            this.AddCarTransmissionDrop.SelectedIndexChanged += new System.EventHandler(this.AddCarTransmissionDrop_SelectedIndexChanged);
+            // 
+            // AddCarColorDrop
+            // 
+            this.AddCarColorDrop.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.AddCarColorDrop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AddCarColorDrop.FormattingEnabled = true;
+            this.AddCarColorDrop.Items.AddRange(new object[] {
+            "Red",
+            "Blue",
+            "White",
+            "Black",
+            "Silver ",
+            "Grey ",
+            "Green",
+            "Yellow ",
+            "Orange",
+            "Brown",
+            "Other"});
+            this.AddCarColorDrop.Location = new System.Drawing.Point(784, 197);
+            this.AddCarColorDrop.Name = "AddCarColorDrop";
+            this.AddCarColorDrop.Size = new System.Drawing.Size(320, 30);
+            this.AddCarColorDrop.TabIndex = 45;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.RoyalBlue;
+            this.panel1.Controls.Add(this.Drop_CarStatus);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Location = new System.Drawing.Point(789, 59);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(326, 99);
+            this.panel1.TabIndex = 74;
+            // 
+            // Drop_CarStatus
+            // 
+            this.Drop_CarStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Drop_CarStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Drop_CarStatus.FormattingEnabled = true;
+            this.Drop_CarStatus.Items.AddRange(new object[] {
+            "Available",
+            "Pending",
+            "Approved",
+            "Delivered"});
+            this.Drop_CarStatus.Location = new System.Drawing.Point(24, 47);
+            this.Drop_CarStatus.Name = "Drop_CarStatus";
+            this.Drop_CarStatus.Size = new System.Drawing.Size(279, 30);
+            this.Drop_CarStatus.TabIndex = 111;
+            this.Drop_CarStatus.SelectedIndexChanged += new System.EventHandler(this.Drop_CarStatus_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(23, 22);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(61, 22);
+            this.label2.TabIndex = 75;
+            this.label2.Text = "Status";
+            // 
             // AdminAddCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1169, 678);
+            this.ClientSize = new System.Drawing.Size(1169, 708);
             this.ControlBox = false;
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.AddCarColorDrop);
             this.Controls.Add(this.AddCarTransmissionDrop);
             this.Controls.Add(this.AddCarTbl);
@@ -533,7 +564,6 @@
             this.Controls.Add(this.AddCarSaveBtn);
             this.Controls.Add(this.AddCarPhotoBtn);
             this.Controls.Add(this.AddCarPicutureBox);
-            this.Controls.Add(AddCarImageLabel);
             this.Controls.Add(this.AddCarPriceNumeric);
             this.Controls.Add(this.AddCarPriceLabel);
             this.Controls.Add(this.AddCartVINTxt);
@@ -556,6 +586,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPicutureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarYearNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarTbl)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -596,5 +628,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Condition;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.PictureBox AddCarPicutureBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox Drop_CarStatus;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -218,17 +218,19 @@ namespace ABCTraders.Views.Admin
         //main
         private void AdminAddCar_Load(object sender, EventArgs e)
         {
+            Drop_CarStatus.SelectedIndex = 0;
             PopulateManufacturers();
             PopulateModels();
-            PopulateCarTable();
             AddCarTbl.ClearSelection();
             ResetForm();
         }
 
         private void PopulateCarTable()
         {
+            AddCarTbl.Rows.Clear();
+            var status = Drop_CarStatus.SelectedIndex;
             var getAllCarsController = new AdminController();
-            var cars = getAllCarsController.GetAllCars();
+            var cars = getAllCarsController.GetAllCars(status);
 
             foreach (var car in cars)
             {
@@ -304,52 +306,69 @@ namespace ABCTraders.Views.Admin
         {
             if (AddCarTbl.Rows.Count > 0)
             {
+                var status = Drop_CarStatus.SelectedIndex;
                 var selectedIdx = AddCarTbl.CurrentCell.RowIndex;
                 var selectedCar = AddCarTbl.Rows[selectedIdx];
                 var carId = (int)selectedCar.Cells[0].Value;
 
                 var controller = new AdminController();
-                var car = controller.GetAllCars().Find(x => x.Id == carId);
+                var car = controller.GetAllCars(status).Find(x => x.Id == carId);
 
-                AddCartVINTxt.Text = car.VIN;
-                AddCarDescriptionTxt.Text = car.Description;
-
-                for (int i = 0; i < Combo_Manufac.Items.Count; i++)
+                if (car != null)
                 {
-                    var item = (ComboBoxFields)Combo_Manufac.Items[i];
+                    AddCartVINTxt.Text = car.VIN;
+                    AddCarDescriptionTxt.Text = car.Description;
 
-                    if (item.Value == car.ManufacturerId)
+
+                    for (int i = 0; i < Combo_Manufac.Items.Count; i++)
                     {
-                        Combo_Manufac.SelectedIndex = i;
-                        break;
+                        var item = (ComboBoxFields)Combo_Manufac.Items[i];
+
+                        if (item.Value == car.ManufacturerId)
+                        {
+                            Combo_Manufac.SelectedIndex = i;
+                            break;
+                        }
                     }
-                }
 
-                for (int i = 0; i < Combo_CarModel.Items.Count; i++)
-                {
-                    var item = (ComboBoxFields)Combo_CarModel.Items[i];
-
-                    if (item.Value == car.ModelId)
+                    for (int i = 0; i < Combo_CarModel.Items.Count; i++)
                     {
-                        Combo_CarModel.SelectedIndex = i;
-                        break;
+                        var item = (ComboBoxFields)Combo_CarModel.Items[i];
+
+                        if (item.Value == car.ModelId)
+                        {
+                            Combo_CarModel.SelectedIndex = i;
+                            break;
+                        }
                     }
+
+                    AddCarPicutureBox.Image = System.Drawing.Image.FromStream(new MemoryStream(car.Picture));
+
+                    AddCarPriceNumeric.Value = car.Price;
                 }
-
-                AddCarPicutureBox.Image = System.Drawing.Image.FromStream(new MemoryStream(car.Picture));
-
-                AddCarPriceNumeric.Value = car.Price;
             }
         }
 
         private void ResetForm()
         {
+            AddCarPicutureBox.Image = null;
             AddCartVINTxt.Text = string.Empty;
             AddCarFuelTypeDrop.SelectedIndex = 0;
             AddCarConditionDrop.SelectedIndex = 0;
             AddCarTransmissionDrop.SelectedIndex = 0;
             AddCarColorDrop.SelectedIndex = 0;
-            
+            AddCarDescriptionTxt.Text = string.Empty;
+            AddCarPriceNumeric.Value = 0;
+        }
+
+        private void AddCarTbl_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void Drop_CarStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulateCarTable();
         }
     }
 }

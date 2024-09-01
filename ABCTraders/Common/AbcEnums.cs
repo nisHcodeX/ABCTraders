@@ -56,5 +56,20 @@ namespace ABCTraders.Common
             Brown = 9,
             Other = 10,
         }
+
+        public enum CarPartCategories
+        {
+            EngineComponents = 0,
+            TransmissionAndDrivetrain = 1,
+            SuspensionAndSteering = 2,
+            BrakingSystem = 3,
+            ElectricalAndLighting = 4,
+            ExhaustSystem = 5,
+            CoolingSystem = 6,
+            FuelSystem = 7,
+            InteriorComponents = 8,
+            BodyAndExteriorParts = 9,
+            Other = 10
+        }
     }
 }

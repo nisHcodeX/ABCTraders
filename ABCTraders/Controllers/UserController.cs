@@ -47,5 +47,11 @@ namespace ABCTraders.Controllers
             }
             return false;
         }
+
+        public List<CustomerModel> GetAllCustomers()
+        {
+            var customerRepository = new CustomerRepository();
+            return customerRepository.GetAllCustomers();
+        }
     }
 }

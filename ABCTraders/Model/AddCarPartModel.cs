@@ -10,7 +10,7 @@ namespace ABCTraders.Model
     internal class AddCarPartModel: BaseModel
     {
         public string PartName { get; set; }
-        public string Manufacturer { get; set; }
+        public int ManufacturerId { get; set; }
         public string PartCode { get; set; }
         public string Category { get; set; }
         public decimal Price { get; set; }

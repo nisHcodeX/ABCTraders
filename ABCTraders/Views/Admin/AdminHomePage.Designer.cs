@@ -143,6 +143,7 @@
             // 
             // AdminLogoutBtn
             // 
+            this.AdminLogoutBtn.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.AdminLogoutBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AdminLogoutBtn.Image = global::ABCTraders.Properties.Resources.icons8_logout_481;
             this.AdminLogoutBtn.Location = new System.Drawing.Point(30, 650);
@@ -189,7 +190,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.AdminLogoutBtn;
             this.ClientSize = new System.Drawing.Size(1471, 754);
+            this.ControlBox = false;
             this.Controls.Add(this.AdminFormContainerPnl);
             this.Controls.Add(this.customerHeaderPnl);
             this.Controls.Add(this.customerBtnContainerPnl);

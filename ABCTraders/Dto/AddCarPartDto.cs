@@ -10,11 +10,11 @@ namespace ABCTraders.Dto
     {
         public string PartName { get; set; }
 
-        public string Manufacturer { get; set; }
+        public int ManufacturerId { get; set; }
 
         public string PartCode { get; set; }
 
-        public string Category { get; set; }
+        public int Category { get; set; }
 
         public string Description { get; set; }
 

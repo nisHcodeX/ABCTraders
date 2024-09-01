@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 using static ABCTraders.Common.AbcEnums;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ABCTraders.Repository
 {
@@ -139,43 +140,7 @@ namespace ABCTraders.Repository
             }
         }
 
-        public int AddCarPartToSystem(AddCarPartDto dto)
-        {
-            try
-            {
-                using (var connection = GetConnection())
-                {
-                    connection.Open();
-                    using (var command = connection.CreateCommand())
-                    {
-                        command.CommandText = @"INSERT INTO AddCarPart(PartName, Manufacturer, PartCode, Category, Description, Price, Condition, StockQuantity, ImagePath, IsActive, CreatedDate, LastLoginDate)
-                        VALUES(@PartName, @Manufacturer, @PartCode, @Category, @Description, @Price, @Condition, @StockQuantity, @ImagePath, 1, GETDATE(), GETDATE())";
-
-                        command.Parameters.Add("@PartName", SqlDbType.NVarChar).Value = dto.PartName;
-                        command.Parameters.Add("@Manufacturer", SqlDbType.NVarChar).Value = dto.Manufacturer;
-                        command.Parameters.Add("@PartCode", SqlDbType.NVarChar).Value = dto.PartCode;
-                        command.Parameters.Add("@Category", SqlDbType.NVarChar).Value = dto.Category;
-                        command.Parameters.Add("@Description", SqlDbType.NVarChar).Value = dto.Description;
-                        command.Parameters.Add("@Price", SqlDbType.Decimal).Value = dto.Price;
-                        command.Parameters.Add("@Condition", SqlDbType.Int).Value = dto.Condition;
-                        command.Parameters.Add("@StockQuantity", SqlDbType.Int).Value = dto.StockQuantity;
-                        command.Parameters.Add("@ImagePath", SqlDbType.Image).Value = dto.ImagePath;
-
-
-                        var reader = command.ExecuteReader();
-                    }
-                    connection.Close();
-                }
-                return 1;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return 0;
-            }
-        }
-
-        public List<CarDetailsModel> GetAllCars()
+        public List<CarDetailsModel> GetAllCars(int status)
         {
             try
             {
@@ -183,10 +148,12 @@ namespace ABCTraders.Repository
 
                 using (var connection = GetConnection())
                 {
+
                     connection.Open();
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = @"SELECT C.*, M.Name AS ModelName, MN.Name AS ManufacturerName FROM Cars C INNER JOIN Models M on C.ModelId = M.Id INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id";
+                        command.Parameters.AddWithValue("@status", status);
+                        command.CommandText = @"SELECT C.*, M.Name AS ModelName, MN.Name AS ManufacturerName FROM Cars C INNER JOIN Models M on C.ModelId = M.Id INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.Status = @status";
 
                         var reader = command.ExecuteReader();
 
@@ -215,49 +182,6 @@ namespace ABCTraders.Repository
                     connection.Close();
                 }
                 return carList;
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-                return null;
-            }
-        }
-
-        public List<AddCarPartModel> GetAllCarParts()
-        {
-            try
-            {
-                var carPartsList = new List<AddCarPartModel>();
-
-                using (var connection = GetConnection())
-                {
-                    connection.Open();
-                    using (var command = connection.CreateCommand())
-                    {
-                        command.CommandText = @"SELECT * FROM AddCarPart WHERE IsActive = 1";
-
-                        var reader = command.ExecuteReader();
-
-                        while (reader.Read())
-                        {
-                            var car = new AddCarPartModel
-                            {
-                                Id = Convert.ToInt32(reader["ID"].ToString()),
-                                PartName = reader["PartName"].ToString(),
-                                Manufacturer = reader["Manufacturer"].ToString(),
-                                PartCode = reader["PartCode"].ToString(),
-                                Category = reader["Category"].ToString(),
-                                Description = reader["Description"].ToString(),
-                                Price = Convert.ToDecimal(reader["Price"].ToString()),
-                                Condition = (CarCondition)Convert.ToInt32(reader["Condition"].ToString()),
-                                StockQuantity = Convert.ToInt32(reader["StockQuantity"].ToString()),
-                            };
-                            carPartsList.Add(car);
-                        }
-                    }
-                    connection.Close();
-                }
-                return carPartsList;
             }
             catch (Exception ex)
             {
@@ -336,6 +260,88 @@ namespace ABCTraders.Repository
             {
                 MessageBox.Show(ex.Message);
                 return null;
+            }
+        }
+
+        public List<AddCarPartModel> GetAllCarParts(int status)
+        {
+            try
+            {
+                var carPartsList = new List<AddCarPartModel>();
+
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@status", status);
+                        command.CommandText = @"SELECT C.*, MN.Name AS ManufacturerName FROM CarParts C INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.Status = @status";
+
+                        var reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            var car = new AddCarPartModel
+                            {
+                                Id = Convert.ToInt32(reader["ID"].ToString()),
+                                PartName = reader["PartName"].ToString(),
+                                ManufacturerId = Convert.ToInt32(reader["ManufacturerId"].ToString()),
+                                PartCode = reader["PartCode"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Description = reader["Description"].ToString(),
+                                Price = Convert.ToDecimal(reader["Price"].ToString()),
+                                Condition = (CarCondition)Convert.ToInt32(reader["Condition"].ToString()),
+                                StockQuantity = Convert.ToInt32(reader["StockQuantity"].ToString()),
+                                ImagePath = (byte[])reader["picture"],
+                            };
+                            carPartsList.Add(car);
+                        }
+                    }
+                    connection.Close();
+                }
+                return carPartsList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public int AddCarPartToSystem(AddCarPartDto dto)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = @"INSERT INTO CarParts(PartName, ManufacturerId, PartCode, Category, Description, Price, Condition, StockQuantity, Picture, IsActive, CreatedDate, Status)
+                        VALUES(@PartName, @ManufacturerId, @PartCode, @Category, @Description, @Price, @Condition, @StockQuantity, @Picture, 1, GETDATE(), 0)";
+
+                        command.Parameters.Add("@PartName", SqlDbType.NVarChar).Value = dto.PartName;
+                        command.Parameters.Add("@ManufacturerId", SqlDbType.Int).Value = dto.ManufacturerId;
+                        command.Parameters.Add("@PartCode", SqlDbType.NVarChar).Value = dto.PartCode;
+                        command.Parameters.Add("@Category", SqlDbType.Int).Value = dto.Category;
+                        command.Parameters.Add("@Description", SqlDbType.NVarChar).Value = dto.Description;
+                        command.Parameters.Add("@Price", SqlDbType.Decimal).Value = dto.Price;
+                        command.Parameters.Add("@Condition", SqlDbType.Int).Value = dto.Condition;
+                        command.Parameters.Add("@StockQuantity", SqlDbType.Int).Value = dto.StockQuantity;
+                        command.Parameters.Add("@Picture", SqlDbType.Image).Value = dto.ImagePath;
+
+
+                        var reader = command.ExecuteReader();
+                    }
+                    connection.Close();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
             }
         }
     }
