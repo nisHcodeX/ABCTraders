@@ -361,3 +361,6 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+/ABCTraders/Views/Customer/HomePage.cs
+/ABCTraders/Views/Customer/HomePage.Designer.cs
+/ABCTraders/Views/Customer/HomePage.resx
