@@ -12,8 +12,10 @@ namespace ABCTraders.Views.Customer
 {
     public partial class CustomerOrder : Form
     {
-        public CustomerOrder()
+        private readonly int customerId = 0;
+        public CustomerOrder(int customerId)
         {
+            this.customerId = customerId;
             InitializeComponent();
         }
 
@@ -41,6 +43,7 @@ namespace ABCTraders.Views.Customer
         private void CustomerOrder_Load(object sender, EventArgs e)
         {
             Drop_OrderType.SelectedIndex = 0;
+            MessageBox.Show("customer Id "+ customerId);
         }
     }
 }

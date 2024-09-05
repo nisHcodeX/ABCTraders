@@ -31,64 +31,52 @@ namespace ABCTraders
 
         private void LoginFormLoginBtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            //this.Hide();
             //AdminHomePage adminHomePage = new AdminHomePage();
             //adminHomePage.Show();
-            HomePage customerPage = new HomePage();
-            customerPage.Show();
+            //HomePage customerPage = new HomePage();
+            //customerPage.Show();
             var email = LoginFormEmail.Text.Trim();
             var password = LoginFormPassword.Text;
             var userType = LoginFormCombo.SelectedItem.ToString();
             var userController = new UserController();
             var validate = ValidateSignIn(email, password);
 
-            //if (validate.IsValid)
-            //{
-            //    if(userType == UserTypes.Customer.ToString())
-            //    {
-            //        this.Hide();
-            //        HomePage customerPage = new HomePage();
-            //        customerPage.Show();
-            //    }
-            //    else
-            //    {
-            //        AdminModel admin = userController.AdminSignIn(email.ToLower(), password);
-            //        if (admin != null)
-            //        {
-            //            this.Hide();
-            //            AdminHomePage adminHomePage = new AdminHomePage();
-            //            adminHomePage.Show();
-            //        }
-            //        else
-            //        {
-            //            // Handle the case where the admin is not found
-            //            MessageBox.Show("Admin not found or invalid credentials", "Error");
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    MessageBox.Show(validate.Message);
-            //}
-
-
-
-            //HomePage homePage = new HomePage();
-            //homePage.Show();
-            //this.Hide();
-            //LoginRepository repository = new LoginRepository();
-            //RegisterPage registerPage = new RegisterPage();
-            //registerPage.Show();
-            //if (loginFormUsername.Text == "nish@gmail.com" && loginFormPassword.Text == "1234"){
-
-            //    HomePage homePage = new HomePage();
-            //    homePage.Show();
-            //    this.Hide();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Incorrect Username Or Password", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //}
+            if (validate.IsValid)
+            {
+                if (userType == UserTypes.Customer.ToString())
+                {
+                    CustomerModel customer = userController.SignIn(email, password);  
+                    if(customer != null)
+                    {
+                        this.Hide();
+                        HomePage customerPage = new HomePage(customer.Id);
+                        customerPage.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Customer not found or invalid credentials", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    AdminModel admin = userController.AdminSignIn(email.ToLower(), password);
+                    if (admin != null)
+                    {
+                        this.Hide();
+                        AdminHomePage adminHomePage = new AdminHomePage();
+                        adminHomePage.Show();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Admin not found or invalid credentials", "Error" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show(validate.Message);
+            }
         }
 
         private Validation ValidateSignIn(string email, string password)

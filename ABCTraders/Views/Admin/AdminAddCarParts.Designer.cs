@@ -59,8 +59,8 @@
             this.AddCarPartNameText = new System.Windows.Forms.TextBox();
             this.AddCarPartCategoryDrop = new System.Windows.Forms.ComboBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.Drop_PartStatus = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             AddCarPartNameLabel = new System.Windows.Forms.Label();
             AddCarPartManufLabel = new System.Windows.Forms.Label();
             AddCarPartCategoryLabel = new System.Windows.Forms.Label();
@@ -332,6 +332,7 @@
             this.AddCarPartDeleteBtn.TabIndex = 63;
             this.AddCarPartDeleteBtn.Text = "Delete";
             this.AddCarPartDeleteBtn.UseVisualStyleBackColor = false;
+            this.AddCarPartDeleteBtn.Click += new System.EventHandler(this.AddCarPartDeleteBtn_Click);
             // 
             // AddCarDescriptionLabel
             // 
@@ -425,17 +426,6 @@
             this.panel1.Size = new System.Drawing.Size(326, 99);
             this.panel1.TabIndex = 73;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 22);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 22);
-            this.label1.TabIndex = 75;
-            this.label1.Text = "Status";
-            // 
             // Drop_PartStatus
             // 
             this.Drop_PartStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -451,6 +441,17 @@
             this.Drop_PartStatus.Size = new System.Drawing.Size(279, 30);
             this.Drop_PartStatus.TabIndex = 111;
             this.Drop_PartStatus.SelectedIndexChanged += new System.EventHandler(this.Drop_PartStatus_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(23, 22);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 22);
+            this.label1.TabIndex = 75;
+            this.label1.Text = "Status";
             // 
             // AdminAddCarParts
             // 

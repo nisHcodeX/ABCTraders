@@ -7,7 +7,7 @@ using static ABCTraders.Common.AbcEnums;
 
 namespace ABCTraders.Model
 {
-    internal class AddCarPartModel: BaseModel
+    internal class AddCarPartDetailModel: BaseModel
     {
         public string PartName { get; set; }
         public int ManufacturerId { get; set; }
@@ -18,6 +18,6 @@ namespace ABCTraders.Model
         public CarCondition Condition { get; set; }
         public string Description { get; set; }
         public byte[] ImagePath { get; set; }
-
+        public string ManufacturerName { get; set; }
     }
 }

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Windows.Forms;
 using static ABCTraders.Common.AbcEnums;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -112,7 +113,7 @@ namespace ABCTraders.Repository
                     connection.Open();
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = @"UPDATE Cars SET VIN = @VIN, Transmission = @Transmission, Year = @Year, FuelType = @FuelType, Color = @Color, Price = @Price, Condition = @Condition, Description = @Description, Picture = @Picture, ModelId = @ModelId, ManufacturerId = @ManufacturerId WHERE Id = @Id";
+                        command.CommandText = @"UPDATE Cars SET VIN = @VIN, Transmission = @Transmission, Year = @Year, FuelType = @FuelType, Color = @Color, Price = @Price, Condition = @Condition, Description = @Description, Picture = @Picture, ModelId = @ModelId, ManufacturerId = @ManufacturerId, UpdatedAt=GETDATE() WHERE Id = @Id";
 
                         command.Parameters.Add("@Id", SqlDbType.NVarChar).Value = id;
                         command.Parameters.Add("@VIN", SqlDbType.NVarChar).Value = dto.VIN;
@@ -153,7 +154,7 @@ namespace ABCTraders.Repository
                     using (var command = connection.CreateCommand())
                     {
                         command.Parameters.AddWithValue("@status", status);
-                        command.CommandText = @"SELECT C.*, M.Name AS ModelName, MN.Name AS ManufacturerName FROM Cars C INNER JOIN Models M on C.ModelId = M.Id INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.Status = @status";
+                        command.CommandText = @"SELECT C.*, M.Name AS ModelName, MN.Name AS ManufacturerName FROM Cars C INNER JOIN Models M on C.ModelId = M.Id INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.Status = @status AND C.IsActive = 1";
 
                         var reader = command.ExecuteReader();
 
@@ -263,11 +264,11 @@ namespace ABCTraders.Repository
             }
         }
 
-        public List<AddCarPartModel> GetAllCarParts(int status)
+        public List<AddCarPartDetailModel> GetAllCarParts(int status)
         {
             try
             {
-                var carPartsList = new List<AddCarPartModel>();
+                var carPartsList = new List<AddCarPartDetailModel>();
 
                 using (var connection = GetConnection())
                 {
@@ -276,13 +277,13 @@ namespace ABCTraders.Repository
                     using (var command = connection.CreateCommand())
                     {
                         command.Parameters.AddWithValue("@status", status);
-                        command.CommandText = @"SELECT C.*, MN.Name AS ManufacturerName FROM CarParts C INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.Status = @status";
+                        command.CommandText = @"SELECT C.*, MN.Name AS ManufacturerName FROM CarParts C INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.Status = @status and IsActive = 1";
 
                         var reader = command.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            var car = new AddCarPartModel
+                            var car = new AddCarPartDetailModel
                             {
                                 Id = Convert.ToInt32(reader["ID"].ToString()),
                                 PartName = reader["PartName"].ToString(),
@@ -294,6 +295,7 @@ namespace ABCTraders.Repository
                                 Condition = (CarCondition)Convert.ToInt32(reader["Condition"].ToString()),
                                 StockQuantity = Convert.ToInt32(reader["StockQuantity"].ToString()),
                                 ImagePath = (byte[])reader["picture"],
+                                ManufacturerName = reader["ManufacturerName"].ToString(),
                             };
                             carPartsList.Add(car);
                         }
@@ -318,8 +320,8 @@ namespace ABCTraders.Repository
                     connection.Open();
                     using (var command = connection.CreateCommand())
                     {
-                        command.CommandText = @"INSERT INTO CarParts(PartName, ManufacturerId, PartCode, Category, Description, Price, Condition, StockQuantity, Picture, IsActive, CreatedDate, Status)
-                        VALUES(@PartName, @ManufacturerId, @PartCode, @Category, @Description, @Price, @Condition, @StockQuantity, @Picture, 1, GETDATE(), 0)";
+                        command.CommandText = @"INSERT INTO CarParts(PartName, ManufacturerId, PartCode, Category, Description, Price, Condition, StockQuantity, Picture, IsActive, CreatedDate, Status, UpdatedAt)
+                        VALUES(@PartName, @ManufacturerId, @PartCode, @Category, @Description, @Price, @Condition, @StockQuantity, @Picture, 1, GETDATE(), 0, GETDATE())";
 
                         command.Parameters.Add("@PartName", SqlDbType.NVarChar).Value = dto.PartName;
                         command.Parameters.Add("@ManufacturerId", SqlDbType.Int).Value = dto.ManufacturerId;
@@ -341,6 +343,124 @@ namespace ABCTraders.Repository
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
+        public int UpdateCarPartToSystem(int id, AddCarPartDto dto)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = @"UPDATE CarParts SET PartName = @PartName, ManufacturerId = @ManufacturerId, PartCode = @PartCode, Category = @Category, Description = @Description, Price = @Price, Condition = @Condition, StockQuantity = @StockQuantity, Picture = @Picture, UpdatedAt=GETDATE() WHERE Id = @Id";
+
+                        command.Parameters.Add("@PartName", SqlDbType.NVarChar).Value = dto.PartName;
+                        command.Parameters.Add("@ManufacturerId", SqlDbType.Int).Value = dto.ManufacturerId;
+                        command.Parameters.Add("@PartCode", SqlDbType.NVarChar).Value = dto.PartCode;
+                        command.Parameters.Add("@Category", SqlDbType.Int).Value = dto.Category;
+                        command.Parameters.Add("@Description", SqlDbType.NVarChar).Value = dto.Description;
+                        command.Parameters.Add("@Price", SqlDbType.Decimal).Value = dto.Price;
+                        command.Parameters.Add("@Condition", SqlDbType.Int).Value = dto.Condition;
+                        command.Parameters.Add("@StockQuantity", SqlDbType.Int).Value = dto.StockQuantity;
+                        command.Parameters.Add("@Picture", SqlDbType.Image).Value = dto.ImagePath;
+                    }
+                    connection.Close();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
+        public int DeleteCarById(int carId)
+        {
+            int id = 0;
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.Add("@Id", SqlDbType.Int).Value = carId;
+                        command.CommandText = @"UPDATE Car SET IsActive = 0, UpdatedAt = GETDATE() WHERE Id = @Id;";
+
+                        var reader = command.ExecuteReader();
+                     }
+                    connection.Close();
+                }
+                return id = 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return id;
+            }
+        }
+
+        public int DeleteCarPartById(int partId)
+        {
+            int id = 0;
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.Add("@Id", SqlDbType.Int).Value = partId;
+                        command.CommandText = @"UPDATE CarParts SET IsActive = 0, UpdatedAt = GETDATE() WHERE Id = @Id;";
+
+                        var reader = command.ExecuteReader();
+                    }
+                    connection.Close();
+                }
+                return id = 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return id;
+            }
+        }
+
+        public int UpdateCustomerByAdmin(int customerId, CustomerDto dto)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@Id", customerId);
+                        command.CommandText = @"UPDATE Customers SET FirstName = @FirstName, LastName = @LastName, Contact = @Contact, Address = @Address, UpdatedAt = GETDATE()
+                        WHERE Id = @Id;";
+
+                        command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = dto.FirstName;
+                        command.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = dto.LastName;
+                        command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = dto.Address;
+                        command.Parameters.Add("@Contact", SqlDbType.NVarChar).Value = dto.Contact;
+                        command.Parameters.Add("@IsActive", SqlDbType.NVarChar).Value = dto.IsActive;
+
+                        var reader = command.ExecuteReader();
+                    }
+                    connection.Close();
+                }
+
+                return 1;
+            }
+            catch (Exception)
+            {
                 return 0;
             }
         }

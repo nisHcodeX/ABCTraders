@@ -12,9 +12,11 @@ namespace ABCTraders.Views.Customer
 {
     public partial class CustomerProfile : Form
     {
-        public CustomerProfile()
+        private readonly int customerId = 0;
+        public CustomerProfile(int customerId)
         {
             InitializeComponent();
+            this.customerId = customerId;   
         }
 
         private void CustomerProfile_Load(object sender, EventArgs e)

@@ -31,7 +31,7 @@ namespace ABCTraders.Views.Admin
             if (validation.IsValid)
             {
                 var carImage = ABCPhotConvertor();
-                var addCarController = new AdminController();
+                var addCarPartController = new AdminController();
 
                 var manufacturerIdx = AddCarPartManufCombBx.SelectedIndex;
                 var manufac = (ComboBoxFields)AddCarPartManufCombBx.Items[manufacturerIdx];
@@ -49,30 +49,36 @@ namespace ABCTraders.Views.Admin
 
                 };
 
-                bool carPartAddingSuccess = false;
-
                 if (AddCarPartsTbl.SelectedRows.Count > 0)
                 {
                     var selectedIdx = AddCarPartsTbl.CurrentCell.RowIndex;
                     var selectedCarPart = AddCarPartsTbl.Rows[selectedIdx];
                     var carPartId = (int)selectedCarPart.Cells[0].Value;
 
-                    //carAddingSuccess = addCarController.UpdateCarPart(carId, addCarDto);
+                    var carPartUpdateSuccess = addCarPartController.UpdateCarPart(carPartId, addCarPartDto);
+                    if (carPartUpdateSuccess)
+                    {
+                        MessageBox.Show("Succesfully Updated the car part details");
+                        PopulateCarPartTable();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot update the car part, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    carPartAddingSuccess = addCarController.AddCarPart(addCarPartDto); ;
-                }
+                    var carPartAddingSuccess = addCarPartController.AddCarPart(addCarPartDto);
 
-                if (carPartAddingSuccess)
-                {
-                    MessageBox.Show(validation.Message);
-                    AddCarPartsTbl.Rows.Clear();
-                    PopulateCarPartTable();
-                }
-                else
-                {
-                    MessageBox.Show("Cannot add the car, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    if (carPartAddingSuccess)
+                    {
+                        MessageBox.Show(validation.Message);
+                        PopulateCarPartTable();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot add the car part, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -198,35 +204,40 @@ namespace ABCTraders.Views.Admin
 
         private void AddCarPartsTbl_SelectionChanged(object sender, EventArgs e)
         {
-            if (AddCarPartsTbl.Rows.Count > 0 && AddCarPartsTbl.CurrentCell != null)
+            if (AddCarPartsTbl.Rows.Count > 0)
             {
+                var status = Drop_PartStatus.SelectedIndex;
                 var selectedIdx = AddCarPartsTbl.CurrentCell.RowIndex;
                 var selectedCar = AddCarPartsTbl.Rows[selectedIdx];
-                var carId = (int)selectedCar.Cells[0].Value;
-                var status = Drop_PartStatus.SelectedIndex;
+                var carPartId = (int)selectedCar.Cells[0].Value;
 
                 var controller = new AdminController();
-                var carPart = controller.GetAllCarParts(status).Find(x => x.Id == carId);
-                if(carPart != null)
+                var part = controller.GetAllCarParts(status).Find(x => x.Id == carPartId);
+
+                if (part != null)
                 {
-                AddCarPartNameText.Text = carPart.PartName;
-                AddCarPartCodeTxt.Text = carPart.PartCode;
-                AddCarPartDescriptionTxt.Text = carPart.Description;
+                    AddCarPartNameText.Text = part.PartName;
+                    AddCarPartDescriptionTxt.Text = part.Description;
 
 
-                for (int i = 0; i < AddCarPartManufCombBx.Items.Count; i++)
-                {
-                    var item = (ComboBoxFields)AddCarPartManufCombBx.Items[i];
-
-                    if (item.Value == carPart.ManufacturerId)
+                    for (int i = 0; i < AddCarPartManufCombBx.Items.Count; i++)
                     {
-                        AddCarPartManufCombBx.SelectedIndex = i;
-                        break;
-                    }
-                }
+                        var item = (ComboBoxFields)AddCarPartManufCombBx.Items[i];
 
-                AddCarPartPicutureBox.Image = System.Drawing.Image.FromStream(new MemoryStream(carPart.ImagePath));
-                AddCarPartPriceNumeric.Value = carPart.Price;
+                        if (item.Value == part.ManufacturerId)
+                        {
+                            AddCarPartManufCombBx.SelectedIndex = i;
+                            break;
+                        }
+                    }
+
+                    AddCarPartCodeTxt.Text = part.PartCode;
+                    AddCarPartCategoryDrop.SelectedIndex = Convert.ToInt32(part.Category);
+                    AddCarPartPicutureBox.Image = System.Drawing.Image.FromStream(new MemoryStream(part.ImagePath));
+                    AddCarPartQuantityNumeric.Value = (int)part.StockQuantity;
+                    AddCarPartPriceNumeric.Value = (int)part.Price;
+                    AddCarPartConditionDrop.SelectedIndex = Convert.ToInt32(part.Condition);
+                    AddCarPartDescriptionTxt.Text = part.Description.ToString();
                 }
             }
         }
@@ -251,6 +262,38 @@ namespace ABCTraders.Views.Admin
         private void Drop_PartStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateCarPartTable();
+        }
+
+        private void AddCarPartDeleteBtn_Click(object sender, EventArgs e)
+        {
+            if (AddCarPartsTbl.SelectedRows.Count > 0)
+            {
+                var confirmDelete = MessageBox.Show("Are you want to remove this car part", "WRANING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (confirmDelete == DialogResult.OK)
+                {
+                var selectedIdx = AddCarPartsTbl.CurrentCell.RowIndex;
+                var selectedCar = AddCarPartsTbl.Rows[selectedIdx];
+                var carId = (int)selectedCar.Cells[0].Value;
+
+                var controller = new AdminController();
+                var isDeleted = controller.DeleteCarPart(carId);
+
+                if (isDeleted > 0)
+                {
+                    MessageBox.Show("Succesfully car part deleted");
+                    AddCarPartsTbl.Rows.Clear();
+                    PopulateCarPartTable();
+                }
+                else
+                {
+                    MessageBox.Show("Oops, System error, Please try again later");
+                }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a car first to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

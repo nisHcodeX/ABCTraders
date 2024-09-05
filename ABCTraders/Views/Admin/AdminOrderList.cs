@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ABCTraders.Controllers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -48,5 +49,23 @@ namespace ABCTraders.Views.Admin
             UpadteCarPartStatus updatePartOrder = new UpadteCarPartStatus();
             updatePartOrder.Show();
         }
+
+        private void Lbl_CustomerCount_Click(object sender, EventArgs e)
+        {
+         
+        }
+
+        private void AdminOrderList_Load(object sender, EventArgs e)
+        {
+            Lbl_CustomerCount.Text = GetCustomerCout();
+        }
+        private string GetCustomerCout()
+        {
+            var userController = new UserController();
+            var customerList = userController.GetAllCustomers();
+            var customer = customerList.Count;
+
+            return customer.ToString();
+        } 
     }
 }

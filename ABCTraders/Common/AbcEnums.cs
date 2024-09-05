@@ -13,6 +13,11 @@ namespace ABCTraders.Common
             Customer = 0,
             Admin = 1,
         }
+        public enum UserStatus
+        {
+            Active = 0,
+            Inactive = 1,
+        }
         public enum FuelTypes
         {
             Petrol = 0,

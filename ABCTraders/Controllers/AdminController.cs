@@ -29,9 +29,9 @@ namespace ABCTraders.Controllers
         {
 
             var adminRepository = new AdminRepository();
-            var addCarSucces = adminRepository.UpdateCarToSystem(id, dto);
+            var updateCarSuccess = adminRepository.UpdateCarToSystem(id, dto);
 
-            if (addCarSucces > 0)
+            if (updateCarSuccess > 0)
             {
                 return true;
             }
@@ -51,13 +51,26 @@ namespace ABCTraders.Controllers
             return false;
         }
 
+        public bool UpdateCarPart(int id, AddCarPartDto dto)
+        {
+
+            var adminRepository = new AdminRepository();
+            var addPartSuccess = adminRepository.UpdateCarPartToSystem(id, dto);
+
+            if (addPartSuccess > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public List<CarDetailsModel> GetAllCars(int status)
         {
             var adminRepository = new AdminRepository();
             return adminRepository.GetAllCars(status);
         }
 
-        public List<AddCarPartModel> GetAllCarParts(int status)
+        public List<AddCarPartDetailModel> GetAllCarParts(int status)
         {
             var adminRepository = new AdminRepository();
             return adminRepository.GetAllCarParts(status);
@@ -73,6 +86,35 @@ namespace ABCTraders.Controllers
         {
             var adminRepository = new AdminRepository();
             return adminRepository.GetAllModels(id);
+        }
+
+        public int DeleteCar(int carId)
+        {
+            var adminRepository = new AdminRepository();
+            var result = adminRepository.DeleteCarById(carId);
+            return result;
+        }
+
+        public int DeleteCarPart(int partId)
+        {
+            var adminRepository = new AdminRepository();
+
+            var result = adminRepository.DeleteCarPartById(partId);
+            return result;
+        }
+
+        public bool UpdateCustomer(int Id, CustomerDto dto)
+        {
+            var adminRepository = new AdminRepository();
+            var customerUpdated = adminRepository.UpdateCustomerByAdmin(Id, dto);
+            if (customerUpdated > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

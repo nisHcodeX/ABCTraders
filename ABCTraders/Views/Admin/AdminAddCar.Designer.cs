@@ -308,6 +308,7 @@
             this.AddCarDeleteBtn.TabIndex = 37;
             this.AddCarDeleteBtn.Text = "Delete";
             this.AddCarDeleteBtn.UseVisualStyleBackColor = false;
+            this.AddCarDeleteBtn.Click += new System.EventHandler(this.AddCarDeleteBtn_Click);
             // 
             // AddCarDescriptionTxt
             // 

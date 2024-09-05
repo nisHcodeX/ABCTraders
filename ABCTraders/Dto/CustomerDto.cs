@@ -20,5 +20,6 @@ namespace ABCTraders.Dto
 
         public string Password { get; set; }
 
+        public int IsActive { get; set; }
     }
 }

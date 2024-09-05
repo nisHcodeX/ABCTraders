@@ -57,6 +57,7 @@
     <Compile Include="Dto\AddCarPartDto.cs" />
     <Compile Include="Dto\CustomerDto.cs" />
     <Compile Include="Mappings\ComboBoxFields.cs" />
+    <Compile Include="Model\AddCarPartDetailModel.cs" />
     <Compile Include="Model\Car.cs" />
     <Compile Include="Model\AddCarPartModel.cs" />
     <Compile Include="Model\AdminModel.cs" />

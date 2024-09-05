@@ -34,7 +34,6 @@
             this.TxtBox_Address = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.TxtBox_Contact = new System.Windows.Forms.TextBox();
-            this.TxtBox_Password = new System.Windows.Forms.TextBox();
             this.TxtBox_Email = new System.Windows.Forms.TextBox();
             this.TxtBox_FirstName = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -42,30 +41,31 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CustomerUpdateBtn = new System.Windows.Forms.Button();
             this.Tbl_Customer = new System.Windows.Forms.DataGridView();
+            this.Drop_CustomerStatus = new System.Windows.Forms.ComboBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl_Customer)).BeginInit();
             this.SuspendLayout();
             // 
             // TxtBox_LastName
             // 
             this.TxtBox_LastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBox_LastName.Location = new System.Drawing.Point(194, 99);
+            this.TxtBox_LastName.Location = new System.Drawing.Point(204, 101);
             this.TxtBox_LastName.Margin = new System.Windows.Forms.Padding(4);
             this.TxtBox_LastName.Name = "TxtBox_LastName";
-            this.TxtBox_LastName.Size = new System.Drawing.Size(390, 30);
+            this.TxtBox_LastName.Size = new System.Drawing.Size(343, 30);
             this.TxtBox_LastName.TabIndex = 28;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(60, 104);
+            this.label7.Location = new System.Drawing.Point(70, 106);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(106, 25);
@@ -76,7 +76,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(627, 102);
+            this.label6.Location = new System.Drawing.Point(604, 100);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(85, 25);
@@ -86,17 +86,17 @@
             // TxtBox_Address
             // 
             this.TxtBox_Address.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBox_Address.Location = new System.Drawing.Point(761, 99);
+            this.TxtBox_Address.Location = new System.Drawing.Point(795, 97);
             this.TxtBox_Address.Margin = new System.Windows.Forms.Padding(4);
             this.TxtBox_Address.Name = "TxtBox_Address";
-            this.TxtBox_Address.Size = new System.Drawing.Size(390, 30);
+            this.TxtBox_Address.Size = new System.Drawing.Size(343, 30);
             this.TxtBox_Address.TabIndex = 25;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(627, 48);
+            this.label5.Location = new System.Drawing.Point(604, 46);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(80, 25);
@@ -106,55 +106,46 @@
             // TxtBox_Contact
             // 
             this.TxtBox_Contact.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBox_Contact.Location = new System.Drawing.Point(761, 43);
+            this.TxtBox_Contact.Location = new System.Drawing.Point(795, 46);
             this.TxtBox_Contact.Margin = new System.Windows.Forms.Padding(4);
             this.TxtBox_Contact.Name = "TxtBox_Contact";
-            this.TxtBox_Contact.Size = new System.Drawing.Size(390, 30);
+            this.TxtBox_Contact.Size = new System.Drawing.Size(343, 30);
             this.TxtBox_Contact.TabIndex = 23;
-            // 
-            // TxtBox_Password
-            // 
-            this.TxtBox_Password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBox_Password.Location = new System.Drawing.Point(761, 162);
-            this.TxtBox_Password.Margin = new System.Windows.Forms.Padding(4);
-            this.TxtBox_Password.Name = "TxtBox_Password";
-            this.TxtBox_Password.Size = new System.Drawing.Size(390, 30);
-            this.TxtBox_Password.TabIndex = 21;
             // 
             // TxtBox_Email
             // 
             this.TxtBox_Email.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBox_Email.Location = new System.Drawing.Point(194, 162);
+            this.TxtBox_Email.Location = new System.Drawing.Point(204, 164);
             this.TxtBox_Email.Margin = new System.Windows.Forms.Padding(4);
             this.TxtBox_Email.Name = "TxtBox_Email";
-            this.TxtBox_Email.Size = new System.Drawing.Size(390, 30);
+            this.TxtBox_Email.Size = new System.Drawing.Size(343, 30);
             this.TxtBox_Email.TabIndex = 20;
             // 
             // TxtBox_FirstName
             // 
             this.TxtBox_FirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtBox_FirstName.Location = new System.Drawing.Point(194, 41);
+            this.TxtBox_FirstName.Location = new System.Drawing.Point(204, 43);
             this.TxtBox_FirstName.Margin = new System.Windows.Forms.Padding(4);
             this.TxtBox_FirstName.Name = "TxtBox_FirstName";
-            this.TxtBox_FirstName.Size = new System.Drawing.Size(390, 30);
+            this.TxtBox_FirstName.Size = new System.Drawing.Size(343, 30);
             this.TxtBox_FirstName.TabIndex = 19;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(627, 165);
+            this.label3.Location = new System.Drawing.Point(604, 163);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 25);
+            this.label3.Size = new System.Drawing.Size(169, 25);
             this.label3.TabIndex = 17;
-            this.label3.Text = "Password";
+            this.label3.Text = "Customer Stataus";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(60, 167);
+            this.label2.Location = new System.Drawing.Point(70, 169);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 25);
@@ -165,7 +156,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(60, 46);
+            this.label1.Location = new System.Drawing.Point(70, 48);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 25);
@@ -176,13 +167,14 @@
             // 
             this.CustomerUpdateBtn.BackColor = System.Drawing.SystemColors.Highlight;
             this.CustomerUpdateBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CustomerUpdateBtn.Location = new System.Drawing.Point(761, 242);
+            this.CustomerUpdateBtn.Location = new System.Drawing.Point(740, 244);
             this.CustomerUpdateBtn.Margin = new System.Windows.Forms.Padding(4);
             this.CustomerUpdateBtn.Name = "CustomerUpdateBtn";
-            this.CustomerUpdateBtn.Size = new System.Drawing.Size(390, 52);
+            this.CustomerUpdateBtn.Size = new System.Drawing.Size(400, 52);
             this.CustomerUpdateBtn.TabIndex = 64;
             this.CustomerUpdateBtn.Text = "UPDATE";
             this.CustomerUpdateBtn.UseVisualStyleBackColor = false;
+            this.CustomerUpdateBtn.Click += new System.EventHandler(this.CustomerUpdateBtn_Click);
             // 
             // Tbl_Customer
             // 
@@ -195,14 +187,27 @@
             this.Email,
             this.Contact,
             this.Address,
-            this.Password});
+            this.Active});
             this.Tbl_Customer.Location = new System.Drawing.Point(75, 343);
             this.Tbl_Customer.Name = "Tbl_Customer";
             this.Tbl_Customer.RowHeadersWidth = 51;
             this.Tbl_Customer.RowTemplate.Height = 24;
-            this.Tbl_Customer.Size = new System.Drawing.Size(1086, 270);
+            this.Tbl_Customer.Size = new System.Drawing.Size(1065, 270);
             this.Tbl_Customer.TabIndex = 66;
             this.Tbl_Customer.SelectionChanged += new System.EventHandler(this.Tbl_Customer_SelectionChanged);
+            // 
+            // Drop_CustomerStatus
+            // 
+            this.Drop_CustomerStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Drop_CustomerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Drop_CustomerStatus.FormattingEnabled = true;
+            this.Drop_CustomerStatus.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.Drop_CustomerStatus.Location = new System.Drawing.Point(795, 160);
+            this.Drop_CustomerStatus.Name = "Drop_CustomerStatus";
+            this.Drop_CustomerStatus.Size = new System.Drawing.Size(343, 30);
+            this.Drop_CustomerStatus.TabIndex = 67;
             // 
             // Id
             // 
@@ -246,18 +251,19 @@
             this.Address.Name = "Address";
             this.Address.Width = 125;
             // 
-            // Password
+            // Active
             // 
-            this.Password.HeaderText = "Password";
-            this.Password.MinimumWidth = 6;
-            this.Password.Name = "Password";
-            this.Password.Width = 125;
+            this.Active.HeaderText = "Active";
+            this.Active.MinimumWidth = 6;
+            this.Active.Name = "Active";
+            this.Active.Width = 125;
             // 
             // AddminCustomersList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1233, 649);
+            this.Controls.Add(this.Drop_CustomerStatus);
             this.Controls.Add(this.Tbl_Customer);
             this.Controls.Add(this.CustomerUpdateBtn);
             this.Controls.Add(this.TxtBox_LastName);
@@ -266,7 +272,6 @@
             this.Controls.Add(this.TxtBox_Address);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.TxtBox_Contact);
-            this.Controls.Add(this.TxtBox_Password);
             this.Controls.Add(this.TxtBox_Email);
             this.Controls.Add(this.TxtBox_FirstName);
             this.Controls.Add(this.label3);
@@ -289,7 +294,6 @@
         private System.Windows.Forms.TextBox TxtBox_Address;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox TxtBox_Contact;
-        private System.Windows.Forms.TextBox TxtBox_Password;
         private System.Windows.Forms.TextBox TxtBox_Email;
         private System.Windows.Forms.TextBox TxtBox_FirstName;
         private System.Windows.Forms.Label label3;
@@ -303,6 +307,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Email;
         private System.Windows.Forms.DataGridViewTextBoxColumn Contact;
         private System.Windows.Forms.DataGridViewTextBoxColumn Address;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Password;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Active;
+        private System.Windows.Forms.ComboBox Drop_CustomerStatus;
     }
 }

@@ -134,30 +134,39 @@ namespace ABCTraders.Views.Admin
                     ManufacturerId = manufac.Value
                 };
 
-                bool carAddingSuccess;
-
                 if (AddCarTbl.SelectedRows.Count > 0)
                 {
                     var selectedIdx = AddCarTbl.CurrentCell.RowIndex;
                     var selectedCar = AddCarTbl.Rows[selectedIdx];
                     var carId = (int)selectedCar.Cells[0].Value;
 
-                    carAddingSuccess = addCarController.UpdateCar(carId, addCarDto);
-                }
-                else
-                {
-                    carAddingSuccess = addCarController.AddCar(addCarDto);
-                }
+                    var carUpdateSuccess = addCarController.UpdateCar(carId, addCarDto);
 
-                if (carAddingSuccess)
-                {
-                    MessageBox.Show(validation.Message);
-                    AddCarTbl.Rows.Clear();
-                    PopulateCarTable();
+                    if (carUpdateSuccess)
+                    {
+                        MessageBox.Show("Succesfully Updated the car details");
+                        AddCarTbl.Rows.Clear();
+                        PopulateCarTable();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot update the car, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Cannot add the car, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                   var carAddingSuccess = addCarController.AddCar(addCarDto);
+
+                    if (carAddingSuccess)
+                    {
+                        MessageBox.Show(validation.Message);
+                        AddCarTbl.Rows.Clear();
+                        PopulateCarTable();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cannot add the car, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else
@@ -341,10 +350,13 @@ namespace ABCTraders.Views.Admin
                             break;
                         }
                     }
-
+                    AddCarConditionDrop.SelectedIndex = (int)car.Condition;
+                    AddCarTransmissionDrop.SelectedIndex = (int)car.Transmission;
                     AddCarPicutureBox.Image = System.Drawing.Image.FromStream(new MemoryStream(car.Picture));
-
+                    AddCarColorDrop.SelectedIndex = (int)car.Color;
                     AddCarPriceNumeric.Value = car.Price;
+                    AddCarYearNumeric.Value = car.Year;
+                    AddCarFuelTypeDrop.SelectedIndex = (int)car.FuelType;
                 }
             }
         }
@@ -369,6 +381,38 @@ namespace ABCTraders.Views.Admin
         private void Drop_CarStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateCarTable();
+        }
+
+        private void AddCarDeleteBtn_Click(object sender, EventArgs e)
+        {
+            if (AddCarTbl.SelectedRows.Count > 0)
+            {
+                var confirmDelete = MessageBox.Show("Are you want to remove this car", "WRANING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                if (confirmDelete == DialogResult.OK)
+                {
+                var selectedIdx = AddCarTbl.CurrentCell.RowIndex;
+                var selectedCar = AddCarTbl.Rows[selectedIdx];
+                var carId = (int)selectedCar.Cells[0].Value;
+
+                var controller = new AdminController();
+                var isDeleted = controller.DeleteCar(carId);
+
+                if (isDeleted > 0)
+                {
+                    MessageBox.Show("Succesfully car record deleted");
+                    AddCarTbl.Rows.Clear();
+                    PopulateCarTable();
+                }
+                else
+                {
+                    MessageBox.Show("Oops, System error, Please try again later");
+                }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a car first to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
