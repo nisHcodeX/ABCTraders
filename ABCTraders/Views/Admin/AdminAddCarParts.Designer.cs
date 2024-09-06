@@ -48,7 +48,6 @@
             this.AddCarPartCodeTxt = new System.Windows.Forms.TextBox();
             this.AddCarPartQuantityLabel = new System.Windows.Forms.Label();
             this.AddCarPartQuantityNumeric = new System.Windows.Forms.NumericUpDown();
-            this.AddCarPartPicutureBox = new System.Windows.Forms.PictureBox();
             this.AddCarPartPhotoBtn = new System.Windows.Forms.Button();
             this.AddCarPartSaveBtn = new System.Windows.Forms.Button();
             this.AddCarPartDeleteBtn = new System.Windows.Forms.Button();
@@ -61,14 +60,15 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.Drop_PartStatus = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.AddCarPartPicutureBox = new System.Windows.Forms.PictureBox();
             AddCarPartNameLabel = new System.Windows.Forms.Label();
             AddCarPartManufLabel = new System.Windows.Forms.Label();
             AddCarPartCategoryLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPartsTbl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPartQuantityNumeric)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AddCarPartPicutureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPartPriceNumeric)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddCarPartPicutureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // AddCarPartNameLabel
@@ -107,6 +107,10 @@
             // 
             // AddCarPartsTbl
             // 
+            this.AddCarPartsTbl.AllowUserToAddRows = false;
+            this.AddCarPartsTbl.AllowUserToDeleteRows = false;
+            this.AddCarPartsTbl.AllowUserToResizeColumns = false;
+            this.AddCarPartsTbl.AllowUserToResizeRows = false;
             this.AddCarPartsTbl.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.AddCarPartsTbl.ColumnHeadersHeight = 29;
             this.AddCarPartsTbl.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -125,6 +129,7 @@
             this.AddCarPartsTbl.RowTemplate.Height = 24;
             this.AddCarPartsTbl.Size = new System.Drawing.Size(1041, 223);
             this.AddCarPartsTbl.TabIndex = 70;
+            this.AddCarPartsTbl.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.AddCarPartsTbl_CellContentClick_1);
             this.AddCarPartsTbl.SelectionChanged += new System.EventHandler(this.AddCarPartsTbl_SelectionChanged);
             // 
             // Id
@@ -280,19 +285,6 @@
             0,
             0,
             0});
-            // 
-            // AddCarPartPicutureBox
-            // 
-            this.AddCarPartPicutureBox.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.AddCarPartPicutureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.AddCarPartPicutureBox.InitialImage = global::ABCTraders.Properties.Resources.icons8_add_car_48;
-            this.AddCarPartPicutureBox.Location = new System.Drawing.Point(58, 34);
-            this.AddCarPartPicutureBox.Name = "AddCarPartPicutureBox";
-            this.AddCarPartPicutureBox.Size = new System.Drawing.Size(265, 164);
-            this.AddCarPartPicutureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.AddCarPartPicutureBox.TabIndex = 60;
-            this.AddCarPartPicutureBox.TabStop = false;
-            this.AddCarPartPicutureBox.WaitOnLoad = true;
             // 
             // AddCarPartPhotoBtn
             // 
@@ -453,6 +445,19 @@
             this.label1.TabIndex = 75;
             this.label1.Text = "Status";
             // 
+            // AddCarPartPicutureBox
+            // 
+            this.AddCarPartPicutureBox.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.AddCarPartPicutureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.AddCarPartPicutureBox.InitialImage = global::ABCTraders.Properties.Resources.icons8_add_car_48;
+            this.AddCarPartPicutureBox.Location = new System.Drawing.Point(58, 34);
+            this.AddCarPartPicutureBox.Name = "AddCarPartPicutureBox";
+            this.AddCarPartPicutureBox.Size = new System.Drawing.Size(265, 164);
+            this.AddCarPartPicutureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.AddCarPartPicutureBox.TabIndex = 60;
+            this.AddCarPartPicutureBox.TabStop = false;
+            this.AddCarPartPicutureBox.WaitOnLoad = true;
+            // 
             // AdminAddCarParts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -485,10 +490,10 @@
             this.Load += new System.EventHandler(this.AdminAddCarParts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPartsTbl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPartQuantityNumeric)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.AddCarPartPicutureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPartPriceNumeric)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.AddCarPartPicutureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

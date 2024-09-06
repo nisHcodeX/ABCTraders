@@ -107,5 +107,10 @@ namespace ABCTraders.Views.Admin
                     MessageBox.Show("Please Select a Customer to update");
                 }
         }
+
+        private void Tbl_Customer_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

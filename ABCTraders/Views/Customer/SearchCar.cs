@@ -1,5 +1,7 @@
 ﻿using ABCTraders.Controllers;
 using ABCTraders.Mappings;
+using ABCTraders.Model;
+using ABCTraders.Views.Customer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -60,7 +62,7 @@ namespace ABCTraders.Views
         }
         private void Tbl_CarList_SelectionChanged(object sender, EventArgs e)
         {
-            if (Tbl_CarList.Rows.Count > 0)
+            if (Tbl_CarList.Rows.Count > 0 )
             {
                 var selectedIdx = Tbl_CarList.CurrentCell.RowIndex;
                 var selectedCar = Tbl_CarList.Rows[selectedIdx];
@@ -146,6 +148,26 @@ namespace ABCTraders.Views
             {
                 MessageBox.Show("The car you search not Availble for now");
             }
+        }
+
+        private void Btn_OrderCar_Click(object sender, EventArgs e)
+        {
+            var selectedIdx = Tbl_CarList.CurrentCell.RowIndex;
+            var selectedCar = Tbl_CarList.Rows[selectedIdx];
+            var carId = (int)selectedCar.Cells[0].Value;
+
+            if (Tbl_CarList.SelectedRows.Count > 0 && carId> 0) {
+                OrderCar orderCar = new OrderCar( customerId, carId);
+                orderCar.Show();
+            } else
+            {
+                MessageBox.Show("Please Select a car before order");
+            }
+        }
+
+        private void Tbl_CarList_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

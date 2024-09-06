@@ -50,6 +50,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPartsTbl)).BeginInit();
             this.SuspendLayout();
             // 
+            // AddCarPartNameLabel
+            // 
+            AddCarPartNameLabel.AutoSize = true;
+            AddCarPartNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            AddCarPartNameLabel.Location = new System.Drawing.Point(498, 41);
+            AddCarPartNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            AddCarPartNameLabel.Name = "AddCarPartNameLabel";
+            AddCarPartNameLabel.Size = new System.Drawing.Size(95, 22);
+            AddCarPartNameLabel.TabIndex = 112;
+            AddCarPartNameLabel.Text = "Part Name";
+            // 
             // Drop_CustomerUpdateStatus
             // 
             this.Drop_CustomerUpdateStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -102,6 +113,10 @@
             // 
             // AddCarPartsTbl
             // 
+            this.AddCarPartsTbl.AllowUserToAddRows = false;
+            this.AddCarPartsTbl.AllowUserToDeleteRows = false;
+            this.AddCarPartsTbl.AllowUserToResizeColumns = false;
+            this.AddCarPartsTbl.AllowUserToResizeRows = false;
             this.AddCarPartsTbl.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.AddCarPartsTbl.ColumnHeadersHeight = 29;
             this.AddCarPartsTbl.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -219,17 +234,6 @@
             this.AddCarPartPartCodeLabel.TabIndex = 114;
             this.AddCarPartPartCodeLabel.Text = "Part Code";
             // 
-            // AddCarPartNameLabel
-            // 
-            AddCarPartNameLabel.AutoSize = true;
-            AddCarPartNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            AddCarPartNameLabel.Location = new System.Drawing.Point(498, 41);
-            AddCarPartNameLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            AddCarPartNameLabel.Name = "AddCarPartNameLabel";
-            AddCarPartNameLabel.Size = new System.Drawing.Size(95, 22);
-            AddCarPartNameLabel.TabIndex = 112;
-            AddCarPartNameLabel.Text = "Part Name";
-            // 
             // CustomerUpdateCarPart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -249,6 +253,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CustomerUpdateCarPart";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerUpdateCarPart";
             this.Load += new System.EventHandler(this.CustomerUpdateCarPart_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPartsTbl)).EndInit();

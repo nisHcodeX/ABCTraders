@@ -21,5 +21,10 @@ namespace ABCTraders.Views.Admin
         {
 
         }
+
+        private void AdminProfile_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

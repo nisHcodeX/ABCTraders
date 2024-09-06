@@ -371,6 +371,10 @@
             // 
             // AddCarTbl
             // 
+            this.AddCarTbl.AllowUserToAddRows = false;
+            this.AddCarTbl.AllowUserToDeleteRows = false;
+            this.AddCarTbl.AllowUserToResizeColumns = false;
+            this.AddCarTbl.AllowUserToResizeRows = false;
             this.AddCarTbl.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.AddCarTbl.ColumnHeadersHeight = 29;
             this.AddCarTbl.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {

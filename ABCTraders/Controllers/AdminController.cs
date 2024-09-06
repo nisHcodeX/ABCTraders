@@ -103,6 +103,44 @@ namespace ABCTraders.Controllers
             return result;
         }
 
+        public bool UpdateCarStatus(int Id, int status)
+        {
+            var adminRepository = new AdminRepository();
+
+            var carStatusUpdated = adminRepository.UpdateCarStatus( Id, status);
+            if (carStatusUpdated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+        
+        public bool UpdateCarPartStatus( int Id, int status)
+        {
+            var adminRepository = new AdminRepository();
+
+            var partStatusUpdated = adminRepository.UpdateCarPartStatus(Id, status);
+
+            if (partStatusUpdated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdateCarPartStock(int Id, int stock)
+        {
+            var adminRepository = new AdminRepository();
+
+            var partStatusUpdated = adminRepository.UpdateCarPartStock(Id, stock);
+
+            if (partStatusUpdated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
         public bool UpdateCustomer(int Id, CustomerDto dto)
         {
             var adminRepository = new AdminRepository();

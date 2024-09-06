@@ -47,7 +47,7 @@
             this.AddCarPartPriceLabel = new System.Windows.Forms.Label();
             this.TxtBox_Description = new System.Windows.Forms.TextBox();
             this.AddCarDescriptionLabel = new System.Windows.Forms.Label();
-            this.AddCarPartSaveBtn = new System.Windows.Forms.Button();
+            this.Btn_OrderPart = new System.Windows.Forms.Button();
             this.PicBx_CarPartPhoto = new System.Windows.Forms.PictureBox();
             this.Numeric_Quantity = new System.Windows.Forms.NumericUpDown();
             this.AddCarPartQuantityLabel = new System.Windows.Forms.Label();
@@ -144,6 +144,10 @@
             // 
             // Tbl_CarPartsList
             // 
+            this.Tbl_CarPartsList.AllowUserToAddRows = false;
+            this.Tbl_CarPartsList.AllowUserToDeleteRows = false;
+            this.Tbl_CarPartsList.AllowUserToResizeColumns = false;
+            this.Tbl_CarPartsList.AllowUserToResizeRows = false;
             this.Tbl_CarPartsList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Tbl_CarPartsList.ColumnHeadersHeight = 29;
             this.Tbl_CarPartsList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -276,17 +280,18 @@
             this.AddCarDescriptionLabel.TabIndex = 105;
             this.AddCarDescriptionLabel.Text = "Description";
             // 
-            // AddCarPartSaveBtn
+            // Btn_OrderPart
             // 
-            this.AddCarPartSaveBtn.BackColor = System.Drawing.SystemColors.Highlight;
-            this.AddCarPartSaveBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarPartSaveBtn.Location = new System.Drawing.Point(451, 24);
-            this.AddCarPartSaveBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.AddCarPartSaveBtn.Name = "AddCarPartSaveBtn";
-            this.AddCarPartSaveBtn.Size = new System.Drawing.Size(243, 50);
-            this.AddCarPartSaveBtn.TabIndex = 104;
-            this.AddCarPartSaveBtn.Text = "ORDER";
-            this.AddCarPartSaveBtn.UseVisualStyleBackColor = false;
+            this.Btn_OrderPart.BackColor = System.Drawing.SystemColors.Highlight;
+            this.Btn_OrderPart.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_OrderPart.Location = new System.Drawing.Point(451, 24);
+            this.Btn_OrderPart.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_OrderPart.Name = "Btn_OrderPart";
+            this.Btn_OrderPart.Size = new System.Drawing.Size(243, 50);
+            this.Btn_OrderPart.TabIndex = 104;
+            this.Btn_OrderPart.Text = "ORDER";
+            this.Btn_OrderPart.UseVisualStyleBackColor = false;
+            this.Btn_OrderPart.Click += new System.EventHandler(this.Btn_OrderPart_Click);
             // 
             // PicBx_CarPartPhoto
             // 
@@ -323,6 +328,7 @@
             0,
             0,
             0});
+            this.Numeric_Quantity.ValueChanged += new System.EventHandler(this.Numeric_Quantity_ValueChanged);
             // 
             // AddCarPartQuantityLabel
             // 
@@ -415,7 +421,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.Numeric_Quantity);
             this.panel2.Controls.Add(this.AddCarPartQuantityLabel);
-            this.panel2.Controls.Add(this.AddCarPartSaveBtn);
+            this.panel2.Controls.Add(this.Btn_OrderPart);
             this.panel2.Location = new System.Drawing.Point(424, 296);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
@@ -435,6 +441,7 @@
             this.Numeric_QuantityPrice.Name = "Numeric_QuantityPrice";
             this.Numeric_QuantityPrice.Size = new System.Drawing.Size(224, 28);
             this.Numeric_QuantityPrice.TabIndex = 117;
+            this.Numeric_QuantityPrice.ValueChanged += new System.EventHandler(this.Numeric_QuantityPrice_ValueChanged);
             // 
             // label1
             // 
@@ -542,7 +549,7 @@
         private System.Windows.Forms.Label AddCarPartPriceLabel;
         private System.Windows.Forms.TextBox TxtBox_Description;
         private System.Windows.Forms.Label AddCarDescriptionLabel;
-        private System.Windows.Forms.Button AddCarPartSaveBtn;
+        private System.Windows.Forms.Button Btn_OrderPart;
         private System.Windows.Forms.PictureBox PicBx_CarPartPhoto;
         private System.Windows.Forms.NumericUpDown Numeric_Quantity;
         private System.Windows.Forms.Label AddCarPartQuantityLabel;

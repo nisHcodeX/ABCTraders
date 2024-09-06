@@ -111,6 +111,7 @@ namespace ABCTraders.Repository
                                 Email = reader["Email"].ToString(),
                                 CreatedDate = Convert.ToDateTime(reader["CreatedDate"]),
                                 Contact = reader["Contact"].ToString(),
+                                Password = reader["Password"].ToString(),
                                 IsActive = Convert.ToBoolean(reader["IsActive"])
                             };
                             carList.Add(car);
@@ -137,14 +138,13 @@ namespace ABCTraders.Repository
                     using (var command = connection.CreateCommand())
                     {
                         command.Parameters.AddWithValue("@Id", customerId);
-                        command.CommandText = @"UPDATE Customers SET FirstName = @FirstName, LastName = @LastName, FirstName = @FirstName, Contact = @Contact, Address = @Address, UpdatedAt = GETDATE()
+                        command.CommandText = @"UPDATE Customers SET FirstName = @FirstName, LastName = @LastName, Contact = @Contact, Address = @Address, UpdatedAt = GETDATE()
                         WHERE Id = @Id;";
 
                         command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = dto.FirstName;
                         command.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = dto.LastName;
                         command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = dto.Address;
                         command.Parameters.Add("@Contact", SqlDbType.NVarChar).Value = dto.Contact;
-                        command.Parameters.Add("@IsActive", SqlDbType.NVarChar).Value = dto.IsActive;
 
                         var reader = command.ExecuteReader();
                     }
@@ -159,6 +159,32 @@ namespace ABCTraders.Repository
             }
         }
 
+
+        public int UpdateCustomerPassword(int id, string password)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = @"UPDATE Customers SET Password = @Password, UpdatedAt = GETDATE() WHERE Id = @Id;";
+                        command.Parameters.Add("@Password", SqlDbType.NVarChar).Value = password;
+                        command.Parameters.Add("@Id", SqlDbType.Int).Value = id;
+
+                        var reader = command.ExecuteReader();
+                    }
+                    connection.Close();
+                }
+
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
 
         public List<AddCarPartDetailModel> SearchCarPartInSystem( int status, string searchKey)
         {

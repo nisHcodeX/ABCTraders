@@ -30,16 +30,7 @@
         {
             System.Windows.Forms.Label AddCarPartNameLabel;
             this.AddCarPartNameText = new System.Windows.Forms.TextBox();
-            this.AddCarPartsTbl = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PartName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Manufacturer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PartCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Condition = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.StockQuantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tbl_AdminParts = new System.Windows.Forms.DataGridView();
             this.Btn_UpadtePartStatus = new System.Windows.Forms.Button();
             this.AddCarPartCodeTxt = new System.Windows.Forms.TextBox();
             this.AddCarPartPartCodeLabel = new System.Windows.Forms.Label();
@@ -48,8 +39,15 @@
             this.Btn_UpadtePartCancel = new System.Windows.Forms.Button();
             this.Drop_PartOrderStatus = new System.Windows.Forms.ComboBox();
             this.Drop_UpdatePartOrderStatus = new System.Windows.Forms.ComboBox();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PartName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FristName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             AddCarPartNameLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.AddCarPartsTbl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Tbl_AdminParts)).BeginInit();
             this.SuspendLayout();
             // 
             // AddCarPartNameLabel
@@ -74,89 +72,28 @@
             this.AddCarPartNameText.Size = new System.Drawing.Size(325, 28);
             this.AddCarPartNameText.TabIndex = 92;
             // 
-            // AddCarPartsTbl
+            // Tbl_AdminParts
             // 
-            this.AddCarPartsTbl.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AddCarPartsTbl.ColumnHeadersHeight = 29;
-            this.AddCarPartsTbl.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Tbl_AdminParts.AllowUserToAddRows = false;
+            this.Tbl_AdminParts.AllowUserToDeleteRows = false;
+            this.Tbl_AdminParts.AllowUserToResizeColumns = false;
+            this.Tbl_AdminParts.AllowUserToResizeRows = false;
+            this.Tbl_AdminParts.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Tbl_AdminParts.ColumnHeadersHeight = 29;
+            this.Tbl_AdminParts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.PartName,
-            this.Manufacturer,
-            this.PartCode,
-            this.Category,
-            this.Description,
             this.Price,
-            this.Condition,
-            this.StockQuantity});
-            this.AddCarPartsTbl.Location = new System.Drawing.Point(29, 201);
-            this.AddCarPartsTbl.Name = "AddCarPartsTbl";
-            this.AddCarPartsTbl.RowHeadersWidth = 51;
-            this.AddCarPartsTbl.RowTemplate.Height = 24;
-            this.AddCarPartsTbl.Size = new System.Drawing.Size(1122, 223);
-            this.AddCarPartsTbl.TabIndex = 91;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.Width = 125;
-            // 
-            // PartName
-            // 
-            this.PartName.HeaderText = "PartName";
-            this.PartName.MinimumWidth = 6;
-            this.PartName.Name = "PartName";
-            this.PartName.Width = 125;
-            // 
-            // Manufacturer
-            // 
-            this.Manufacturer.HeaderText = "Manufacturer";
-            this.Manufacturer.MinimumWidth = 6;
-            this.Manufacturer.Name = "Manufacturer";
-            this.Manufacturer.Width = 125;
-            // 
-            // PartCode
-            // 
-            this.PartCode.HeaderText = "PartCode";
-            this.PartCode.MinimumWidth = 6;
-            this.PartCode.Name = "PartCode";
-            this.PartCode.Width = 125;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.MinimumWidth = 6;
-            this.Category.Name = "Category";
-            this.Category.Width = 125;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            this.Description.Width = 125;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.Width = 125;
-            // 
-            // Condition
-            // 
-            this.Condition.HeaderText = "Condition";
-            this.Condition.MinimumWidth = 6;
-            this.Condition.Name = "Condition";
-            this.Condition.Width = 125;
-            // 
-            // StockQuantity
-            // 
-            this.StockQuantity.HeaderText = "StockQuantity";
-            this.StockQuantity.MinimumWidth = 6;
-            this.StockQuantity.Name = "StockQuantity";
-            this.StockQuantity.Width = 125;
+            this.Quantity,
+            this.FristName,
+            this.Email,
+            this.Description});
+            this.Tbl_AdminParts.Location = new System.Drawing.Point(29, 201);
+            this.Tbl_AdminParts.Name = "Tbl_AdminParts";
+            this.Tbl_AdminParts.RowHeadersWidth = 51;
+            this.Tbl_AdminParts.RowTemplate.Height = 24;
+            this.Tbl_AdminParts.Size = new System.Drawing.Size(1122, 223);
+            this.Tbl_AdminParts.TabIndex = 91;
             // 
             // Btn_UpadtePartStatus
             // 
@@ -244,6 +181,7 @@
             this.Drop_PartOrderStatus.Name = "Drop_PartOrderStatus";
             this.Drop_PartOrderStatus.Size = new System.Drawing.Size(326, 30);
             this.Drop_PartOrderStatus.TabIndex = 110;
+            this.Drop_PartOrderStatus.SelectedIndexChanged += new System.EventHandler(this.Drop_PartOrderStatus_SelectedIndexChanged);
             // 
             // Drop_UpdatePartOrderStatus
             // 
@@ -251,14 +189,61 @@
             this.Drop_UpdatePartOrderStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Drop_UpdatePartOrderStatus.FormattingEnabled = true;
             this.Drop_UpdatePartOrderStatus.Items.AddRange(new object[] {
-            "Available",
             "Pending",
-            "Approved",
-            "Delivered"});
+            "Approved"});
             this.Drop_UpdatePartOrderStatus.Location = new System.Drawing.Point(29, 146);
             this.Drop_UpdatePartOrderStatus.Name = "Drop_UpdatePartOrderStatus";
             this.Drop_UpdatePartOrderStatus.Size = new System.Drawing.Size(326, 30);
             this.Drop_UpdatePartOrderStatus.TabIndex = 111;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.Width = 125;
+            // 
+            // PartName
+            // 
+            this.PartName.HeaderText = "PartName";
+            this.PartName.MinimumWidth = 6;
+            this.PartName.Name = "PartName";
+            this.PartName.Width = 125;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.Width = 125;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 125;
+            // 
+            // FristName
+            // 
+            this.FristName.HeaderText = "FristName";
+            this.FristName.MinimumWidth = 6;
+            this.FristName.Name = "FristName";
+            this.FristName.Width = 125;
+            // 
+            // Email
+            // 
+            this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 6;
+            this.Email.Name = "Email";
+            this.Email.Width = 125;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.Width = 125;
             // 
             // UpadteCarPartStatus
             // 
@@ -271,7 +256,7 @@
             this.Controls.Add(this.Btn_UpadtePartCancel);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.AddCarPartNameText);
-            this.Controls.Add(this.AddCarPartsTbl);
+            this.Controls.Add(this.Tbl_AdminParts);
             this.Controls.Add(this.Btn_UpadtePartStatus);
             this.Controls.Add(this.AddCarPartCodeTxt);
             this.Controls.Add(this.AddCarPartPartCodeLabel);
@@ -281,7 +266,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpadteCarPartStatus";
             this.Load += new System.EventHandler(this.UpadteCarPartStatus_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.AddCarPartsTbl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Tbl_AdminParts)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -289,16 +274,7 @@
 
         #endregion
         private System.Windows.Forms.TextBox AddCarPartNameText;
-        private System.Windows.Forms.DataGridView AddCarPartsTbl;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PartName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Manufacturer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PartCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Condition;
-        private System.Windows.Forms.DataGridViewTextBoxColumn StockQuantity;
+        private System.Windows.Forms.DataGridView Tbl_AdminParts;
         private System.Windows.Forms.Button Btn_UpadtePartStatus;
         private System.Windows.Forms.TextBox AddCarPartCodeTxt;
         private System.Windows.Forms.Label AddCarPartPartCodeLabel;
@@ -307,5 +283,12 @@
         private System.Windows.Forms.Button Btn_UpadtePartCancel;
         private System.Windows.Forms.ComboBox Drop_PartOrderStatus;
         private System.Windows.Forms.ComboBox Drop_UpdatePartOrderStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PartName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FristName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
     }
 }

@@ -443,14 +443,14 @@ namespace ABCTraders.Repository
                     using (var command = connection.CreateCommand())
                     {
                         command.Parameters.AddWithValue("@Id", customerId);
-                        command.CommandText = @"UPDATE Customers SET FirstName = @FirstName, LastName = @LastName, Contact = @Contact, Address = @Address, UpdatedAt = GETDATE()
+                        command.CommandText = @"UPDATE Customers SET FirstName = @FirstName, LastName = @LastName, Contact = @Contact, Address = @Address, IsActive=@IsActive, UpdatedAt = GETDATE()
                         WHERE Id = @Id;";
 
                         command.Parameters.Add("@FirstName", SqlDbType.NVarChar).Value = dto.FirstName;
                         command.Parameters.Add("@LastName", SqlDbType.NVarChar).Value = dto.LastName;
                         command.Parameters.Add("@Address", SqlDbType.NVarChar).Value = dto.Address;
                         command.Parameters.Add("@Contact", SqlDbType.NVarChar).Value = dto.Contact;
-                        command.Parameters.Add("@IsActive", SqlDbType.NVarChar).Value = dto.IsActive;
+                        command.Parameters.Add("@IsActive", SqlDbType.Bit).Value = dto.IsActive;
 
                         var reader = command.ExecuteReader();
                     }
@@ -461,6 +461,85 @@ namespace ABCTraders.Repository
             }
             catch (Exception)
             {
+                return 0;
+            }
+        }
+
+        public int UpdateCarPartStatus(int partId, int status)
+        {
+            try{
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@Id", partId);
+                        command.Parameters.AddWithValue("@Status", status);
+                        command.CommandText = @"UPDATE CarParts SET Status = @Status, UpdatedAt= GETDATE() WHERE Id = @Id";
+
+                        var reader = command.ExecuteReader();
+                    }
+
+                    connection.Close();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
+        public int UpdateCarPartStock(int partId, int StockQuantity){
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@Id", partId);
+                        command.Parameters.AddWithValue("@StockQuantity", StockQuantity);
+                        command.CommandText = @"UPDATE CarParts SET StockQuantity = @StockQuantity, UpdatedAt= GETDATE() WHERE Id = @Id";
+
+                        var reader = command.ExecuteReader();
+                    }
+
+                    connection.Close();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
+        public int UpdateCarStatus(int carId, int status)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@Id", carId);
+                        command.Parameters.AddWithValue("@Status", status);
+                        command.CommandText = @"UPDATE Cars SET Status = @Status, UpdatedAt=GETDATE() WHERE Id = @Id";
+
+                        var reader = command.ExecuteReader();
+                    }
+
+                    connection.Close();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 return 0;
             }
         }

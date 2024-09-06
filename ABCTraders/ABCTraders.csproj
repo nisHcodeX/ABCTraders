@@ -51,11 +51,14 @@
     <Compile Include="Common\PhotConvertor.cs" />
     <Compile Include="Common\Validation.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DbConection\DbConnection.cs" />
     <Compile Include="Dto\AddCarDto.cs" />
     <Compile Include="Dto\AddCarPartDto.cs" />
+    <Compile Include="Dto\CarOrderDto.cs" />
     <Compile Include="Dto\CustomerDto.cs" />
+    <Compile Include="Dto\PartOrderDto.cs" />
     <Compile Include="Mappings\ComboBoxFields.cs" />
     <Compile Include="Model\AddCarPartDetailModel.cs" />
     <Compile Include="Model\Car.cs" />
@@ -63,6 +66,8 @@
     <Compile Include="Model\AdminModel.cs" />
     <Compile Include="Model\BaseModel.cs" />
     <Compile Include="Model\CarDetailsModel.cs" />
+    <Compile Include="Model\CarOrderModel.cs" />
+    <Compile Include="Model\CarPartOrderModel.cs" />
     <Compile Include="Model\CustomerModel.cs" />
     <Compile Include="Model\Manufacturer.cs" />
     <Compile Include="Model\CarModel.cs" />
@@ -74,6 +79,7 @@
     <Compile Include="Repository\AdminRepository.cs" />
     <Compile Include="Repository\CustomerRepository.cs" />
     <Compile Include="Repository\LoginRepository.cs" />
+    <Compile Include="Repository\OrderRepository.cs" />
     <Compile Include="Views\Admin\AddminCustomersList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,11 +146,23 @@
     <Compile Include="Views\Customer\CustomerUpdateCarPart.Designer.cs">
       <DependentUpon>CustomerUpdateCarPart.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\Customer\CustomerUpdatePartOrder.cs">
+    <Compile Include="Views\Customer\CustomerUpdateCar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Views\Customer\CustomerUpdatePartOrder.Designer.cs">
-      <DependentUpon>CustomerUpdatePartOrder.cs</DependentUpon>
+    <Compile Include="Views\Customer\CustomerUpdateCar.Designer.cs">
+      <DependentUpon>CustomerUpdateCar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\OrderCar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\OrderCar.Designer.cs">
+      <DependentUpon>OrderCar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Customer\OrderCarPart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Customer\OrderCarPart.Designer.cs">
+      <DependentUpon>OrderCarPart.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Customer\SearchCarParts.cs">
       <SubType>Form</SubType>
@@ -211,11 +229,17 @@
     <EmbeddedResource Include="Views\Customer\CustomerUpdateCarPart.resx">
       <DependentUpon>CustomerUpdateCarPart.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\Customer\CustomerUpdatePartOrder.resx">
-      <DependentUpon>CustomerUpdatePartOrder.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Customer\CustomerUpdateCar.resx">
+      <DependentUpon>CustomerUpdateCar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Customer\HomePage.resx">
       <DependentUpon>HomePage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customer\OrderCar.resx">
+      <DependentUpon>OrderCar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Customer\OrderCarPart.resx">
+      <DependentUpon>OrderCarPart.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Customer\SearchCarParts.resx">
       <DependentUpon>SearchCarParts.cs</DependentUpon>

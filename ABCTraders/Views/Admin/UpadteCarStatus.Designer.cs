@@ -37,7 +37,7 @@
             this.AddCarPartCodeTxt = new System.Windows.Forms.TextBox();
             this.AddCarConditionLabel = new System.Windows.Forms.Label();
             this.Drop_CarOrderStatus = new System.Windows.Forms.ComboBox();
-            this.AddCarTbl = new System.Windows.Forms.DataGridView();
+            this.Tbl_CarAdmin = new System.Windows.Forms.DataGridView();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModelName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ManufacturerName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,7 +52,7 @@
             this.Btn_UpadteCarCancel = new System.Windows.Forms.Button();
             AddCarManufLabel = new System.Windows.Forms.Label();
             AddCarModelLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.AddCarTbl)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Tbl_CarAdmin)).BeginInit();
             this.SuspendLayout();
             // 
             // AddCarManufLabel
@@ -94,10 +94,8 @@
             this.Drop_UpdatePartOrderStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Drop_UpdatePartOrderStatus.FormattingEnabled = true;
             this.Drop_UpdatePartOrderStatus.Items.AddRange(new object[] {
-            "Available",
             "Pending",
-            "Approved",
-            "Delivered"});
+            "Approved"});
             this.Drop_UpdatePartOrderStatus.Location = new System.Drawing.Point(61, 141);
             this.Drop_UpdatePartOrderStatus.Name = "Drop_UpdatePartOrderStatus";
             this.Drop_UpdatePartOrderStatus.Size = new System.Drawing.Size(326, 30);
@@ -164,11 +162,15 @@
             this.Drop_CarOrderStatus.TabIndex = 96;
             this.Drop_CarOrderStatus.SelectedIndexChanged += new System.EventHandler(this.Drop_CarOrderStatus_SelectedIndexChanged);
             // 
-            // AddCarTbl
+            // Tbl_CarAdmin
             // 
-            this.AddCarTbl.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.AddCarTbl.ColumnHeadersHeight = 29;
-            this.AddCarTbl.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Tbl_CarAdmin.AllowUserToAddRows = false;
+            this.Tbl_CarAdmin.AllowUserToDeleteRows = false;
+            this.Tbl_CarAdmin.AllowUserToResizeColumns = false;
+            this.Tbl_CarAdmin.AllowUserToResizeRows = false;
+            this.Tbl_CarAdmin.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Tbl_CarAdmin.ColumnHeadersHeight = 29;
+            this.Tbl_CarAdmin.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
             this.ModelName,
             this.ManufacturerName,
@@ -180,12 +182,12 @@
             this.Price,
             this.Condition,
             this.Description});
-            this.AddCarTbl.Location = new System.Drawing.Point(62, 203);
-            this.AddCarTbl.Name = "AddCarTbl";
-            this.AddCarTbl.RowHeadersWidth = 51;
-            this.AddCarTbl.RowTemplate.Height = 24;
-            this.AddCarTbl.Size = new System.Drawing.Size(1122, 218);
-            this.AddCarTbl.TabIndex = 105;
+            this.Tbl_CarAdmin.Location = new System.Drawing.Point(62, 203);
+            this.Tbl_CarAdmin.Name = "Tbl_CarAdmin";
+            this.Tbl_CarAdmin.RowHeadersWidth = 51;
+            this.Tbl_CarAdmin.RowTemplate.Height = 24;
+            this.Tbl_CarAdmin.Size = new System.Drawing.Size(1122, 218);
+            this.Tbl_CarAdmin.TabIndex = 105;
             // 
             // Id
             // 
@@ -288,7 +290,7 @@
             this.Controls.Add(this.Btn_UpadteCarCancel);
             this.Controls.Add(AddCarManufLabel);
             this.Controls.Add(AddCarModelLabel);
-            this.Controls.Add(this.AddCarTbl);
+            this.Controls.Add(this.Tbl_CarAdmin);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.Drop_UpdatePartOrderStatus);
             this.Controls.Add(this.AddCarPartNameText);
@@ -300,7 +302,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "UpadteCarStatus";
             this.Load += new System.EventHandler(this.UpadteCarStatus_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.AddCarTbl)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Tbl_CarAdmin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -315,7 +317,7 @@
         private System.Windows.Forms.TextBox AddCarPartCodeTxt;
         private System.Windows.Forms.Label AddCarConditionLabel;
         private System.Windows.Forms.ComboBox Drop_CarOrderStatus;
-        private System.Windows.Forms.DataGridView AddCarTbl;
+        private System.Windows.Forms.DataGridView Tbl_CarAdmin;
         private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModelName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ManufacturerName;

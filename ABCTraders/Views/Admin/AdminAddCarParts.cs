@@ -295,5 +295,10 @@ namespace ABCTraders.Views.Admin
                 MessageBox.Show("Please select a car first to delete", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void AddCarPartsTbl_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

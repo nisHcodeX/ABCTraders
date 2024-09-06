@@ -46,6 +46,7 @@ namespace ABCTraders.Views.Customer
         private void SearchCarParts_Load(object sender, EventArgs e)
         {
             PopulateCarPartTable();
+
         }
 
         private void PopulateCarPartTable()
@@ -99,6 +100,7 @@ namespace ABCTraders.Views.Customer
                     Numeric_Stock.Value = part.StockQuantity;
                     Numeric_Stock.Enabled = false;
                     PicBx_CarPartPhoto.Image = System.Drawing.Image.FromStream(new MemoryStream(part.ImagePath));
+                    Numeric_QuantityPrice.Value = part.Price;
                 }
             }
         }
@@ -123,6 +125,8 @@ namespace ABCTraders.Views.Customer
                 Tbl_CarPartsList.Rows.Clear();
                 foreach (var part in searechResult)
                 {
+                    if(part.StockQuantity> 0)
+                    {
                     Tbl_CarPartsList.Rows.Add(new object[]
                     {
                     part.Id,
@@ -135,12 +139,62 @@ namespace ABCTraders.Views.Customer
                     part.Condition,
                     part.StockQuantity,
                     });
+                    }
                 }
 
             }
             else
             {
                 MessageBox.Show("The part you searhc not Available in the System");
+            }
+        }
+
+        private void Btn_OrderPart_Click(object sender, EventArgs e)
+        {
+            var selectedIdx = Tbl_CarPartsList.CurrentCell.RowIndex;
+            var selectedCar = Tbl_CarPartsList.Rows[selectedIdx];
+            var partId = (int)selectedCar.Cells[0].Value;
+            var qauntity = Numeric_Quantity.Value;
+            var price = Numeric_QuantityPrice.Value;
+            var stock = Numeric_Stock.Value;
+            var updateQuantity = stock - qauntity;
+            if (Tbl_CarPartsList.SelectedRows.Count > 0 && partId > 0)
+            {
+                OrderCarPart orderCarPart = new OrderCarPart(customerId, partId, qauntity, updateQuantity, price);
+                orderCarPart.Show();
+            }
+            else
+            {
+                MessageBox.Show("Please Select a car before order");
+            }
+        }
+
+        private void Numeric_QuantityPrice_ValueChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void Numeric_Quantity_ValueChanged(object sender, EventArgs e)
+        {
+            var stock = Numeric_Stock.Value;
+            var partPrice = Numeric_Price.Value;
+            var quantity = Numeric_Quantity.Value;
+            if (stock < Numeric_Quantity.Value) {
+                MessageBox.Show("Selected Quantity is Invalid");
+                Numeric_Quantity.Value = 1;
+                Btn_OrderPart.Enabled = false;
+            }
+            else
+            {
+                Btn_OrderPart.Enabled = true;
+                var calPrice = partPrice * quantity;
+                if(calPrice > 0)
+                {
+                    Numeric_QuantityPrice.Value = calPrice;
+                }
+                else
+                {
+                    MessageBox.Show("Ooops! System Error. Please try again later");
+                }
             }
         }
     }

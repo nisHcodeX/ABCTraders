@@ -41,7 +41,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.CustomerUpdateBtn = new System.Windows.Forms.Button();
             this.Tbl_Customer = new System.Windows.Forms.DataGridView();
-            this.Drop_CustomerStatus = new System.Windows.Forms.ComboBox();
             this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,6 +48,7 @@
             this.Contact = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Active = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Drop_CustomerStatus = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl_Customer)).BeginInit();
             this.SuspendLayout();
             // 
@@ -178,6 +178,10 @@
             // 
             // Tbl_Customer
             // 
+            this.Tbl_Customer.AllowUserToAddRows = false;
+            this.Tbl_Customer.AllowUserToDeleteRows = false;
+            this.Tbl_Customer.AllowUserToResizeColumns = false;
+            this.Tbl_Customer.AllowUserToResizeRows = false;
             this.Tbl_Customer.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Tbl_Customer.ColumnHeadersHeight = 29;
             this.Tbl_Customer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -194,20 +198,8 @@
             this.Tbl_Customer.RowTemplate.Height = 24;
             this.Tbl_Customer.Size = new System.Drawing.Size(1065, 270);
             this.Tbl_Customer.TabIndex = 66;
+            this.Tbl_Customer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Tbl_Customer_CellContentClick);
             this.Tbl_Customer.SelectionChanged += new System.EventHandler(this.Tbl_Customer_SelectionChanged);
-            // 
-            // Drop_CustomerStatus
-            // 
-            this.Drop_CustomerStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Drop_CustomerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Drop_CustomerStatus.FormattingEnabled = true;
-            this.Drop_CustomerStatus.Items.AddRange(new object[] {
-            "Active",
-            "Inactive"});
-            this.Drop_CustomerStatus.Location = new System.Drawing.Point(795, 160);
-            this.Drop_CustomerStatus.Name = "Drop_CustomerStatus";
-            this.Drop_CustomerStatus.Size = new System.Drawing.Size(343, 30);
-            this.Drop_CustomerStatus.TabIndex = 67;
             // 
             // Id
             // 
@@ -257,6 +249,19 @@
             this.Active.MinimumWidth = 6;
             this.Active.Name = "Active";
             this.Active.Width = 125;
+            // 
+            // Drop_CustomerStatus
+            // 
+            this.Drop_CustomerStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Drop_CustomerStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Drop_CustomerStatus.FormattingEnabled = true;
+            this.Drop_CustomerStatus.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.Drop_CustomerStatus.Location = new System.Drawing.Point(795, 160);
+            this.Drop_CustomerStatus.Name = "Drop_CustomerStatus";
+            this.Drop_CustomerStatus.Size = new System.Drawing.Size(343, 30);
+            this.Drop_CustomerStatus.TabIndex = 67;
             // 
             // AddminCustomersList
             // 

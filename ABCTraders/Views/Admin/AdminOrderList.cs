@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
+using static ABCTraders.Common.AbcEnums;
 
 namespace ABCTraders.Views.Admin
 {
@@ -58,6 +60,7 @@ namespace ABCTraders.Views.Admin
         private void AdminOrderList_Load(object sender, EventArgs e)
         {
             Lbl_CustomerCount.Text = GetCustomerCout();
+            UpdateAdminDAshBoard();
         }
         private string GetCustomerCout()
         {
@@ -66,6 +69,42 @@ namespace ABCTraders.Views.Admin
             var customer = customerList.Count;
 
             return customer.ToString();
-        } 
+        }
+
+        private void UpdateAdminDAshBoard()
+        {
+            var controller = new OrderController();
+            var pendingCar = controller.GetAllCarOrders((int)CarStatus.Pending).Count;
+            var approvedCar = controller.GetAllCarOrders((int)CarStatus.Approved).Count;
+            var deliveredCar = controller.GetAllCarOrders((int)CarStatus.Delivered).Count;
+            
+            var pendingPart = controller.GetAllCarPartOrders((int) CarStatus.Pending).Count;
+            var approvedPart = controller.GetAllCarPartOrders((int) CarStatus.Pending).Count;
+            var deliveredPart = controller.GetAllCarPartOrders((int) CarStatus.Pending).Count;
+
+            Lbl_PendingCar.Text = pendingCar.ToString();
+            Lbl_PendingPart.Text = pendingPart.ToString();
+            Lbl_Pending.Text = (pendingCar + pendingPart).ToString();
+
+            Lbl_ApprovedCar.Text = approvedCar.ToString();  
+            Lbl_ApprovedPart.Text = approvedPart.ToString();
+            Lbl_Approved.Text = (approvedCar + approvedPart).ToString();
+
+            Lbl_DeliveredCar.Text = deliveredCar.ToString();
+            Lbl_DeliveredPart.Text = deliveredPart.ToString();
+            Lbl_Delivered.Text = (deliveredCar + deliveredPart).ToString();
+
+            Chart_Admin.Titles.Add("ABC Traders");
+            Chart_Admin.Series.Add("pending");
+            Chart_Admin.Series["pending"].Points.AddXY("Pending", (deliveredCar + deliveredPart).ToString());
+            Chart_Admin.Series["pending"].ChartType = SeriesChartType.Column;
+            Chart_Admin.Series.Add("approved");
+            Chart_Admin.Series["approved"].Points.AddXY("approved", (deliveredCar + deliveredPart).ToString());
+            Chart_Admin.Series.Add("delivered");
+            Chart_Admin.Series["delivered"].Points.AddXY("delivered", (deliveredCar + deliveredPart).ToString());
+            Chart_Admin.Series.Add("customers");
+            Chart_Admin.Series["customers"].Points.AddXY("customers", (deliveredCar + deliveredPart).ToString());
+        }
+
     }
 }

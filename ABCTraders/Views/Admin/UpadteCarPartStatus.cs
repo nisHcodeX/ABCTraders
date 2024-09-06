@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ABCTraders.Controllers;
+using ABCTraders.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,6 +23,8 @@ namespace ABCTraders.Views.Admin
         {
             Drop_UpdatePartOrderStatus.SelectedIndex = 1;   
             Drop_PartOrderStatus.SelectedIndex = 1;
+            Tbl_AdminParts.ClearSelection();
+            PopulatePartTable();
         }
 
         private void Btn_UpadtePartCancel_Click(object sender, EventArgs e)
@@ -28,9 +32,34 @@ namespace ABCTraders.Views.Admin
             this.Close();
         }
 
+        private void PopulatePartTable()
+        {
+            var orderContorller = new OrderController();
+            var partList = orderContorller.GetAllCarPartOrders(Drop_PartOrderStatus.SelectedIndex);
+            Tbl_AdminParts.Rows.Clear();
+            foreach (var part in partList)
+            {
+                Tbl_AdminParts.Rows.Add(new object[]
+                {
+                    part.Id,
+                    part.PartName,
+                    part.Price,
+                    part.Quantity,
+                    part.FristName,
+                    part.Email,
+                    part.Description,
+                });
+            }
+        }
+
         private void Btn_UpadtePartStatus_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Drop_PartOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            PopulatePartTable();
         }
     }
 }

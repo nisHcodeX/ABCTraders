@@ -12,14 +12,18 @@ namespace ABCTraders.Views.Customer
 {
     public partial class CustomerUpdateCarPart : Form
     {
-        public CustomerUpdateCarPart()
+        private readonly int customerId = 0;
+        public CustomerUpdateCarPart(int customerId)
         {
+            this.customerId = customerId;
             InitializeComponent();
+            
         }
 
         private void CustomerUpdateCarPart_Load(object sender, EventArgs e)
         {
             Drop_CustomerUpdateStatus.SelectedIndex = 0;
+            //PopulalePartOrders();
         }
 
         private void Btn_UpadtePartCancel_Click(object sender, EventArgs e)

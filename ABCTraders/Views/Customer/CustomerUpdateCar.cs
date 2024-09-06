@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace ABCTraders.Views.Customer
 {
-    public partial class CustomerUpdatePartOrder : Form
+    public partial class CustomerUpdateCar : Form
     {
-        public CustomerUpdatePartOrder()
+        private readonly int customerId = 0;
+        public CustomerUpdateCar(int customerId)
         {
             InitializeComponent();
+            this.customerId = customerId;
         }
 
         private void CustomerUpdatePartOrder_Load(object sender, EventArgs e)

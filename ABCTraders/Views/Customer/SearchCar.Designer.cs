@@ -46,7 +46,6 @@
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.AddCarYearLabel = new System.Windows.Forms.Label();
             this.AddCarDescriptionLabel = new System.Windows.Forms.Label();
-            this.PicBx_CarPhoto = new System.Windows.Forms.PictureBox();
             this.AddCarPriceLabel = new System.Windows.Forms.Label();
             this.AddCarVINLabel = new System.Windows.Forms.Label();
             this.AddCarConditionLabel = new System.Windows.Forms.Label();
@@ -64,14 +63,15 @@
             this.Numeric_CarYear = new System.Windows.Forms.NumericUpDown();
             this.Drop_Transmission = new System.Windows.Forms.ComboBox();
             this.Drop_FuelType = new System.Windows.Forms.ComboBox();
+            this.PicBx_CarPhoto = new System.Windows.Forms.PictureBox();
             AddCarColorLabel = new System.Windows.Forms.Label();
             AddCarTransmissionLabel = new System.Windows.Forms.Label();
             AddCarManufLabel = new System.Windows.Forms.Label();
             AddCarModelLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl_CarList)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicBx_CarPhoto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Numeric_Price)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Numeric_CarYear)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBx_CarPhoto)).BeginInit();
             this.SuspendLayout();
             // 
             // AddCarColorLabel
@@ -121,6 +121,10 @@
             // 
             // Tbl_CarList
             // 
+            this.Tbl_CarList.AllowUserToAddRows = false;
+            this.Tbl_CarList.AllowUserToDeleteRows = false;
+            this.Tbl_CarList.AllowUserToResizeColumns = false;
+            this.Tbl_CarList.AllowUserToResizeRows = false;
             this.Tbl_CarList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Tbl_CarList.ColumnHeadersHeight = 29;
             this.Tbl_CarList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -141,6 +145,7 @@
             this.Tbl_CarList.RowTemplate.Height = 24;
             this.Tbl_CarList.Size = new System.Drawing.Size(1009, 206);
             this.Tbl_CarList.TabIndex = 68;
+            this.Tbl_CarList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Tbl_CarList_CellContentClick_1);
             this.Tbl_CarList.SelectionChanged += new System.EventHandler(this.Tbl_CarList_SelectionChanged);
             // 
             // Id
@@ -227,9 +232,9 @@
             this.AddCarYearLabel.Location = new System.Drawing.Point(793, 244);
             this.AddCarYearLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AddCarYearLabel.Name = "AddCarYearLabel";
-            this.AddCarYearLabel.Size = new System.Drawing.Size(48, 22);
+            this.AddCarYearLabel.Size = new System.Drawing.Size(58, 22);
             this.AddCarYearLabel.TabIndex = 66;
-            this.AddCarYearLabel.Text = "Year";
+            this.AddCarYearLabel.Text = "Year :";
             // 
             // AddCarDescriptionLabel
             // 
@@ -241,19 +246,6 @@
             this.AddCarDescriptionLabel.Size = new System.Drawing.Size(110, 22);
             this.AddCarDescriptionLabel.TabIndex = 64;
             this.AddCarDescriptionLabel.Text = "Description :";
-            // 
-            // PicBx_CarPhoto
-            // 
-            this.PicBx_CarPhoto.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.PicBx_CarPhoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.PicBx_CarPhoto.InitialImage = global::ABCTraders.Properties.Resources.icons8_add_car_48;
-            this.PicBx_CarPhoto.Location = new System.Drawing.Point(73, 169);
-            this.PicBx_CarPhoto.Name = "PicBx_CarPhoto";
-            this.PicBx_CarPhoto.Size = new System.Drawing.Size(288, 164);
-            this.PicBx_CarPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.PicBx_CarPhoto.TabIndex = 60;
-            this.PicBx_CarPhoto.TabStop = false;
-            this.PicBx_CarPhoto.WaitOnLoad = true;
             // 
             // AddCarPriceLabel
             // 
@@ -334,6 +326,7 @@
             this.Btn_OrderCar.TabIndex = 115;
             this.Btn_OrderCar.Text = "ORDER";
             this.Btn_OrderCar.UseVisualStyleBackColor = false;
+            this.Btn_OrderCar.Click += new System.EventHandler(this.Btn_OrderCar_Click);
             // 
             // TxtBox_Manufacture
             // 
@@ -482,6 +475,19 @@
             this.Drop_FuelType.Size = new System.Drawing.Size(285, 28);
             this.Drop_FuelType.TabIndex = 142;
             // 
+            // PicBx_CarPhoto
+            // 
+            this.PicBx_CarPhoto.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.PicBx_CarPhoto.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.PicBx_CarPhoto.InitialImage = global::ABCTraders.Properties.Resources.icons8_add_car_48;
+            this.PicBx_CarPhoto.Location = new System.Drawing.Point(73, 169);
+            this.PicBx_CarPhoto.Name = "PicBx_CarPhoto";
+            this.PicBx_CarPhoto.Size = new System.Drawing.Size(288, 164);
+            this.PicBx_CarPhoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.PicBx_CarPhoto.TabIndex = 60;
+            this.PicBx_CarPhoto.TabStop = false;
+            this.PicBx_CarPhoto.WaitOnLoad = true;
+            // 
             // SearchCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -516,9 +522,9 @@
             this.Text = "SearchCar";
             this.Load += new System.EventHandler(this.SearchCar_Load);
             ((System.ComponentModel.ISupportInitialize)(this.Tbl_CarList)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.PicBx_CarPhoto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Numeric_Price)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Numeric_CarYear)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PicBx_CarPhoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

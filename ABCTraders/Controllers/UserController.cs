@@ -74,6 +74,20 @@ namespace ABCTraders.Controllers
             return null;
         }
 
+        public bool UpdateCustomer(int Id, CustomerModel dto)
+        {
+            var customerRepository = new CustomerRepository();
+            var customerUpdated = customerRepository.UpdateCustomer(Id, dto);
+            if (customerUpdated > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public List<CustomerModel> GetAllCustomers()
         {
             var customerRepository = new CustomerRepository();
@@ -93,6 +107,14 @@ namespace ABCTraders.Controllers
             var customerRepository = new CustomerRepository();
 
             var result = customerRepository.SearchCarInSystem(status, searchKey);
+            return result;
+        }
+
+        public int UpdatePassword(int id, string password)
+        {
+            var customerRepository = new CustomerRepository();
+            var hash = Encrypt(password);
+            var result = customerRepository.UpdateCustomerPassword(id, hash);
             return result;
         }
 
