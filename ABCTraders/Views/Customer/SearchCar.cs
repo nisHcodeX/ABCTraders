@@ -39,7 +39,7 @@ namespace ABCTraders.Views
         {
             Tbl_CarList.Rows.Clear();
             var getAllCarsController = new AdminController();
-            var cars = getAllCarsController.GetAllCars(0);
+            var cars = getAllCarsController.GetAllCars();
 
             foreach (var car in cars)
             {
@@ -69,7 +69,7 @@ namespace ABCTraders.Views
                 var carId = (int)selectedCar.Cells[0].Value;
 
                 var controller = new AdminController();
-                var car = controller.GetAllCars(0).Find(x => x.Id == carId);
+                var car = controller.GetAllCars().Find(x => x.Id == carId);
 
                 if (car != null)
                 {

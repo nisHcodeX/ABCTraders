@@ -171,6 +171,7 @@ namespace ABCTraders.Views.Customer
 
         private void Numeric_QuantityPrice_ValueChanged(object sender, EventArgs e)
         {
+            Numeric_QuantityPrice.Enabled = false;
         }
 
         private void Numeric_Quantity_ValueChanged(object sender, EventArgs e)

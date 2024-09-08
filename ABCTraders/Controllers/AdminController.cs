@@ -51,6 +51,17 @@ namespace ABCTraders.Controllers
             return false;
         }
 
+        public List<CarDetailsModel> GetAllCarsByStatus(int status)
+        {
+            var adminRepository = new AdminRepository();
+            return adminRepository.GetAllCarsByStatus(status);
+        }
+        public List<CarDetailsModel> GetAllCars()
+        {
+            var adminRepository = new AdminRepository();
+            return adminRepository.GetAllCars();
+        }
+
         public bool UpdateCarPart(int id, AddCarPartDto dto)
         {
 
@@ -64,11 +75,7 @@ namespace ABCTraders.Controllers
             return false;
         }
 
-        public List<CarDetailsModel> GetAllCars(int status)
-        {
-            var adminRepository = new AdminRepository();
-            return adminRepository.GetAllCars(status);
-        }
+        
 
         public List<AddCarPartDetailModel> GetAllCarParts(int status)
         {

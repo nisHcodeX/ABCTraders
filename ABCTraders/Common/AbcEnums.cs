@@ -36,7 +36,9 @@ namespace ABCTraders.Common
             Available = 0,
             Pending = 1,
             Approved = 2,
-            Delivered = 3
+            Delivered = 3,
+            Cancelled = 4,
+            OutOfStock = 5
         }
 
         public enum Transmission

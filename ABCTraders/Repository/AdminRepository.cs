@@ -141,7 +141,57 @@ namespace ABCTraders.Repository
             }
         }
 
-        public List<CarDetailsModel> GetAllCars(int status)
+        public List<CarDetailsModel> GetAllCars()
+        {
+            try
+            {
+                var carList = new List<CarDetailsModel>();
+
+                using (var connection = GetConnection())
+                {
+
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.CommandText = @"SELECT C.*, M.Name AS ModelName, MN.Name AS ManufacturerName FROM Cars C INNER JOIN Models M on C.ModelId = M.Id INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.Status = 0 AND C.IsActive = 1";
+
+                        var reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            var car = new CarDetailsModel
+                            {
+                                Id = Convert.ToInt32(reader["Id"].ToString()),
+                                VIN = reader["VIN"].ToString(),
+                                Transmission = (Transmission)Convert.ToInt32(reader["Transmission"].ToString()),
+                                Year = Convert.ToInt32(reader["Year"].ToString()),
+                                FuelType = (FuelTypes)Convert.ToInt32(reader["FuelType"].ToString()),
+                                Color = (CarColors)Convert.ToInt32(reader["Color"].ToString()),
+                                Price = Convert.ToDecimal(reader["Price"].ToString()),
+                                Condition = (CarCondition)Convert.ToInt32(reader["Condition"].ToString()),
+                                Description = reader["Description"].ToString(),
+                                ModelName = reader["ModelName"].ToString(),
+                                ManufacturerName = reader["ManufacturerName"].ToString(),
+                                ModelId = Convert.ToInt32(reader["ModelId"].ToString()),
+                                ManufacturerId = Convert.ToInt32(reader["ManufacturerId"].ToString()),
+                                Picture = (byte[])reader["picture"]
+                            };
+                            carList.Add(car);
+                        }
+                    }
+                    connection.Close();
+                }
+                return carList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+
+        public List<CarDetailsModel> GetAllCarsByStatus(int status)
         {
             try
             {
@@ -154,7 +204,7 @@ namespace ABCTraders.Repository
                     using (var command = connection.CreateCommand())
                     {
                         command.Parameters.AddWithValue("@status", status);
-                        command.CommandText = @"SELECT C.*, M.Name AS ModelName, MN.Name AS ManufacturerName FROM Cars C INNER JOIN Models M on C.ModelId = M.Id INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.Status = @status AND C.IsActive = 1";
+                        command.CommandText = @"SELECT C.*, M.Name AS ModelName, MN.Name AS ManufacturerName FROM Cars C INNER JOIN Models M on C.ModelId = M.Id INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.IsActive = @status";
 
                         var reader = command.ExecuteReader();
 

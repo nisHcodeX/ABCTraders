@@ -54,7 +54,6 @@ namespace ABCTraders.Views.Customer
         {
   
             var controller = new OrderController();
-
             //var controller = controller.GetAllCarOrders(())
         }
 

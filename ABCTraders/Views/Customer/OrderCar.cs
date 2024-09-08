@@ -36,7 +36,7 @@ namespace ABCTraders.Views.Customer
             if (customerId > 0 && carId > 0)
             {
                 var controller = new AdminController();
-                var car = controller.GetAllCars(0).Find(x => x.Id == carId);
+                var car = controller.GetAllCars().Find(x => x.Id == carId);
                 if (car != null)
                 {
                     PicBx_CarPhoto.Image = System.Drawing.Image.FromStream(new MemoryStream(car.Picture));

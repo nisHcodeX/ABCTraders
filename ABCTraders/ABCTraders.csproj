@@ -51,6 +51,7 @@
     <Compile Include="Common\PhotConvertor.cs" />
     <Compile Include="Common\Validation.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CarPartController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="DbConection\DbConnection.cs" />

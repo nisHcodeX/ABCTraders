@@ -124,7 +124,7 @@ namespace ABCTraders.Views.Customer
             {
             var customer = userController.GetAllCustomers().Find(x => x.Id == customerId);
 
-            var isMathced = userController.ComparePasswords(customer.Password, currentPassowd);
+            var isMathced = userController.ComparePasswords(currentPassowd,customer.Password);
 
             if (isMathced)
             {
@@ -137,7 +137,7 @@ namespace ABCTraders.Views.Customer
                             var passwordUpdated = userController.UpdatePassword(customerId, confirmPassword);
                             if(passwordUpdated> 0)
                             {
-                                MessageBox.Show("Updated Successfully");
+                                MessageBox.Show("Password Updated Successfully");
                             }
                             else
                             {

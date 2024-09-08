@@ -14,6 +14,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ABCTraders.Common.AbcEnums;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace ABCTraders.Views.Admin
@@ -231,17 +232,26 @@ namespace ABCTraders.Views.Admin
             PopulateManufacturers();
             PopulateModels();
             AddCarTbl.ClearSelection();
+            PopulateCarTable();
             ResetForm();
         }
 
         private void PopulateCarTable()
         {
             AddCarTbl.Rows.Clear();
-            var status = Drop_CarStatus.SelectedIndex;
+            var activeStatus = Drop_CarStatus.SelectedIndex;
             var getAllCarsController = new AdminController();
-            var cars = getAllCarsController.GetAllCars(status);
+            var carCurrentStatus = 0;
 
-            foreach (var car in cars)
+            if(activeStatus == 0)
+            {
+                carCurrentStatus = 1;
+            }
+
+            var cars = getAllCarsController.GetAllCarsByStatus(carCurrentStatus);
+            var sortedCars = cars.FindAll(car => car.Status == (int)CarStatus.Available);
+
+            foreach (var car in sortedCars)
             {
                 AddCarTbl.Rows.Add(new object[] 
                 { 
@@ -312,16 +322,22 @@ namespace ABCTraders.Views.Admin
         }
 
         private void AddCarTbl_SelectionChanged(object sender, EventArgs e)
-        {
-            if (AddCarTbl.Rows.Count > 0)
+       {
+            if (AddCarTbl.SelectedRows.Count > 0 )
             {
-                var status = Drop_CarStatus.SelectedIndex;
+                var activeStatus = Drop_CarStatus.SelectedIndex;
                 var selectedIdx = AddCarTbl.CurrentCell.RowIndex;
                 var selectedCar = AddCarTbl.Rows[selectedIdx];
                 var carId = (int)selectedCar.Cells[0].Value;
+                var carCurrentStatus = 0;
+
+                if (activeStatus == 0)
+                {
+                    carCurrentStatus = 1;
+                }
 
                 var controller = new AdminController();
-                var car = controller.GetAllCars(status).Find(x => x.Id == carId);
+                var car = controller.GetAllCarsByStatus(carCurrentStatus).Find(x => x.Id == carId);
 
                 if (car != null)
                 {
@@ -380,13 +396,21 @@ namespace ABCTraders.Views.Admin
 
         private void Drop_CarStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ResetForm();
             PopulateCarTable();
+            if(Drop_CarStatus.SelectedIndex == 1)
+            {
+                AddCarDeleteBtn.Visible = false;
+                AddCarSaveBtn.Visible = false;
+                AddCarPhotoBtn.Visible = false;
+            }
         }
 
         private void AddCarDeleteBtn_Click(object sender, EventArgs e)
         {
             if (AddCarTbl.SelectedRows.Count > 0)
             {
+
                 var confirmDelete = MessageBox.Show("Are you want to remove this car", "WRANING", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 if (confirmDelete == DialogResult.OK)
                 {

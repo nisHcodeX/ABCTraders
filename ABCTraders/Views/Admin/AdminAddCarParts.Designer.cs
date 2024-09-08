@@ -425,9 +425,7 @@
             this.Drop_PartStatus.FormattingEnabled = true;
             this.Drop_PartStatus.Items.AddRange(new object[] {
             "Available",
-            "Pending",
-            "Approved",
-            "Delivered"});
+            "Deleted"});
             this.Drop_PartStatus.Location = new System.Drawing.Point(24, 47);
             this.Drop_PartStatus.Name = "Drop_PartStatus";
             this.Drop_PartStatus.Size = new System.Drawing.Size(279, 30);

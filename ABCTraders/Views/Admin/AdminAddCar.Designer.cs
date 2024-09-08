@@ -531,9 +531,7 @@
             this.Drop_CarStatus.FormattingEnabled = true;
             this.Drop_CarStatus.Items.AddRange(new object[] {
             "Available",
-            "Pending",
-            "Approved",
-            "Delivered"});
+            "Deleted"});
             this.Drop_CarStatus.Location = new System.Drawing.Point(24, 47);
             this.Drop_CarStatus.Name = "Drop_CarStatus";
             this.Drop_CarStatus.Size = new System.Drawing.Size(279, 30);
