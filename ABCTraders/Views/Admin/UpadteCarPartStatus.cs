@@ -35,7 +35,7 @@ namespace ABCTraders.Views.Admin
         private void PopulatePartTable()
         {
             var orderContorller = new OrderController();
-            var partList = orderContorller.GetAllCarPartOrders(Drop_PartOrderStatus.SelectedIndex);
+            var partList = orderContorller.GetAllCarPartOrdersByStaus(Drop_PartOrderStatus.SelectedIndex);
             Tbl_AdminParts.Rows.Clear();
             foreach (var part in partList)
             {

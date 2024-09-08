@@ -12,6 +12,7 @@ namespace ABCTraders.Model
         
         public int CustomerId { get; set; }
         public string PartName { get; set; }
+        public string PartCode { get; set; }
         public string FristName { get; set; }
 
         public decimal Price { get; set; }

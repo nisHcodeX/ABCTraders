@@ -35,16 +35,28 @@ namespace ABCTraders.Controllers
             return false;
         }
 
-        public List<CarOrderModel> GetAllCarOrders(int status)
+        public List<CarOrderModel> GetAllCarOrdersByStatus(int status)
         {
             var orderRepository = new OrderRepository();
-            return orderRepository.GetAllCarOrders(status);
+            return orderRepository.GetAllCarOrdersByStatus(status);
         }
 
-        public List<CarPartOrderModel> GetAllCarPartOrders(int status)
+        public List<CarPartOrderModel> GetAllCarPartOrdersByStaus(int status)
         {
             var orderRepository = new OrderRepository();
-            return orderRepository.GetAllCarPartOrders(status);
+            return orderRepository.GetAllCarPartOrdersByStatus(status);
+        }
+
+        public List<CarOrderModel> GetAllCarOrdersByCustomer(int customerId)
+        {
+            var orderRepository = new OrderRepository();
+            return orderRepository.GetAllCarOrdersByCustomer(customerId);
+        }
+
+        public List<CarPartOrderModel> GetAllCarPartOrdersByCustomer(int customerId)
+        {
+            var orderRepository = new OrderRepository();
+            return orderRepository.GetAllCarPartOrdersByCustomer(customerId);
         }
     }
 }

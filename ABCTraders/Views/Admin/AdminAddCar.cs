@@ -243,7 +243,7 @@ namespace ABCTraders.Views.Admin
             AddCarTbl.Rows.Clear();
             var activeStatus = Drop_CarStatus.SelectedIndex;
             var getAllCarsController = new AdminController();
-            var carActiveStatus = (int)StockStatus.Available;
+            var carActiveStatus = 0;
 
             if(activeStatus == (int)StockStatus.Available)
             {
@@ -405,6 +405,12 @@ namespace ABCTraders.Views.Admin
                 AddCarDeleteBtn.Visible = false;
                 AddCarSaveBtn.Visible = false;
                 AddCarPhotoBtn.Visible = false;
+            }
+            else
+            {
+                AddCarDeleteBtn.Visible = true;
+                AddCarSaveBtn.Visible = true;
+                AddCarPhotoBtn.Visible = true;
             }
         }
 

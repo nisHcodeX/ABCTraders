@@ -234,7 +234,7 @@
             this.AddCarPartPartCodeLabel.TabIndex = 113;
             this.AddCarPartPartCodeLabel.Text = "Part Code";
             // 
-            // CustomerUpdatePartOrder
+            // CustomerUpdateCar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -251,7 +251,8 @@
             this.Controls.Add(AddCarPartNameLabel);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CustomerUpdatePartOrder";
+            this.Name = "CustomerUpdateCar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerUpdatePartOrder";
             this.Load += new System.EventHandler(this.CustomerUpdatePartOrder_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AddCarPartsTbl)).EndInit();

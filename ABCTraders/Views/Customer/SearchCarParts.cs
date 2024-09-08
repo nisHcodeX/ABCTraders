@@ -46,14 +46,14 @@ namespace ABCTraders.Views.Customer
         private void SearchCarParts_Load(object sender, EventArgs e)
         {
             PopulateCarPartTable();
-
+            ResetForm();
         }
 
         private void PopulateCarPartTable()
         {
             Tbl_CarPartsList.Rows.Clear();
             var getAllCarPartsController = new AdminController();
-            var partList = getAllCarPartsController.GetAllCarParts();
+            var partList = getAllCarPartsController.GetAllCarParts().FindAll(Cp => Cp.StockQuantity > 0);
             foreach (var part in partList)
             {
                 Tbl_CarPartsList.Rows.Add(new object[]
@@ -145,7 +145,7 @@ namespace ABCTraders.Views.Customer
             }
             else
             {
-                MessageBox.Show("The part you searhc not Available in the System");
+                MessageBox.Show("The part you search is not Available in the System");
             }
         }
 
@@ -160,12 +160,13 @@ namespace ABCTraders.Views.Customer
             var updateQuantity = stock - qauntity;
             if (Tbl_CarPartsList.SelectedRows.Count > 0 && partId > 0)
             {
+
                 OrderCarPart orderCarPart = new OrderCarPart(customerId, partId, qauntity, updateQuantity, price);
                 orderCarPart.Show();
             }
             else
             {
-                MessageBox.Show("Please Select a car before order");
+                MessageBox.Show("Please Select a car part before order");
             }
         }
 
@@ -197,6 +198,19 @@ namespace ABCTraders.Views.Customer
                     MessageBox.Show("Ooops! System Error. Please try again later");
                 }
             }
+        }
+
+        private void ResetForm()
+        {
+            PicBx_CarPartPhoto.Image = null;
+            TxtBox_PartCode.Text = string.Empty;
+            TxtBox_PartName.Text = string.Empty;
+            Drop_Category.SelectedIndex = 0;
+            Drop_Condition.SelectedIndex = 0;
+            TxtBox_Description.Text = string.Empty;
+            Numeric_Price.Value = 0;
+            Numeric_Quantity.Value = 1;
+            Numeric_Stock.Value = 0;
         }
     }
 }

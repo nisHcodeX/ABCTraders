@@ -244,7 +244,7 @@ namespace ABCTraders.Repository
         {
             try
             {
-                var carResult = new CarDetailsModel();
+                CarDetailsModel carResult = null;
 
                 using (var connection = GetConnection())
                 {
@@ -259,7 +259,7 @@ namespace ABCTraders.Repository
 
                         while (reader.Read())
                         {
-                            var car = new CarDetailsModel
+                            carResult = new CarDetailsModel
                             {
                                 Id = Convert.ToInt32(reader["Id"].ToString()),
                                 VIN = reader["VIN"].ToString(),
@@ -276,7 +276,7 @@ namespace ABCTraders.Repository
                                 ManufacturerId = Convert.ToInt32(reader["ManufacturerId"].ToString()),
                                 Picture = (byte[])reader["picture"]
                             };
-                            car = carResult;
+                           return carResult;
                         }
                     }
                     connection.Close();
@@ -460,7 +460,7 @@ namespace ABCTraders.Repository
         {
             try
             {
-                var carPartResult = new AddCarPartDetailModel();
+                AddCarPartDetailModel carPartResult = null;
 
                 using (var connection = GetConnection())
                 {
@@ -469,13 +469,13 @@ namespace ABCTraders.Repository
                     using (var command = connection.CreateCommand())
                     {
                         command.Parameters.AddWithValue("@PartCode", code);
-                        command.CommandText = @"SELECT C.*, MN.Name AS ManufacturerName FROM CarParts C INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.PartCode = @PartCode AND C.IsActive = @status";
+                        command.CommandText = @"SELECT C.*, MN.Name AS ManufacturerName FROM CarParts C INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.PartCode = @PartCode AND C.IsActive = 1";
 
                         var reader = command.ExecuteReader();
 
                         while (reader.Read())
                         {
-                            var part = new AddCarPartDetailModel
+                            carPartResult = new AddCarPartDetailModel
                             {
                                 Id = Convert.ToInt32(reader["ID"].ToString()),
                                 PartName = reader["PartName"].ToString(),
@@ -489,7 +489,7 @@ namespace ABCTraders.Repository
                                 ImagePath = (byte[])reader["picture"],
                                 ManufacturerName = reader["ManufacturerName"].ToString(),
                             };
-                            carPartResult = part;
+                            return carPartResult;
                         }
                     }
                     connection.Close();
@@ -583,7 +583,7 @@ namespace ABCTraders.Repository
                     using (var command = connection.CreateCommand())
                     {
                         command.Parameters.Add("@Id", SqlDbType.Int).Value = carId;
-                        command.CommandText = @"UPDATE Car SET IsActive = 0, UpdatedAt = GETDATE() WHERE Id = @Id;";
+                        command.CommandText = @"UPDATE Cars SET IsActive = 0, UpdatedAt = GETDATE() WHERE Id = @Id;";
 
                         var reader = command.ExecuteReader();
                      }

@@ -66,18 +66,26 @@
             this.DelivereDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tbl_CarOrderList = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ApprovedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DeliveredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.Lbl_CancelledPart = new System.Windows.Forms.Label();
+            this.Lbl_CancelledCar = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Lbl_CancelledOrders = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl_CarPartOrderList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl_CarOrderList)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -89,17 +97,17 @@
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.Lbl_PendingOrders);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(111, 50);
+            this.panel1.Location = new System.Drawing.Point(31, 47);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(284, 140);
+            this.panel1.Size = new System.Drawing.Size(258, 140);
             this.panel1.TabIndex = 34;
             // 
             // Lbl_PendingPart
             // 
             this.Lbl_PendingPart.AutoSize = true;
             this.Lbl_PendingPart.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_PendingPart.Location = new System.Drawing.Point(239, 97);
+            this.Lbl_PendingPart.Location = new System.Drawing.Point(224, 95);
             this.Lbl_PendingPart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_PendingPart.Name = "Lbl_PendingPart";
             this.Lbl_PendingPart.Size = new System.Drawing.Size(19, 23);
@@ -110,7 +118,7 @@
             // 
             this.Lbl_PendingCar.AutoSize = true;
             this.Lbl_PendingCar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_PendingCar.Location = new System.Drawing.Point(239, 60);
+            this.Lbl_PendingCar.Location = new System.Drawing.Point(225, 60);
             this.Lbl_PendingCar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_PendingCar.Name = "Lbl_PendingCar";
             this.Lbl_PendingCar.Size = new System.Drawing.Size(19, 23);
@@ -143,7 +151,7 @@
             // 
             this.Lbl_PendingOrders.AutoSize = true;
             this.Lbl_PendingOrders.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_PendingOrders.Location = new System.Drawing.Point(228, 1);
+            this.Lbl_PendingOrders.Location = new System.Drawing.Point(204, 3);
             this.Lbl_PendingOrders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_PendingOrders.Name = "Lbl_PendingOrders";
             this.Lbl_PendingOrders.Size = new System.Drawing.Size(52, 41);
@@ -154,7 +162,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(7, 11);
+            this.label1.Location = new System.Drawing.Point(5, 11);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(178, 28);
@@ -181,10 +189,10 @@
             this.panel3.Controls.Add(this.Lbl_DeliveredCar);
             this.panel3.Controls.Add(this.Lbl_DeliveredOrders);
             this.panel3.Controls.Add(this.label15);
-            this.panel3.Location = new System.Drawing.Point(784, 50);
+            this.panel3.Location = new System.Drawing.Point(591, 46);
             this.panel3.Margin = new System.Windows.Forms.Padding(4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(284, 140);
+            this.panel3.Size = new System.Drawing.Size(257, 140);
             this.panel3.TabIndex = 36;
             // 
             // label12
@@ -213,7 +221,7 @@
             // 
             this.Lbl_DeliveredPart.AutoSize = true;
             this.Lbl_DeliveredPart.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_DeliveredPart.Location = new System.Drawing.Point(239, 95);
+            this.Lbl_DeliveredPart.Location = new System.Drawing.Point(228, 95);
             this.Lbl_DeliveredPart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_DeliveredPart.Name = "Lbl_DeliveredPart";
             this.Lbl_DeliveredPart.Size = new System.Drawing.Size(19, 23);
@@ -224,7 +232,7 @@
             // 
             this.Lbl_DeliveredCar.AutoSize = true;
             this.Lbl_DeliveredCar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_DeliveredCar.Location = new System.Drawing.Point(239, 62);
+            this.Lbl_DeliveredCar.Location = new System.Drawing.Point(229, 62);
             this.Lbl_DeliveredCar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_DeliveredCar.Name = "Lbl_DeliveredCar";
             this.Lbl_DeliveredCar.Size = new System.Drawing.Size(19, 23);
@@ -235,7 +243,7 @@
             // 
             this.Lbl_DeliveredOrders.AutoSize = true;
             this.Lbl_DeliveredOrders.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_DeliveredOrders.Location = new System.Drawing.Point(228, 5);
+            this.Lbl_DeliveredOrders.Location = new System.Drawing.Point(206, 5);
             this.Lbl_DeliveredOrders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_DeliveredOrders.Name = "Lbl_DeliveredOrders";
             this.Lbl_DeliveredOrders.Size = new System.Drawing.Size(52, 41);
@@ -263,10 +271,10 @@
             this.panel2.Controls.Add(this.Lbl_ApprovedCar);
             this.panel2.Controls.Add(this.Lbl_ApproveOrders);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Location = new System.Drawing.Point(449, 50);
+            this.panel2.Location = new System.Drawing.Point(308, 44);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(285, 140);
+            this.panel2.Size = new System.Drawing.Size(259, 140);
             this.panel2.TabIndex = 35;
             // 
             // label22
@@ -284,7 +292,7 @@
             // 
             this.Lbl_ApprovedPart.AutoSize = true;
             this.Lbl_ApprovedPart.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_ApprovedPart.Location = new System.Drawing.Point(240, 97);
+            this.Lbl_ApprovedPart.Location = new System.Drawing.Point(228, 97);
             this.Lbl_ApprovedPart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_ApprovedPart.Name = "Lbl_ApprovedPart";
             this.Lbl_ApprovedPart.Size = new System.Drawing.Size(19, 23);
@@ -295,7 +303,7 @@
             // 
             this.Lbl_ApprovedCar.AutoSize = true;
             this.Lbl_ApprovedCar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_ApprovedCar.Location = new System.Drawing.Point(240, 63);
+            this.Lbl_ApprovedCar.Location = new System.Drawing.Point(228, 63);
             this.Lbl_ApprovedCar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_ApprovedCar.Name = "Lbl_ApprovedCar";
             this.Lbl_ApprovedCar.Size = new System.Drawing.Size(19, 23);
@@ -306,7 +314,7 @@
             // 
             this.Lbl_ApproveOrders.AutoSize = true;
             this.Lbl_ApproveOrders.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Lbl_ApproveOrders.Location = new System.Drawing.Point(229, 1);
+            this.Lbl_ApproveOrders.Location = new System.Drawing.Point(207, 1);
             this.Lbl_ApproveOrders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lbl_ApproveOrders.Name = "Lbl_ApproveOrders";
             this.Lbl_ApproveOrders.Size = new System.Drawing.Size(52, 41);
@@ -330,7 +338,7 @@
             this.Btn_updateCarOrder.BackColor = System.Drawing.Color.CornflowerBlue;
             this.Btn_updateCarOrder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_updateCarOrder.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_updateCarOrder.Location = new System.Drawing.Point(446, 228);
+            this.Btn_updateCarOrder.Location = new System.Drawing.Point(548, 241);
             this.Btn_updateCarOrder.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_updateCarOrder.Name = "Btn_updateCarOrder";
             this.Btn_updateCarOrder.Size = new System.Drawing.Size(284, 68);
@@ -344,7 +352,7 @@
             this.Btn_updateCarPartOrder.BackColor = System.Drawing.Color.CornflowerBlue;
             this.Btn_updateCarPartOrder.Cursor = System.Windows.Forms.Cursors.Hand;
             this.Btn_updateCarPartOrder.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_updateCarPartOrder.Location = new System.Drawing.Point(783, 228);
+            this.Btn_updateCarPartOrder.Location = new System.Drawing.Point(867, 239);
             this.Btn_updateCarPartOrder.Margin = new System.Windows.Forms.Padding(4);
             this.Btn_updateCarPartOrder.Name = "Btn_updateCarPartOrder";
             this.Btn_updateCarPartOrder.Size = new System.Drawing.Size(285, 68);
@@ -361,7 +369,7 @@
             this.Drop_OrderType.Items.AddRange(new object[] {
             "Car Orders",
             "Car Part Orders"});
-            this.Drop_OrderType.Location = new System.Drawing.Point(111, 330);
+            this.Drop_OrderType.Location = new System.Drawing.Point(31, 277);
             this.Drop_OrderType.Name = "Drop_OrderType";
             this.Drop_OrderType.Size = new System.Drawing.Size(284, 30);
             this.Drop_OrderType.TabIndex = 112;
@@ -371,7 +379,7 @@
             // 
             this.AddCarConditionLabel.AutoSize = true;
             this.AddCarConditionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AddCarConditionLabel.Location = new System.Drawing.Point(108, 299);
+            this.AddCarConditionLabel.Location = new System.Drawing.Point(28, 246);
             this.AddCarConditionLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.AddCarConditionLabel.Name = "AddCarConditionLabel";
             this.AddCarConditionLabel.Size = new System.Drawing.Size(217, 22);
@@ -397,11 +405,11 @@
             this.OrderDate,
             this.ApproveDate,
             this.DelivereDate});
-            this.Tbl_CarPartOrderList.Location = new System.Drawing.Point(112, 383);
+            this.Tbl_CarPartOrderList.Location = new System.Drawing.Point(31, 360);
             this.Tbl_CarPartOrderList.Name = "Tbl_CarPartOrderList";
             this.Tbl_CarPartOrderList.RowHeadersWidth = 51;
             this.Tbl_CarPartOrderList.RowTemplate.Height = 24;
-            this.Tbl_CarPartOrderList.Size = new System.Drawing.Size(957, 232);
+            this.Tbl_CarPartOrderList.Size = new System.Drawing.Size(1118, 314);
             this.Tbl_CarPartOrderList.TabIndex = 113;
             // 
             // PartName
@@ -484,18 +492,18 @@
             this.Tbl_CarOrderList.ColumnHeadersHeight = 29;
             this.Tbl_CarOrderList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn3,
+            this.Model,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7,
             this.dataGridViewTextBoxColumn8,
-            this.Model,
             this.OrderedDate,
             this.ApprovedDate,
             this.DeliveredDate});
-            this.Tbl_CarOrderList.Location = new System.Drawing.Point(107, 398);
+            this.Tbl_CarOrderList.Location = new System.Drawing.Point(31, 360);
             this.Tbl_CarOrderList.Name = "Tbl_CarOrderList";
             this.Tbl_CarOrderList.RowHeadersWidth = 51;
             this.Tbl_CarOrderList.RowTemplate.Height = 24;
-            this.Tbl_CarOrderList.Size = new System.Drawing.Size(957, 232);
+            this.Tbl_CarOrderList.Size = new System.Drawing.Size(1118, 314);
             this.Tbl_CarOrderList.TabIndex = 114;
             // 
             // dataGridViewTextBoxColumn3
@@ -504,6 +512,13 @@
             this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
             this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
             this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // Model
+            // 
+            this.Model.HeaderText = "Model";
+            this.Model.MinimumWidth = 6;
+            this.Model.Name = "Model";
+            this.Model.Width = 125;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -526,13 +541,6 @@
             this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
             this.dataGridViewTextBoxColumn8.Width = 125;
             // 
-            // Model
-            // 
-            this.Model.HeaderText = "Model";
-            this.Model.MinimumWidth = 6;
-            this.Model.Name = "Model";
-            this.Model.Width = 125;
-            // 
             // OrderedDate
             // 
             this.OrderedDate.HeaderText = "OrderedDate";
@@ -554,19 +562,101 @@
             this.DeliveredDate.Name = "DeliveredDate";
             this.DeliveredDate.Width = 125;
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.PaleVioletRed;
+            this.panel4.Controls.Add(this.Lbl_CancelledPart);
+            this.panel4.Controls.Add(this.Lbl_CancelledCar);
+            this.panel4.Controls.Add(this.label6);
+            this.panel4.Controls.Add(this.label8);
+            this.panel4.Controls.Add(this.Lbl_CancelledOrders);
+            this.panel4.Controls.Add(this.label13);
+            this.panel4.Location = new System.Drawing.Point(873, 46);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(276, 140);
+            this.panel4.TabIndex = 35;
+            // 
+            // Lbl_CancelledPart
+            // 
+            this.Lbl_CancelledPart.AutoSize = true;
+            this.Lbl_CancelledPart.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_CancelledPart.Location = new System.Drawing.Point(242, 95);
+            this.Lbl_CancelledPart.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_CancelledPart.Name = "Lbl_CancelledPart";
+            this.Lbl_CancelledPart.Size = new System.Drawing.Size(19, 23);
+            this.Lbl_CancelledPart.TabIndex = 21;
+            this.Lbl_CancelledPart.Text = "0";
+            // 
+            // Lbl_CancelledCar
+            // 
+            this.Lbl_CancelledCar.AutoSize = true;
+            this.Lbl_CancelledCar.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_CancelledCar.Location = new System.Drawing.Point(240, 58);
+            this.Lbl_CancelledCar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_CancelledCar.Name = "Lbl_CancelledCar";
+            this.Lbl_CancelledCar.Size = new System.Drawing.Size(19, 23);
+            this.Lbl_CancelledCar.TabIndex = 20;
+            this.Lbl_CancelledCar.Text = "0";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(6, 101);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(124, 19);
+            this.label6.TabIndex = 19;
+            this.label6.Text = "CAR PART ORDERS";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(8, 66);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(97, 19);
+            this.label8.TabIndex = 18;
+            this.label8.Text = "CARS ORDERS";
+            // 
+            // Lbl_CancelledOrders
+            // 
+            this.Lbl_CancelledOrders.AutoSize = true;
+            this.Lbl_CancelledOrders.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Lbl_CancelledOrders.Location = new System.Drawing.Point(217, 4);
+            this.Lbl_CancelledOrders.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.Lbl_CancelledOrders.Name = "Lbl_CancelledOrders";
+            this.Lbl_CancelledOrders.Size = new System.Drawing.Size(52, 41);
+            this.Lbl_CancelledOrders.TabIndex = 17;
+            this.Lbl_CancelledOrders.Text = "00";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(7, 11);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(198, 28);
+            this.label13.TabIndex = 16;
+            this.label13.Text = "CANCELLED ORDERS";
+            // 
             // CustomerOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1124, 692);
+            this.ClientSize = new System.Drawing.Size(1196, 750);
+            this.Controls.Add(this.panel4);
             this.Controls.Add(this.Tbl_CarOrderList);
             this.Controls.Add(this.Tbl_CarPartOrderList);
             this.Controls.Add(this.Drop_OrderType);
             this.Controls.Add(this.AddCarConditionLabel);
             this.Controls.Add(this.Btn_updateCarPartOrder);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.Btn_updateCarOrder);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -581,6 +671,8 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl_CarPartOrderList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Tbl_CarOrderList)).EndInit();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -615,14 +707,6 @@
         private System.Windows.Forms.Label AddCarConditionLabel;
         private System.Windows.Forms.DataGridView Tbl_CarPartOrderList;
         private System.Windows.Forms.DataGridView Tbl_CarOrderList;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Model;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ApprovedDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DeliveredDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
@@ -633,5 +717,20 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApproveDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn DelivereDate;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label Lbl_CancelledPart;
+        private System.Windows.Forms.Label Lbl_CancelledCar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label Lbl_CancelledOrders;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Model;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ApprovedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeliveredDate;
     }
 }

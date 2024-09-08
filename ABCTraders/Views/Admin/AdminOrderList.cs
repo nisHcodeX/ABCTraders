@@ -74,13 +74,13 @@ namespace ABCTraders.Views.Admin
         private void UpdateAdminDAshBoard()
         {
             var controller = new OrderController();
-            var pendingCar = controller.GetAllCarOrders((int)CarStatus.Pending).Count;
-            var approvedCar = controller.GetAllCarOrders((int)CarStatus.Approved).Count;
-            var deliveredCar = controller.GetAllCarOrders((int)CarStatus.Delivered).Count;
+            var pendingCar = controller.GetAllCarOrdersByStatus((int)CarStatus.Pending).Count;
+            var approvedCar = controller.GetAllCarOrdersByStatus((int)CarStatus.Approved).Count;
+            var deliveredCar = controller.GetAllCarOrdersByStatus((int)CarStatus.Delivered).Count;
             
-            var pendingPart = controller.GetAllCarPartOrders((int) CarStatus.Pending).Count;
-            var approvedPart = controller.GetAllCarPartOrders((int) CarStatus.Pending).Count;
-            var deliveredPart = controller.GetAllCarPartOrders((int) CarStatus.Pending).Count;
+            var pendingPart = controller.GetAllCarPartOrdersByStaus((int) CarStatus.Pending).Count;
+            var approvedPart = controller.GetAllCarPartOrdersByStaus((int) CarStatus.Pending).Count;
+            var deliveredPart = controller.GetAllCarPartOrdersByStaus((int) CarStatus.Pending).Count;
 
             Lbl_PendingCar.Text = pendingCar.ToString();
             Lbl_PendingPart.Text = pendingPart.ToString();

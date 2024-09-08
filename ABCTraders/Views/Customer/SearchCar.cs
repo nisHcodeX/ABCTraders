@@ -33,6 +33,7 @@ namespace ABCTraders.Views
         private void SearchCar_Load(object sender, EventArgs e)
         {
             PopulateCarTable();
+            ResetForm();
         }
 
         private void PopulateCarTable()
@@ -146,7 +147,7 @@ namespace ABCTraders.Views
 
             } else
             {
-                MessageBox.Show("The car you search not Availble for now");
+                MessageBox.Show("The car you search is not Availble !");
             }
         }
 
@@ -168,6 +169,16 @@ namespace ABCTraders.Views
         private void Tbl_CarList_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void ResetForm()
+        {
+            PicBx_CarPhoto.Image = null;
+            TxtBox_Description.Text = string.Empty;
+            TxtBox_Manufacture.Text = string.Empty;
+            TxtBox_Model.Text = string.Empty;
+            TxtBox_VIN.Text = string.Empty;
+            Numeric_Price.Value = 0;
         }
     }
 }

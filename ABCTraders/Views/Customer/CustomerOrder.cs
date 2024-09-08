@@ -1,4 +1,5 @@
-﻿using ABCTraders.Controllers;
+﻿using ABCTraders.Common;
+using ABCTraders.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ABCTraders.Common.AbcEnums;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ABCTraders.Views.Customer
@@ -48,18 +50,58 @@ namespace ABCTraders.Views.Customer
             Drop_OrderType.SelectedIndex = 0;
             Tbl_CarPartOrderList.Visible = false;
             PopulateCarOrderTable();
+            UpdateCustomerDashBoard();
         }
 
         private void PopulateCarOrderTable()
         {
   
             var controller = new OrderController();
+            var carOrderList = controller.GetAllCarOrdersByCustomer(customerId);
+            var loadder = new CommonLoader();
+            Tbl_CarOrderList.Rows.Clear();
+            if(carOrderList != null)
+            {
+                foreach (var car in carOrderList)
+                {
+                    Tbl_CarOrderList.Rows.Add(new object[]
+                    {
+                        car.ManufacturerName,
+                        car.ModelName,
+                        car.Description,
+                        car.Price,
+                        loadder.GetConditionName(car.Conditon),
+                        car.OrderedDate,
+                        car.ApprovedDate,
+                        car.DeliveredDate
+                    });
+                }
+            }
             //var controller = controller.GetAllCarOrders(())
         }
 
         private void PopulateCarPartOrderTable()
         {
-
+            var controller = new OrderController();
+            var carPartOrderList = controller.GetAllCarPartOrdersByCustomer(customerId);
+            Tbl_CarPartOrderList.Rows.Clear();
+            if (carPartOrderList != null)
+            {
+                foreach (var part in carPartOrderList)
+                {
+                    Tbl_CarPartOrderList.Rows.Add(new object[]
+                    {
+                        part.PartName,
+                        part.PartCode,
+                        part.Description,
+                        part.Price,
+                        part.Conditon,
+                        part.OrderedDate,
+                        part.ApprovedDate,
+                        part.DeliveredDate
+                    });
+                }
+            }
         }
 
         private void Drop_OrderType_SelectedIndexChanged(object sender, EventArgs e)
@@ -77,6 +119,36 @@ namespace ABCTraders.Views.Customer
                 Tbl_CarOrderList.Visible = false;
                 Tbl_CarPartOrderList.Visible = true;
             }
+        }
+
+        private void UpdateCustomerDashBoard()
+        {
+            var controller = new OrderController();
+            var pendingCar = controller.GetAllCarOrdersByCustomer(customerId).FindAll(Co => Co.Status == (int)CarStatus.Pending).Count;
+            var approvedCar = controller.GetAllCarOrdersByCustomer(customerId).FindAll(Co => Co.Status == (int)CarStatus.Approved).Count;
+            var deliveredCar = controller.GetAllCarOrdersByCustomer(customerId).FindAll(Co => Co.Status == (int)CarStatus.Delivered).Count;
+            var cancelledCar = controller.GetAllCarOrdersByCustomer(customerId).FindAll(Co => Co.Status == (int)CarStatus.Cancelled).Count;
+
+            var pendingPart = controller.GetAllCarPartOrdersByCustomer(customerId).FindAll(Cp => Cp.Status == (int)CarStatus.Pending).Count;
+            var approvedPart = controller.GetAllCarPartOrdersByCustomer(customerId).FindAll(Cp => Cp.Status == (int)CarStatus.Approved).Count;
+            var deliveredPart = controller.GetAllCarPartOrdersByCustomer(customerId).FindAll(Cp => Cp.Status == (int)CarStatus.Delivered).Count;
+            var cancelledPart = controller.GetAllCarPartOrdersByCustomer(customerId).FindAll(Cp => Cp.Status == (int)CarStatus.Cancelled).Count;
+
+            Lbl_PendingOrders.Text = (pendingCar + pendingPart).ToString();
+            Lbl_PendingCar.Text = pendingCar.ToString();
+            Lbl_PendingPart.Text = pendingPart.ToString();
+
+            Lbl_ApproveOrders.Text = (approvedCar + approvedPart).ToString();
+            Lbl_ApprovedCar.Text = approvedCar.ToString();
+            Lbl_ApprovedPart.Text = approvedPart.ToString();
+
+            Lbl_DeliveredOrders.Text = (deliveredCar + deliveredPart).ToString();
+            Lbl_DeliveredCar.Text = deliveredPart.ToString();
+            Lbl_DeliveredPart.Text = deliveredPart.ToString();
+
+            Lbl_CancelledOrders.Text = (cancelledCar + cancelledPart).ToString();
+            Lbl_CancelledCar.Text = cancelledCar.ToString();
+            Lbl_CancelledPart.Text = cancelledPart.ToString();
         }
     }
 }

@@ -178,6 +178,7 @@ namespace ABCTraders.Views.Admin
             AddCarPartsTbl.Rows.Clear();
             var status = Drop_PartStatus.SelectedIndex;
             var getAllCarPartsController = new AdminController();
+            var categoryLoader = new CommonLoader();
             var partActiveStatus = (int)StockStatus.Available;
             if (status == (int)StockStatus.Available)
             {
@@ -194,9 +195,9 @@ namespace ABCTraders.Views.Admin
                 {
                     car.Id,
                     car.PartName,
-                    car.ManufacturerId,
+                    car.ManufacturerName,
                     car.PartCode,
-                    car.Category,
+                    categoryLoader.GetCategoryName(Convert.ToInt32(car.Category)),
                     car.Description,
                     car.Price,
                     car.Condition,
@@ -217,15 +218,22 @@ namespace ABCTraders.Views.Admin
 
         private void AddCarPartsTbl_SelectionChanged(object sender, EventArgs e)
         {
-            if (AddCarPartsTbl.Rows.Count > 0)
+            if (AddCarPartsTbl.SelectedRows.Count > 0)
             {
-                var status = Drop_PartStatus.SelectedIndex;
+                var selectdPartStatus = Drop_PartStatus.SelectedIndex;
                 var selectedIdx = AddCarPartsTbl.CurrentCell.RowIndex;
                 var selectedCar = AddCarPartsTbl.Rows[selectedIdx];
                 var carPartId = (int)selectedCar.Cells[0].Value;
+                var partStattus = 0;
+
+
+                if (selectdPartStatus == (int)StockStatus.Available)
+                {
+                    partStattus = 1;
+                }
 
                 var controller = new AdminController();
-                var part = controller.GetAllCarParts().Find(x => x.Id == carPartId);
+                var part = controller.GetAllCarPartsByStatus(partStattus).Find(x => x.Id == carPartId);
 
                 if (part != null)
                 {
@@ -261,7 +269,6 @@ namespace ABCTraders.Views.Admin
             AddCarPartCodeTxt.Text = string.Empty;
             AddCarPartNameText.Text = string.Empty;
             AddCarPartConditionDrop.SelectedIndex = 0;
-            //AddCarPartManufCombBx.SelectedIndex = 0;
             AddCarPartDescriptionTxt.Text = string.Empty;
             AddCarPartPriceNumeric.Value = 0;
             AddCarPartQuantityNumeric.Value = 1;
@@ -279,7 +286,17 @@ namespace ABCTraders.Views.Admin
                 AddCarPartDeleteBtn.Visible = false;
                 AddCarPartSaveBtn.Visible = false;  
                 AddCarPartPhotoBtn.Visible = false;
+            } else if (Drop_PartStatus.SelectedIndex == (int)StockStatus.OutOfStock)
+            {
+                AddCarPartPhotoBtn.Visible = true; 
+                AddCarPartSaveBtn.Visible = true;
+                AddCarPartDeleteBtn.Visible = false;
+            } else{
+                AddCarPartDeleteBtn.Visible = true;
+                AddCarPartSaveBtn.Visible = true;
+                AddCarPartPhotoBtn.Visible = true;
             }
+      
             ResetForm();
             PopulateCarPartTable();
         }
@@ -320,5 +337,6 @@ namespace ABCTraders.Views.Admin
         {
 
         }
+
     }
 }

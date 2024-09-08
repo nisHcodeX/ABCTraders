@@ -34,7 +34,7 @@ namespace ABCTraders.Views.Admin
         private void PopulateCarTable()
         {
             var orderContorller = new OrderController();
-            var carList = orderContorller.GetAllCarOrders(Drop_CarOrderStatus.SelectedIndex);
+            var carList = orderContorller.GetAllCarOrdersByStatus(Drop_CarOrderStatus.SelectedIndex);
             Tbl_CarAdmin.Rows.Clear();
             foreach (var car in carList)
             {

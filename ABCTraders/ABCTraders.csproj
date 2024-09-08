@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\AbcEnums.cs" />
+    <Compile Include="Common\CommonLoader.cs" />
     <Compile Include="Common\PhotConvertor.cs" />
     <Compile Include="Common\Validation.cs" />
     <Compile Include="Controllers\AdminController.cs" />
