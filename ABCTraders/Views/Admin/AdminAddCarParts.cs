@@ -28,7 +28,7 @@ namespace ABCTraders.Views.Admin
 
         private void AddCarPartSaveBtn_Click(object sender, EventArgs e)
         {
-            var validation = ValidateAddCar();
+            var validation = ValidateAddCarPart();
             if (validation.IsValid)
             {
                 var carImage = ABCPhotConvertor();
@@ -49,36 +49,41 @@ namespace ABCTraders.Views.Admin
                     ImagePath = carImage,
 
                 };
-
                 if (AddCarPartsTbl.SelectedRows.Count > 0)
                 {
                     var selectedIdx = AddCarPartsTbl.CurrentCell.RowIndex;
                     var selectedCarPart = AddCarPartsTbl.Rows[selectedIdx];
-                    var carPartId = (int)selectedCarPart.Cells[0].Value;
-
-                    var carPartUpdateSuccess = addCarPartController.UpdateCarPart(carPartId, addCarPartDto);
-                    if (carPartUpdateSuccess)
-                    {
-                        MessageBox.Show("Succesfully Updated the car part details");
-                        PopulateCarPartTable();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Cannot update the car part, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                        var carPartId = (int)selectedCarPart.Cells[0].Value;
+                 
+                        var carPartUpdateSuccess = addCarPartController.UpdateCarPart(carPartId, addCarPartDto);
+                        if (carPartUpdateSuccess)
+                        {
+                            MessageBox.Show("Succesfully Updated the car part details");
+                            PopulateCarPartTable();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot update the car part, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                 }
                 else
                 {
-                    var carPartAddingSuccess = addCarPartController.AddCarPart(addCarPartDto);
-
-                    if (carPartAddingSuccess)
+                    if (ValidatePartCode(addCarPartDto.PartCode))
                     {
-                        MessageBox.Show(validation.Message);
-                        PopulateCarPartTable();
+                        MessageBox.Show("The Part code you enetered is already in the system", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
-                        MessageBox.Show("Cannot add the car part, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        var carPartAddingSuccess = addCarPartController.AddCarPart(addCarPartDto);
+                        if (carPartAddingSuccess)
+                        {
+                            MessageBox.Show(validation.Message);
+                            PopulateCarPartTable();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Cannot add the car part, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -94,7 +99,7 @@ namespace ABCTraders.Views.Admin
             AddCarPartPicutureBox.Image.Save(memoryStream, AddCarPartPicutureBox.Image.RawFormat);
             return memoryStream.GetBuffer();
         }
-        private Validation ValidateAddCar() 
+        private Validation ValidateAddCarPart() 
         {
             var partName = AddCarPartNameText.Text;
             var maufacturerId = AddCarPartManufCombBx.SelectedIndex;
@@ -115,11 +120,9 @@ namespace ABCTraders.Views.Admin
             {
                 return new Validation { IsValid = false, Message = "Invalid. Price must be reasonable" };
             }
-            var controller = new AdminController();
-            var isPartAvailable = controller.IsPartExist(partCode.Trim());
-            if (isPartAvailable)
+            if((int)quantity == 0)
             {
-                return new Validation { IsValid = false, Message = "Part Code You entered is available" };
+                return new Validation { IsValid = false, Message = "Quantity Cannot be zero" };
             }
             return new Validation
             {
@@ -179,15 +182,15 @@ namespace ABCTraders.Views.Admin
             var status = Drop_PartStatus.SelectedIndex;
             var getAllCarPartsController = new AdminController();
             var categoryLoader = new CommonLoader();
-            var partActiveStatus = (int)StockStatus.Available;
-            if (status == (int)StockStatus.Available)
+            var partActiveStatus = 0;
+            if (status != (int)StockStatus.Deleted)
             {
                 partActiveStatus = 1;
             }
             var cars = getAllCarPartsController.GetAllCarPartsByStatus(partActiveStatus);
             if(status == (int)StockStatus.OutOfStock)
             {
-                cars = getAllCarPartsController.GetAllCarPartsByStatus((int)StockStatus.Available).FindAll(part => part.StockQuantity == 0);
+                cars = cars.FindAll(part => part.StockQuantity == 0);
             }
             foreach (var car in cars)
             {
@@ -204,6 +207,13 @@ namespace ABCTraders.Views.Admin
                     car.StockQuantity,
                 });
             }
+        }
+
+        private bool ValidatePartCode (string partCode)
+        {
+            var controller = new AdminController();
+            var isPartAvailable = controller.IsPartExist(partCode.Trim());
+            return isPartAvailable;
         }
 
         private void AddCarPartManufCombBx_SelectedIndexChanged(object sender, EventArgs e)
@@ -271,7 +281,7 @@ namespace ABCTraders.Views.Admin
             AddCarPartConditionDrop.SelectedIndex = 0;
             AddCarPartDescriptionTxt.Text = string.Empty;
             AddCarPartPriceNumeric.Value = 0;
-            AddCarPartQuantityNumeric.Value = 1;
+            AddCarPartQuantityNumeric.Value = 0;
         }
 
         private void AddCarPartsTbl_CellContentClick(object sender, DataGridViewCellEventArgs e)

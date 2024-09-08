@@ -272,11 +272,6 @@
             0,
             0,
             0});
-            this.AddCarPartQuantityNumeric.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.AddCarPartQuantityNumeric.Name = "AddCarPartQuantityNumeric";
             this.AddCarPartQuantityNumeric.Size = new System.Drawing.Size(325, 28);
             this.AddCarPartQuantityNumeric.TabIndex = 58;

@@ -143,30 +143,34 @@ namespace ABCTraders.Views.Admin
 
                     var carUpdateSuccess = addCarController.UpdateCar(carId, addCarDto);
 
-                    if (carUpdateSuccess)
-                    {
+                    if (carUpdateSuccess){
                         MessageBox.Show("Succesfully Updated the car details");
                         AddCarTbl.Rows.Clear();
                         PopulateCarTable();
                     }
-                    else
-                    {
+                    else{
                         MessageBox.Show("Cannot update the car, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
                 {
-                   var carAddingSuccess = addCarController.AddCar(addCarDto);
-
-                    if (carAddingSuccess)
+                    var controller = new AdminController();
+                    var isPartAvailable = controller.IsCarExist(addCarDto.VIN.Trim());
+                    if (isPartAvailable)
                     {
-                        MessageBox.Show(validation.Message);
-                        AddCarTbl.Rows.Clear();
-                        PopulateCarTable();
+                        MessageBox.Show("Vehicle available for Your entered VIN");
                     }
-                    else
-                    {
-                        MessageBox.Show("Cannot add the car, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    else{
+                        var carAddingSuccess = addCarController.AddCar(addCarDto);
+
+                        if (carAddingSuccess){
+                            MessageBox.Show(validation.Message);
+                            AddCarTbl.Rows.Clear();
+                            PopulateCarTable();
+                        }
+                        else{
+                            MessageBox.Show("Cannot add the car, Please try again", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
                 }
             }
@@ -213,12 +217,6 @@ namespace ABCTraders.Views.Admin
             if (price < 100000)
             {
                 return new Validation { IsValid = false, Message = "Invalid. Price must be reasonable" };
-            }
-            var controller = new AdminController();
-            var isPartAvailable = controller.IsCarExist(vin.Trim());
-            if (isPartAvailable)
-            {
-                return new Validation { IsValid = false, Message = "Vehicle available for Your entered VIN" };
             }
             return new Validation
             {
