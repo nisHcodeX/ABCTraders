@@ -38,7 +38,13 @@ namespace ABCTraders.Common
             Approved = 2,
             Delivered = 3,
             Cancelled = 4,
-            OutOfStock = 5
+        }
+
+        public enum StockStatus
+        {
+            Available = 0,
+            Deleted = 1,
+            OutOfStock = 2
         }
 
         public enum Transmission

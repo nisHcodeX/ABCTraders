@@ -47,7 +47,7 @@ namespace ABCTraders.Views.Customer
             if (customerId > 0 && partId > 0)
             {
                 var controller = new AdminController();
-                var part = controller.GetAllCarParts(0).Find(x => x.Id == partId);
+                var part = controller.GetAllCarParts().Find(x => x.Id == partId);
                 if (part != null)
                 {
                     PicBx_CarPartPhoto.Image = System.Drawing.Image.FromStream(new MemoryStream(part.ImagePath));

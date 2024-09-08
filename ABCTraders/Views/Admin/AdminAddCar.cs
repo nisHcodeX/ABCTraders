@@ -214,9 +214,11 @@ namespace ABCTraders.Views.Admin
             {
                 return new Validation { IsValid = false, Message = "Invalid. Price must be reasonable" };
             }
-            if (description.Length < 20)
+            var controller = new AdminController();
+            var isPartAvailable = controller.IsCarExist(vin.Trim());
+            if (isPartAvailable)
             {
-                return new Validation { IsValid = false, Message = "Invalid. Add valide description" };
+                return new Validation { IsValid = false, Message = "Vehicle available for Your entered VIN" };
             }
             return new Validation
             {
@@ -241,14 +243,14 @@ namespace ABCTraders.Views.Admin
             AddCarTbl.Rows.Clear();
             var activeStatus = Drop_CarStatus.SelectedIndex;
             var getAllCarsController = new AdminController();
-            var carCurrentStatus = 0;
+            var carActiveStatus = (int)StockStatus.Available;
 
-            if(activeStatus == 0)
+            if(activeStatus == (int)StockStatus.Available)
             {
-                carCurrentStatus = 1;
+                carActiveStatus = 1;
             }
 
-            var cars = getAllCarsController.GetAllCarsByStatus(carCurrentStatus);
+            var cars = getAllCarsController.GetAllCarsByStatus(carActiveStatus);
             var sortedCars = cars.FindAll(car => car.Status == (int)CarStatus.Available);
 
             foreach (var car in sortedCars)
@@ -398,7 +400,7 @@ namespace ABCTraders.Views.Admin
         {
             ResetForm();
             PopulateCarTable();
-            if(Drop_CarStatus.SelectedIndex == 1)
+            if(Drop_CarStatus.SelectedIndex == (int)StockStatus.Deleted)
             {
                 AddCarDeleteBtn.Visible = false;
                 AddCarSaveBtn.Visible = false;

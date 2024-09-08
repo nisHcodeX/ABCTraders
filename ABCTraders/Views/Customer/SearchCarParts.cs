@@ -53,7 +53,7 @@ namespace ABCTraders.Views.Customer
         {
             Tbl_CarPartsList.Rows.Clear();
             var getAllCarPartsController = new AdminController();
-            var partList = getAllCarPartsController.GetAllCarParts(0);
+            var partList = getAllCarPartsController.GetAllCarParts();
             foreach (var part in partList)
             {
                 Tbl_CarPartsList.Rows.Add(new object[]
@@ -79,7 +79,7 @@ namespace ABCTraders.Views.Customer
                 var carPartId = (int)selectedCar.Cells[0].Value;
 
                 var controller = new AdminController();
-                var part = controller.GetAllCarParts(0).Find(x => x.Id == carPartId);
+                var part = controller.GetAllCarParts().Find(x => x.Id == carPartId);
 
                 if (part != null)
                 {

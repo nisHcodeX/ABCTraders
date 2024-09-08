@@ -190,7 +190,6 @@ namespace ABCTraders.Repository
             }
         }
 
-
         public List<CarDetailsModel> GetAllCarsByStatus(int status)
         {
             try
@@ -233,6 +232,56 @@ namespace ABCTraders.Repository
                     connection.Close();
                 }
                 return carList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public CarDetailsModel GetCarByVin(string vin)
+        {
+            try
+            {
+                var carResult = new CarDetailsModel();
+
+                using (var connection = GetConnection())
+                {
+
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@VIN", vin);
+                        command.CommandText = @"SELECT C.*, M.Name AS ModelName, MN.Name AS ManufacturerName FROM Cars C INNER JOIN Models M on C.ModelId = M.Id INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.VIN =@vin and C.IsActive = 1";
+
+                        var reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            var car = new CarDetailsModel
+                            {
+                                Id = Convert.ToInt32(reader["Id"].ToString()),
+                                VIN = reader["VIN"].ToString(),
+                                Transmission = (Transmission)Convert.ToInt32(reader["Transmission"].ToString()),
+                                Year = Convert.ToInt32(reader["Year"].ToString()),
+                                FuelType = (FuelTypes)Convert.ToInt32(reader["FuelType"].ToString()),
+                                Color = (CarColors)Convert.ToInt32(reader["Color"].ToString()),
+                                Price = Convert.ToDecimal(reader["Price"].ToString()),
+                                Condition = (CarCondition)Convert.ToInt32(reader["Condition"].ToString()),
+                                Description = reader["Description"].ToString(),
+                                ModelName = reader["ModelName"].ToString(),
+                                ManufacturerName = reader["ManufacturerName"].ToString(),
+                                ModelId = Convert.ToInt32(reader["ModelId"].ToString()),
+                                ManufacturerId = Convert.ToInt32(reader["ManufacturerId"].ToString()),
+                                Picture = (byte[])reader["picture"]
+                            };
+                            car = carResult;
+                        }
+                    }
+                    connection.Close();
+                }
+                return carResult;
             }
             catch (Exception ex)
             {
@@ -314,7 +363,7 @@ namespace ABCTraders.Repository
             }
         }
 
-        public List<AddCarPartDetailModel> GetAllCarParts(int status)
+        public List<AddCarPartDetailModel> GetAllCarParts()
         {
             try
             {
@@ -326,8 +375,7 @@ namespace ABCTraders.Repository
 
                     using (var command = connection.CreateCommand())
                     {
-                        command.Parameters.AddWithValue("@status", status);
-                        command.CommandText = @"SELECT C.*, MN.Name AS ManufacturerName FROM CarParts C INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.Status = @status and IsActive = 1";
+                        command.CommandText = @"SELECT C.*, MN.Name AS ManufacturerName FROM CarParts C INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.Status = 0 and IsActive = 1";
 
                         var reader = command.ExecuteReader();
 
@@ -353,6 +401,100 @@ namespace ABCTraders.Repository
                     connection.Close();
                 }
                 return carPartsList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public List<AddCarPartDetailModel> GetAllCarPartsByStatus(int status)
+        {
+            try
+            {
+                var carPartsList = new List<AddCarPartDetailModel>();
+
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@status", status);
+                        command.CommandText = @"SELECT C.*, MN.Name AS ManufacturerName FROM CarParts C INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE IsActive = @status";
+
+                        var reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            var car = new AddCarPartDetailModel
+                            {
+                                Id = Convert.ToInt32(reader["ID"].ToString()),
+                                PartName = reader["PartName"].ToString(),
+                                ManufacturerId = Convert.ToInt32(reader["ManufacturerId"].ToString()),
+                                PartCode = reader["PartCode"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Description = reader["Description"].ToString(),
+                                Price = Convert.ToDecimal(reader["Price"].ToString()),
+                                Condition = (CarCondition)Convert.ToInt32(reader["Condition"].ToString()),
+                                StockQuantity = Convert.ToInt32(reader["StockQuantity"].ToString()),
+                                ImagePath = (byte[])reader["picture"],
+                                ManufacturerName = reader["ManufacturerName"].ToString(),
+                            };
+                            carPartsList.Add(car);
+                        }
+                    }
+                    connection.Close();
+                }
+                return carPartsList;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return null;
+            }
+        }
+
+        public AddCarPartDetailModel GetCarPartByPartCode(string code)
+        {
+            try
+            {
+                var carPartResult = new AddCarPartDetailModel();
+
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@PartCode", code);
+                        command.CommandText = @"SELECT C.*, MN.Name AS ManufacturerName FROM CarParts C INNER JOIN Manufacturers MN ON C.ManufacturerId = MN.Id WHERE C.PartCode = @PartCode AND C.IsActive = @status";
+
+                        var reader = command.ExecuteReader();
+
+                        while (reader.Read())
+                        {
+                            var part = new AddCarPartDetailModel
+                            {
+                                Id = Convert.ToInt32(reader["ID"].ToString()),
+                                PartName = reader["PartName"].ToString(),
+                                ManufacturerId = Convert.ToInt32(reader["ManufacturerId"].ToString()),
+                                PartCode = reader["PartCode"].ToString(),
+                                Category = reader["Category"].ToString(),
+                                Description = reader["Description"].ToString(),
+                                Price = Convert.ToDecimal(reader["Price"].ToString()),
+                                Condition = (CarCondition)Convert.ToInt32(reader["Condition"].ToString()),
+                                StockQuantity = Convert.ToInt32(reader["StockQuantity"].ToString()),
+                                ImagePath = (byte[])reader["picture"],
+                                ManufacturerName = reader["ManufacturerName"].ToString(),
+                            };
+                            carPartResult = part;
+                        }
+                    }
+                    connection.Close();
+                }
+                return carPartResult;
             }
             catch (Exception ex)
             {

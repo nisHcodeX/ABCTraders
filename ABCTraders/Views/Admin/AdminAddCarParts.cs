@@ -13,6 +13,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static ABCTraders.Common.AbcEnums;
 
 namespace ABCTraders.Views.Admin
 {
@@ -109,13 +110,16 @@ namespace ABCTraders.Views.Admin
             {
                 return new Validation { IsValid = false, Message = "Invalid. Please fill all fields" };
             };
+            
             if (price < 100)
             {
                 return new Validation { IsValid = false, Message = "Invalid. Price must be reasonable" };
             }
-            if (description.Length < 15)
+            var controller = new AdminController();
+            var isPartAvailable = controller.IsPartExist(partCode.Trim());
+            if (isPartAvailable)
             {
-                return new Validation { IsValid = false, Message = "Invalid. Add valide description" };
+                return new Validation { IsValid = false, Message = "Part Code You entered is available" };
             }
             return new Validation
             {
@@ -174,7 +178,16 @@ namespace ABCTraders.Views.Admin
             AddCarPartsTbl.Rows.Clear();
             var status = Drop_PartStatus.SelectedIndex;
             var getAllCarPartsController = new AdminController();
-            var cars = getAllCarPartsController.GetAllCarParts(status);
+            var partActiveStatus = (int)StockStatus.Available;
+            if (status == (int)StockStatus.Available)
+            {
+                partActiveStatus = 1;
+            }
+            var cars = getAllCarPartsController.GetAllCarPartsByStatus(partActiveStatus);
+            if(status == (int)StockStatus.OutOfStock)
+            {
+                cars = getAllCarPartsController.GetAllCarPartsByStatus((int)StockStatus.Available).FindAll(part => part.StockQuantity == 0);
+            }
             foreach (var car in cars)
             {
                 AddCarPartsTbl.Rows.Add(new object[]
@@ -212,7 +225,7 @@ namespace ABCTraders.Views.Admin
                 var carPartId = (int)selectedCar.Cells[0].Value;
 
                 var controller = new AdminController();
-                var part = controller.GetAllCarParts(status).Find(x => x.Id == carPartId);
+                var part = controller.GetAllCarParts().Find(x => x.Id == carPartId);
 
                 if (part != null)
                 {
@@ -248,7 +261,7 @@ namespace ABCTraders.Views.Admin
             AddCarPartCodeTxt.Text = string.Empty;
             AddCarPartNameText.Text = string.Empty;
             AddCarPartConditionDrop.SelectedIndex = 0;
-            AddCarPartManufCombBx.SelectedIndex = 0;
+            //AddCarPartManufCombBx.SelectedIndex = 0;
             AddCarPartDescriptionTxt.Text = string.Empty;
             AddCarPartPriceNumeric.Value = 0;
             AddCarPartQuantityNumeric.Value = 1;
@@ -261,6 +274,13 @@ namespace ABCTraders.Views.Admin
 
         private void Drop_PartStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if(Drop_PartStatus.SelectedIndex == (int)StockStatus.Deleted)
+            {
+                AddCarPartDeleteBtn.Visible = false;
+                AddCarPartSaveBtn.Visible = false;  
+                AddCarPartPhotoBtn.Visible = false;
+            }
+            ResetForm();
             PopulateCarPartTable();
         }
 

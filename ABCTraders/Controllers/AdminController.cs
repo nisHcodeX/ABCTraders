@@ -38,6 +38,49 @@ namespace ABCTraders.Controllers
             return false;
         }
 
+        public int DeleteCar(int carId)
+        {
+            var adminRepository = new AdminRepository();
+            var result = adminRepository.DeleteCarById(carId);
+            return result;
+        }
+
+        public bool UpdateCarStatus(int Id, int status)
+        {
+            var adminRepository = new AdminRepository();
+
+            var carStatusUpdated = adminRepository.UpdateCarStatus(Id, status);
+            if (carStatusUpdated > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool IsCarExist(string vin)
+        {
+            var adminRepository = new AdminRepository();
+
+            var car = adminRepository.GetCarByVin(vin);
+            if (car != null)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public List<CarDetailsModel> GetAllCars()
+        {
+            var adminRepository = new AdminRepository();
+            return adminRepository.GetAllCars();
+        }
+
+        public List<CarDetailsModel> GetAllCarsByStatus(int status)
+        {
+            var adminRepository = new AdminRepository();
+            return adminRepository.GetAllCarsByStatus(status);
+        }
+    
         public bool AddCarPart(AddCarPartDto dto)
         {
 
@@ -49,17 +92,6 @@ namespace ABCTraders.Controllers
                 return true;
             }
             return false;
-        }
-
-        public List<CarDetailsModel> GetAllCarsByStatus(int status)
-        {
-            var adminRepository = new AdminRepository();
-            return adminRepository.GetAllCarsByStatus(status);
-        }
-        public List<CarDetailsModel> GetAllCars()
-        {
-            var adminRepository = new AdminRepository();
-            return adminRepository.GetAllCars();
         }
 
         public bool UpdateCarPart(int id, AddCarPartDto dto)
@@ -75,31 +107,17 @@ namespace ABCTraders.Controllers
             return false;
         }
 
-        
-
-        public List<AddCarPartDetailModel> GetAllCarParts(int status)
+        public bool IsPartExist(string code)
         {
             var adminRepository = new AdminRepository();
-            return adminRepository.GetAllCarParts(status);
-        }
 
-        public List<Manufacturer> GetAllManufacturers()
-        {
-            var adminRepository = new AdminRepository();
-            return adminRepository.GetAllManufacturers();
-        }
+            var part = adminRepository.GetCarPartByPartCode(code);
 
-        public List<CarModel> GetAllModels(int id)
-        {
-            var adminRepository = new AdminRepository();
-            return adminRepository.GetAllModels(id);
-        }
-
-        public int DeleteCar(int carId)
-        {
-            var adminRepository = new AdminRepository();
-            var result = adminRepository.DeleteCarById(carId);
-            return result;
+            if (part != null)
+            {
+                return true;
+            }
+            return false;
         }
 
         public int DeleteCarPart(int partId)
@@ -110,29 +128,16 @@ namespace ABCTraders.Controllers
             return result;
         }
 
-        public bool UpdateCarStatus(int Id, int status)
+        public List<AddCarPartDetailModel> GetAllCarParts()
         {
             var adminRepository = new AdminRepository();
-
-            var carStatusUpdated = adminRepository.UpdateCarStatus( Id, status);
-            if (carStatusUpdated > 0)
-            {
-                return true;
-            }
-            return false;
+            return adminRepository.GetAllCarParts();
         }
-        
-        public bool UpdateCarPartStatus( int Id, int status)
+
+        public List<AddCarPartDetailModel> GetAllCarPartsByStatus(int status)
         {
             var adminRepository = new AdminRepository();
-
-            var partStatusUpdated = adminRepository.UpdateCarPartStatus(Id, status);
-
-            if (partStatusUpdated > 0)
-            {
-                return true;
-            }
-            return false;
+            return adminRepository.GetAllCarPartsByStatus(status);
         }
 
         public bool UpdateCarPartStock(int Id, int stock)
@@ -148,6 +153,18 @@ namespace ABCTraders.Controllers
             return false;
         }
 
+        public List<Manufacturer> GetAllManufacturers()
+        {
+            var adminRepository = new AdminRepository();
+            return adminRepository.GetAllManufacturers();
+        }
+
+        public List<CarModel> GetAllModels(int id)
+        {
+            var adminRepository = new AdminRepository();
+            return adminRepository.GetAllModels(id);
+        }
+ 
         public bool UpdateCustomer(int Id, CustomerDto dto)
         {
             var adminRepository = new AdminRepository();

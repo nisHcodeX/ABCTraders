@@ -37,10 +37,10 @@ namespace ABCTraders.Controllers
             return false;
         }
 
-        public List<AddCarPartDetailModel> GetAllCarParts(int status)
+        public List<AddCarPartDetailModel> GetAllCarParts()
         {
             var adminRepository = new AdminRepository();
-            return adminRepository.GetAllCarParts(status);
+            return adminRepository.GetAllCarParts();
         }
 
 
