@@ -95,15 +95,12 @@ namespace ABCTraders.Views.Admin
             Lbl_Delivered.Text = (deliveredCar + deliveredPart).ToString();
 
             Chart_Admin.Titles.Add("ABC Traders");
-            Chart_Admin.Series.Add("pending");
-            Chart_Admin.Series["pending"].Points.AddXY("Pending", (deliveredCar + deliveredPart).ToString());
-            Chart_Admin.Series["pending"].ChartType = SeriesChartType.Column;
-            Chart_Admin.Series.Add("approved");
-            Chart_Admin.Series["approved"].Points.AddXY("approved", (deliveredCar + deliveredPart).ToString());
-            Chart_Admin.Series.Add("delivered");
-            Chart_Admin.Series["delivered"].Points.AddXY("delivered", (deliveredCar + deliveredPart).ToString());
-            Chart_Admin.Series.Add("customers");
-            Chart_Admin.Series["customers"].Points.AddXY("customers", (deliveredCar + deliveredPart).ToString());
+            Chart_Admin.Series["category"].Points.AddXY("Pending" + $" ({pendingCar + pendingPart})", (pendingCar + pendingPart).ToString());
+            Chart_Admin.Series["category"].Points.AddXY("approved" + $" ({approvedCar + approvedPart})", (approvedCar + approvedPart).ToString());
+            Chart_Admin.Series["category"].Points.AddXY("delivered" + $" ({deliveredCar + deliveredPart})", (deliveredCar + deliveredPart).ToString());
+            Chart_Admin.Series["category"].Points.AddXY("customers" + $" ({GetCustomerCout()})", GetCustomerCout());
+
+
         }
 
     }

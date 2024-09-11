@@ -224,7 +224,8 @@ namespace ABCTraders.Repository
                                 ManufacturerName = reader["ManufacturerName"].ToString(),
                                 ModelId = Convert.ToInt32(reader["ModelId"].ToString()),
                                 ManufacturerId = Convert.ToInt32(reader["ManufacturerId"].ToString()),
-                                Picture = (byte[])reader["picture"]
+                                Picture = (byte[])reader["picture"],
+                                Status = Convert.ToInt32(reader["Status"].ToString()),
                             };
                             carList.Add(car);
                         }

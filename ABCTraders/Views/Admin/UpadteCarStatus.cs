@@ -21,7 +21,7 @@ namespace ABCTraders.Views.Admin
         private void UpadteCarStatus_Load(object sender, EventArgs e)
         {
             Drop_CarOrderStatus.SelectedIndex = 1;
-            Drop_UpdatePartOrderStatus.SelectedIndex = 1;
+            Drop_UpdateCarOrderStatus.SelectedIndex = 1;
             PopulateCarTable();
 
         }
@@ -35,17 +35,19 @@ namespace ABCTraders.Views.Admin
         {
             var orderContorller = new OrderController();
             var carList = orderContorller.GetAllCarOrdersByStatus(Drop_CarOrderStatus.SelectedIndex);
-            Tbl_CarAdmin.Rows.Clear();
+            Tbl_OrderCarAdmin.Rows.Clear();
             foreach (var car in carList)
             {
-                Tbl_CarAdmin.Rows.Add(new object[]
+                Tbl_OrderCarAdmin.Rows.Add(new object[]
                 {
                     car.Id,
                     car.ModelName,
                     car.ManufacturerName,
-                    car.Price,
                     car.FristName,
-                    car.Email
+                    car.VIN,
+                    car.Price,
+                    car.Email,
+                    car.Description
                 });
             }
         }
@@ -53,6 +55,23 @@ namespace ABCTraders.Views.Admin
         private void Drop_CarOrderStatus_SelectedIndexChanged(object sender, EventArgs e)
         {
             PopulateCarTable();
+        }
+
+        private void Btn_UpadteCarStatus_Click(object sender, EventArgs e)
+        {
+            if (Tbl_OrderCarAdmin.Rows.Count > 0)
+            {
+                var selectedIdx = Tbl_OrderCarAdmin.CurrentCell.RowIndex;
+                var selectedCar = Tbl_OrderCarAdmin.Rows[selectedIdx];
+                var carId = (int)selectedCar.Cells[0].Value;
+                var selectedStatus = Drop_UpdateCarOrderStatus.SelectedIndex;
+                var adminController = new AdminController();
+                var updateStatus = adminController.UpdateCarStatus(carId, selectedStatus);
+            }
+            else
+            {
+                MessageBox.Show("Please select a car first to update", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

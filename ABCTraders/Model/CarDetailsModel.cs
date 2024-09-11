@@ -2,7 +2,7 @@
 
 namespace ABCTraders.Model
 {
-    internal class CarDetailsModel: BaseModel
+    internal class CarDetailsModel : BaseModel
     {
         public string ModelName { get; set; }
 
@@ -29,5 +29,6 @@ namespace ABCTraders.Model
         public byte[] Picture { get; set; }
         public int ModelId { get; set; }
         public int ManufacturerId { get; set; }
+
     }
 }

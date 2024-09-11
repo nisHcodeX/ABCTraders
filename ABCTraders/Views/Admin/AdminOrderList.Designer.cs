@@ -94,7 +94,7 @@
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
+            series1.Name = "category";
             this.Chart_Admin.Series.Add(series1);
             this.Chart_Admin.Size = new System.Drawing.Size(536, 372);
             this.Chart_Admin.TabIndex = 30;
