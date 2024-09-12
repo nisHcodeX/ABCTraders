@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -66,6 +67,7 @@ namespace ABCTraders.Views.Customer
                 {
                     Tbl_CarOrderList.Rows.Add(new object[]
                     {
+                        car.Id,
                         car.ManufacturerName,
                         car.ModelName,
                         car.Description,
@@ -77,7 +79,6 @@ namespace ABCTraders.Views.Customer
                     });
                 }
             }
-            //var controller = controller.GetAllCarOrders(())
         }
 
         private void PopulateCarPartOrderTable()
@@ -85,17 +86,21 @@ namespace ABCTraders.Views.Customer
             var controller = new OrderController();
             var carPartOrderList = controller.GetAllCarPartOrdersByCustomer(customerId);
             Tbl_CarPartOrderList.Rows.Clear();
+            var loader = new CommonLoader();
             if (carPartOrderList != null)
             {
                 foreach (var part in carPartOrderList)
                 {
                     Tbl_CarPartOrderList.Rows.Add(new object[]
                     {
+                        part.Id,
                         part.PartName,
                         part.PartCode,
+                        loader.GetCategoryName(part.Category),
                         part.Description,
                         part.Price,
-                        part.Conditon,
+                        loader.GetConditionName(part.Conditon),
+                        part.Quantity,
                         part.OrderedDate,
                         part.ApprovedDate,
                         part.DeliveredDate
@@ -149,6 +154,11 @@ namespace ABCTraders.Views.Customer
             Lbl_CancelledOrders.Text = (cancelledCar + cancelledPart).ToString();
             Lbl_CancelledCar.Text = cancelledCar.ToString();
             Lbl_CancelledPart.Text = cancelledPart.ToString();
+        }
+
+        private void Tbl_CarOrderList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

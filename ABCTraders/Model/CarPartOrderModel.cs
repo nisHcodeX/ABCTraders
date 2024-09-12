@@ -9,15 +9,24 @@ namespace ABCTraders.Model
     internal class CarPartOrderModel
     {
         public int Id { get; set; }
-        
+
+        public byte[] Picture { get; set; }
+
         public int CustomerId { get; set; }
+        public int Category { get; set; }
+
         public string PartName { get; set; }
+
         public string PartCode { get; set; }
+
         public string FristName { get; set; }
 
         public decimal Price { get; set; }
+
         public int Quantity { get; set; }
+
         public int Conditon { get; set; }
+
         public int Status { get; set; }
 
         public string Email { get; set; }

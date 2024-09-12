@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,10 +10,19 @@ namespace ABCTraders.Model
     internal class CarOrderModel
     {
         public int Id { get; set; }
+
+        public int CarId { get; set; }
+
+        public byte[] Picture { get; set; } 
+
         public int CustomerId { get; set; }
+
         public string ManufacturerName { get; set; }
+
         public string ModelName { get; set; }
+
         public string FristName { get; set; }
+
         public string VIN { get; set; }
 
         public decimal Price { get; set; }

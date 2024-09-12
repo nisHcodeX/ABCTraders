@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static ABCTraders.Common.AbcEnums;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace ABCTraders.Repository
 {
@@ -31,6 +32,110 @@ namespace ABCTraders.Repository
                         command.Parameters.Add("@Status", SqlDbType.Int).Value = dto.Status;
                         command.Parameters.Add("@Price", SqlDbType.Decimal).Value = dto.Price;
                         command.Parameters.Add("@IsActive ", SqlDbType.Bit).Value = 1;
+
+                        var reader = command.ExecuteReader();
+                    }
+                    connection.Close();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
+        public int UpdateCarOrderByAdmin(int orderId, int status)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@Id", orderId);                      
+                        command.Parameters.AddWithValue("@Status", status);                      
+                        command.CommandText = "UPDATE CarOrders SET ApprovedDate = GETDATE(), Status = @Status WHERE Id = @Id AND IsActive = 1;";
+
+                        var reader = command.ExecuteReader();
+                    }
+                    connection.Close();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
+        public int UpdateCarOrder(int orderId, int status)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@Id", orderId);
+                        command.Parameters.AddWithValue("@Status", status);
+                        command.CommandText = @"UPDATE CarOrders SET DeliveredDate = GETDATE(), Status=@Status WHERE Id = @Id AND IsActive = 1;";
+
+                        var reader = command.ExecuteReader();
+                    }
+                    connection.Close();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
+        public int UpdateCarPartOrderByAdmin(int orderId, int status)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@Id", orderId);
+                        command.Parameters.AddWithValue("@Status", status);
+                        command.CommandText = @"UPDATE CarPartOrders SET ApprovedDate = GETDATE(), Status=@Status WHERE Id = @Id AND IsActive = 1;";
+
+                        var reader = command.ExecuteReader();
+                    }
+                    connection.Close();
+                }
+                return 1;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return 0;
+            }
+        }
+
+        public int UpdateCarPartOrder(int orderId, int status)
+        {
+            try
+            {
+                using (var connection = GetConnection())
+                {
+                    connection.Open();
+                    using (var command = connection.CreateCommand())
+                    {
+                        command.Parameters.AddWithValue("@Id", orderId);
+                        command.Parameters.AddWithValue("@Status", status);
+                        command.CommandText = @"UPDATE CarPartOrders SET DeliveredDate = GETDATE(), Status=@Status WHERE Id = @Id AND IsActive = 1;";
 
                         var reader = command.ExecuteReader();
                     }
@@ -90,7 +195,7 @@ namespace ABCTraders.Repository
                     using (var command = connection.CreateCommand())
                     {
                         command.Parameters.AddWithValue("@status", status);
-                        command.CommandText = @"SELECT CO.*, C.FirstName,C.Email, M.Name AS ModelName, MN.Name as ManufactureName, CR.VIN, CR.Description, CR.Condition From CarOrders CO 
+                        command.CommandText = @"SELECT CO.*, C.FirstName,C.Email, M.Name AS ModelName, MN.Name as ManufactureName, CR.VIN, CR.Description, CR.Condition, CR.Id as CarId, CR.Picture From CarOrders CO 
                         INNER JOIN Customers C ON CO.CustomerId = C.ID INNER JOIN Cars CR ON CO.CarId = CR.Id 
                         INNER JOIN Models M on CR.ModelId = M.Id 
                         INNER JOIN Manufacturers MN on M.ManufacturerId = MN.Id Where CO.IsActive = 1 AND CO.Status = @status";
@@ -102,6 +207,8 @@ namespace ABCTraders.Repository
                             var car = new CarOrderModel
                             {
                                 Id = Convert.ToInt32(reader["Id"].ToString()),
+                                CarId = Convert.ToInt32(reader["CarId"].ToString()),
+                                Picture = (byte[])reader["Picture"],
                                 CustomerId = Convert.ToInt32(reader["CustomerId"].ToString()),
                                 VIN = reader["VIN"].ToString(),
                                 Price = Convert.ToDecimal(reader["Price"].ToString()),
@@ -143,7 +250,7 @@ namespace ABCTraders.Repository
                     using (var command = connection.CreateCommand())
                     {
                         command.Parameters.AddWithValue("@status", status);
-                        command.CommandText = @"SELECT CO.*, C.Email, C.Id as CustomerId,  CP.PartCode, C.FirstName, CP.Condition, CP.PartName, CP.Category, CP.Description FROM CarPartOrders CO INNER JOIN Customers C ON CO.CustomerId = C.ID INNER JOIN CarParts CP ON CO.PartId = CP.ID Where CO.IsActive = 1 AND CO.Status=@status";
+                        command.CommandText = @"SELECT CO.*, C.Email, C.Id as CustomerId,  CP.PartCode, C.FirstName, CP.Condition, CP.PartName, CP.Category, CP.Description, CP.Picture FROM CarPartOrders CO INNER JOIN Customers C ON CO.CustomerId = C.ID INNER JOIN CarParts CP ON CO.PartId = CP.ID Where CO.IsActive = 1 AND CO.Status=@status";
 
                         var reader = command.ExecuteReader();
 
@@ -152,6 +259,8 @@ namespace ABCTraders.Repository
                             var carPart = new CarPartOrderModel
                             {
                                 Id = Convert.ToInt32(reader["Id"].ToString()),
+                                Picture = (byte[])reader["Picture"],
+                                PartCode = reader["PartCode"].ToString(),
                                 CustomerId = Convert.ToInt32(reader["CustomerId"].ToString()),
                                 PartName = Convert.ToString(reader["PartName"].ToString()),
                                 Price = Convert.ToDecimal(reader["FullPrice"].ToString()),
@@ -245,7 +354,7 @@ namespace ABCTraders.Repository
                     using (var command = connection.CreateCommand())
                     {
                         command.Parameters.AddWithValue("@customerId", customerId);
-                        command.CommandText = @"SELECT CO.*, C.Email, C.Id as CustomerId, C.FirstName, CP.Condition, CP.PartName, CP.Category, CP.Description, CP.PartCode FROM CarPartOrders CO INNER JOIN Customers C ON CO.CustomerId = C.ID INNER JOIN CarParts CP ON CO.PartId = CP.ID Where CO.IsActive = 1 AND CO.CustomerId=@customerId";
+                        command.CommandText = @"SELECT CO.*, C.Email, C.Id as CustomerId, C.FirstName, CP.Condition, CP.PartName, CP.Category, CP.Description, CP.PartCode, CP.Picture  FROM CarPartOrders CO INNER JOIN Customers C ON CO.CustomerId = C.ID INNER JOIN CarParts CP ON CO.PartId = CP.ID Where CO.IsActive = 1 AND CO.CustomerId=@customerId";
 
                         var reader = command.ExecuteReader();
 
@@ -254,6 +363,9 @@ namespace ABCTraders.Repository
                             var carPart = new CarPartOrderModel
                             {
                                 Id = Convert.ToInt32(reader["Id"].ToString()),
+                                Picture = (byte[])reader["Picture"],
+                                Category = Convert.ToInt32(reader["Category"].ToString()),
+                                PartCode = reader["PartCode"].ToString(),
                                 CustomerId = Convert.ToInt32(reader["CustomerId"].ToString()),
                                 PartName = Convert.ToString(reader["PartName"].ToString()),
                                 Price = Convert.ToDecimal(reader["FullPrice"].ToString()),

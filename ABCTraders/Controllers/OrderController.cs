@@ -35,6 +35,57 @@ namespace ABCTraders.Controllers
             return false;
         }
 
+        public bool UpdateCarOrderByAdmin(int id, int status)
+        {
+
+            var orderRepository = new OrderRepository();
+            var carOrder = orderRepository.UpdateCarOrderByAdmin(id, status);
+
+            if (carOrder > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdateCarOrder(int id, int status)
+        {
+
+            var orderRepository = new OrderRepository();
+            var carOrder = orderRepository.UpdateCarOrder(id, status);
+
+            if (carOrder > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdateCarPartOrder(int id, int status)
+        {
+
+            var orderRepository = new OrderRepository();
+            var carOrder = orderRepository.UpdateCarPartOrder(id, status);
+
+            if (carOrder > 0)
+            {
+                return true;
+            }
+            return false;
+        }
+
+        public bool UpdateCarPartOrderByAdmin(int id, int status)
+        {
+
+            var orderRepository = new OrderRepository();
+            var carOrder = orderRepository.UpdateCarPartOrderByAdmin(id, status);
+
+            if (carOrder > 0)
+            {
+                return true;
+            }
+            return false;
+        }
         public List<CarOrderModel> GetAllCarOrdersByStatus(int status)
         {
             var orderRepository = new OrderRepository();

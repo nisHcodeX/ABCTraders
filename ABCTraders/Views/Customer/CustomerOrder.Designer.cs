@@ -54,6 +54,24 @@
             this.Drop_OrderType = new System.Windows.Forms.ComboBox();
             this.AddCarConditionLabel = new System.Windows.Forms.Label();
             this.Tbl_CarPartOrderList = new System.Windows.Forms.DataGridView();
+            this.Tbl_CarOrderList = new System.Windows.Forms.DataGridView();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.Lbl_CancelledPart = new System.Windows.Forms.Label();
+            this.Lbl_CancelledCar = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.Lbl_CancelledOrders = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ApprovedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DeliveredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PartCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,23 +81,7 @@
             this.Quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ApproveDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DelivereDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tbl_CarOrderList = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Model = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ApprovedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DeliveredDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.Lbl_CancelledPart = new System.Windows.Forms.Label();
-            this.Lbl_CancelledCar = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.Lbl_CancelledOrders = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.DeliverdDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -395,6 +397,7 @@
             this.Tbl_CarPartOrderList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Tbl_CarPartOrderList.ColumnHeadersHeight = 29;
             this.Tbl_CarPartOrderList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.OrderId,
             this.PartName,
             this.PartCode,
             this.Category,
@@ -404,83 +407,13 @@
             this.Quantity,
             this.OrderDate,
             this.ApproveDate,
-            this.DelivereDate});
+            this.DeliverdDate});
             this.Tbl_CarPartOrderList.Location = new System.Drawing.Point(31, 360);
             this.Tbl_CarPartOrderList.Name = "Tbl_CarPartOrderList";
             this.Tbl_CarPartOrderList.RowHeadersWidth = 51;
             this.Tbl_CarPartOrderList.RowTemplate.Height = 24;
             this.Tbl_CarPartOrderList.Size = new System.Drawing.Size(1118, 314);
             this.Tbl_CarPartOrderList.TabIndex = 113;
-            // 
-            // PartName
-            // 
-            this.PartName.HeaderText = "PartName";
-            this.PartName.MinimumWidth = 6;
-            this.PartName.Name = "PartName";
-            this.PartName.Width = 125;
-            // 
-            // PartCode
-            // 
-            this.PartCode.HeaderText = "PartCode";
-            this.PartCode.MinimumWidth = 6;
-            this.PartCode.Name = "PartCode";
-            this.PartCode.Width = 125;
-            // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.MinimumWidth = 6;
-            this.Category.Name = "Category";
-            this.Category.Width = 125;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.MinimumWidth = 6;
-            this.Description.Name = "Description";
-            this.Description.Width = 125;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.MinimumWidth = 6;
-            this.Price.Name = "Price";
-            this.Price.Width = 125;
-            // 
-            // Condition
-            // 
-            this.Condition.HeaderText = "Condition";
-            this.Condition.MinimumWidth = 6;
-            this.Condition.Name = "Condition";
-            this.Condition.Width = 125;
-            // 
-            // Quantity
-            // 
-            this.Quantity.HeaderText = "Quantity";
-            this.Quantity.MinimumWidth = 6;
-            this.Quantity.Name = "Quantity";
-            this.Quantity.Width = 125;
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.HeaderText = "OrderDate";
-            this.OrderDate.MinimumWidth = 6;
-            this.OrderDate.Name = "OrderDate";
-            this.OrderDate.Width = 125;
-            // 
-            // ApproveDate
-            // 
-            this.ApproveDate.HeaderText = "ApproveDate";
-            this.ApproveDate.MinimumWidth = 6;
-            this.ApproveDate.Name = "ApproveDate";
-            this.ApproveDate.Width = 125;
-            // 
-            // DelivereDate
-            // 
-            this.DelivereDate.HeaderText = "DelivereDate";
-            this.DelivereDate.MinimumWidth = 6;
-            this.DelivereDate.Name = "DelivereDate";
-            this.DelivereDate.Width = 125;
             // 
             // Tbl_CarOrderList
             // 
@@ -491,6 +424,7 @@
             this.Tbl_CarOrderList.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Tbl_CarOrderList.ColumnHeadersHeight = 29;
             this.Tbl_CarOrderList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
             this.dataGridViewTextBoxColumn3,
             this.Model,
             this.dataGridViewTextBoxColumn6,
@@ -499,68 +433,13 @@
             this.OrderedDate,
             this.ApprovedDate,
             this.DeliveredDate});
-            this.Tbl_CarOrderList.Location = new System.Drawing.Point(31, 360);
+            this.Tbl_CarOrderList.Location = new System.Drawing.Point(32, 363);
             this.Tbl_CarOrderList.Name = "Tbl_CarOrderList";
             this.Tbl_CarOrderList.RowHeadersWidth = 51;
             this.Tbl_CarOrderList.RowTemplate.Height = 24;
             this.Tbl_CarOrderList.Size = new System.Drawing.Size(1118, 314);
             this.Tbl_CarOrderList.TabIndex = 114;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.HeaderText = "Manufacturer";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 125;
-            // 
-            // Model
-            // 
-            this.Model.HeaderText = "Model";
-            this.Model.MinimumWidth = 6;
-            this.Model.Name = "Model";
-            this.Model.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.HeaderText = "Description";
-            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.HeaderText = "Price";
-            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 125;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.HeaderText = "Condition";
-            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.Width = 125;
-            // 
-            // OrderedDate
-            // 
-            this.OrderedDate.HeaderText = "OrderedDate";
-            this.OrderedDate.MinimumWidth = 6;
-            this.OrderedDate.Name = "OrderedDate";
-            this.OrderedDate.Width = 125;
-            // 
-            // ApprovedDate
-            // 
-            this.ApprovedDate.HeaderText = "ApprovedDate";
-            this.ApprovedDate.MinimumWidth = 6;
-            this.ApprovedDate.Name = "ApprovedDate";
-            this.ApprovedDate.Width = 125;
-            // 
-            // DeliveredDate
-            // 
-            this.DeliveredDate.HeaderText = "DeliveredDate";
-            this.DeliveredDate.MinimumWidth = 6;
-            this.DeliveredDate.Name = "DeliveredDate";
-            this.DeliveredDate.Width = 125;
+            this.Tbl_CarOrderList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Tbl_CarOrderList_CellContentClick);
             // 
             // panel4
             // 
@@ -643,6 +522,146 @@
             this.label13.TabIndex = 16;
             this.label13.Text = "CANCELLED ORDERS";
             // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Manufacturer";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 125;
+            // 
+            // Model
+            // 
+            this.Model.HeaderText = "Model";
+            this.Model.MinimumWidth = 6;
+            this.Model.Name = "Model";
+            this.Model.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "Description";
+            this.dataGridViewTextBoxColumn6.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "Price";
+            this.dataGridViewTextBoxColumn7.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "Condition";
+            this.dataGridViewTextBoxColumn8.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.Width = 125;
+            // 
+            // OrderedDate
+            // 
+            this.OrderedDate.HeaderText = "OrderedDate";
+            this.OrderedDate.MinimumWidth = 6;
+            this.OrderedDate.Name = "OrderedDate";
+            this.OrderedDate.Width = 125;
+            // 
+            // ApprovedDate
+            // 
+            this.ApprovedDate.HeaderText = "ApprovedDate";
+            this.ApprovedDate.MinimumWidth = 6;
+            this.ApprovedDate.Name = "ApprovedDate";
+            this.ApprovedDate.Width = 125;
+            // 
+            // DeliveredDate
+            // 
+            this.DeliveredDate.HeaderText = "DeliveredDate";
+            this.DeliveredDate.MinimumWidth = 6;
+            this.DeliveredDate.Name = "DeliveredDate";
+            this.DeliveredDate.Width = 125;
+            // 
+            // OrderId
+            // 
+            this.OrderId.HeaderText = "Id";
+            this.OrderId.MinimumWidth = 6;
+            this.OrderId.Name = "OrderId";
+            this.OrderId.Width = 125;
+            // 
+            // PartName
+            // 
+            this.PartName.HeaderText = "PartName";
+            this.PartName.MinimumWidth = 6;
+            this.PartName.Name = "PartName";
+            this.PartName.Width = 125;
+            // 
+            // PartCode
+            // 
+            this.PartCode.HeaderText = "PartCode";
+            this.PartCode.MinimumWidth = 6;
+            this.PartCode.Name = "PartCode";
+            this.PartCode.Width = 125;
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.MinimumWidth = 6;
+            this.Category.Name = "Category";
+            this.Category.Width = 125;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Description";
+            this.Description.MinimumWidth = 6;
+            this.Description.Name = "Description";
+            this.Description.Width = 125;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Price";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            this.Price.Width = 125;
+            // 
+            // Condition
+            // 
+            this.Condition.HeaderText = "Condition";
+            this.Condition.MinimumWidth = 6;
+            this.Condition.Name = "Condition";
+            this.Condition.Width = 125;
+            // 
+            // Quantity
+            // 
+            this.Quantity.HeaderText = "Quantity";
+            this.Quantity.MinimumWidth = 6;
+            this.Quantity.Name = "Quantity";
+            this.Quantity.Width = 125;
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.HeaderText = "OrderDate";
+            this.OrderDate.MinimumWidth = 6;
+            this.OrderDate.Name = "OrderDate";
+            this.OrderDate.Width = 125;
+            // 
+            // ApproveDate
+            // 
+            this.ApproveDate.HeaderText = "ApproveDate";
+            this.ApproveDate.MinimumWidth = 6;
+            this.ApproveDate.Name = "ApproveDate";
+            this.ApproveDate.Width = 125;
+            // 
+            // DeliverdDate
+            // 
+            this.DeliverdDate.HeaderText = "DeliveredDate";
+            this.DeliverdDate.MinimumWidth = 6;
+            this.DeliverdDate.Name = "DeliverdDate";
+            this.DeliverdDate.Width = 125;
+            // 
             // CustomerOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -707,6 +726,14 @@
         private System.Windows.Forms.Label AddCarConditionLabel;
         private System.Windows.Forms.DataGridView Tbl_CarPartOrderList;
         private System.Windows.Forms.DataGridView Tbl_CarOrderList;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label Lbl_CancelledPart;
+        private System.Windows.Forms.Label Lbl_CancelledCar;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label Lbl_CancelledOrders;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderId;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PartCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn Category;
@@ -716,14 +743,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn ApproveDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DelivereDate;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label Lbl_CancelledPart;
-        private System.Windows.Forms.Label Lbl_CancelledCar;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label Lbl_CancelledOrders;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DeliverdDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Model;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
