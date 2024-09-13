@@ -29,5 +29,28 @@ namespace ABCTraders.Common
             }
             else return "";
         }
+
+        public string GetFuelType(int fuelId)
+        {
+
+            string categoryTest = Enum.GetName(typeof(FuelTypes), fuelId);
+            if (categoryTest != null)
+            {
+                return categoryTest;
+            }
+            else return "";
+        }
+
+        public string GetStatus(int stautusId)
+        {
+
+            string categoryTest = Enum.GetName(typeof(CarStatus), stautusId);
+            if (categoryTest != null)
+            {
+                return categoryTest;
+            }
+            else return "";
+        }
+
     }
 }

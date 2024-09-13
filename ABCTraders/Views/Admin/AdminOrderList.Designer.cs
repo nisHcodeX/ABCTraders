@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            this.Btn_JobReport = new System.Windows.Forms.Button();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea5 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend5 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series5 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            this.Btn_ExportCarOrders = new System.Windows.Forms.Button();
             this.Chart_Admin = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel1 = new System.Windows.Forms.Panel();
             this.Lbl_PendingPart = new System.Windows.Forms.Label();
@@ -40,8 +40,8 @@
             this.label9 = new System.Windows.Forms.Label();
             this.Lbl_Pending = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.Btn_ExportPartOrders = new System.Windows.Forms.Button();
+            this.Btn_ExportCustomers = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
@@ -59,8 +59,8 @@
             this.label21 = new System.Windows.Forms.Label();
             this.Lbl_CustomerCount = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.Btn_ExportCars = new System.Windows.Forms.Button();
+            this.Btn_ExportCarParts = new System.Windows.Forms.Button();
             this.Btn_updateCarOrder = new System.Windows.Forms.Button();
             this.Btn_updateCarPartOrder = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.Chart_Admin)).BeginInit();
@@ -70,32 +70,33 @@
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // Btn_JobReport
+            // Btn_ExportCarOrders
             // 
-            this.Btn_JobReport.BackColor = System.Drawing.Color.DarkGray;
-            this.Btn_JobReport.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Btn_JobReport.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Btn_JobReport.Location = new System.Drawing.Point(47, 342);
-            this.Btn_JobReport.Margin = new System.Windows.Forms.Padding(4);
-            this.Btn_JobReport.Name = "Btn_JobReport";
-            this.Btn_JobReport.Size = new System.Drawing.Size(259, 68);
-            this.Btn_JobReport.TabIndex = 28;
-            this.Btn_JobReport.Text = "EXPORT CAR ORDER DATA";
-            this.Btn_JobReport.UseVisualStyleBackColor = false;
+            this.Btn_ExportCarOrders.BackColor = System.Drawing.Color.DarkGray;
+            this.Btn_ExportCarOrders.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_ExportCarOrders.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ExportCarOrders.Location = new System.Drawing.Point(47, 342);
+            this.Btn_ExportCarOrders.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_ExportCarOrders.Name = "Btn_ExportCarOrders";
+            this.Btn_ExportCarOrders.Size = new System.Drawing.Size(259, 68);
+            this.Btn_ExportCarOrders.TabIndex = 28;
+            this.Btn_ExportCarOrders.Text = "EXPORT CAR ORDER DATA";
+            this.Btn_ExportCarOrders.UseVisualStyleBackColor = false;
+            this.Btn_ExportCarOrders.Click += new System.EventHandler(this.Btn_ExportCarOrders_Click);
             // 
             // Chart_Admin
             // 
-            chartArea1.Name = "ChartArea1";
-            this.Chart_Admin.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.Chart_Admin.Legends.Add(legend1);
+            chartArea5.Name = "ChartArea1";
+            this.Chart_Admin.ChartAreas.Add(chartArea5);
+            legend5.Name = "Legend1";
+            this.Chart_Admin.Legends.Add(legend5);
             this.Chart_Admin.Location = new System.Drawing.Point(621, 249);
             this.Chart_Admin.Name = "Chart_Admin";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "category";
-            this.Chart_Admin.Series.Add(series1);
+            series5.ChartArea = "ChartArea1";
+            series5.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series5.Legend = "Legend1";
+            series5.Name = "category";
+            this.Chart_Admin.Series.Add(series5);
             this.Chart_Admin.Size = new System.Drawing.Size(536, 372);
             this.Chart_Admin.TabIndex = 30;
             this.Chart_Admin.Text = "ABC Trader Chart View";
@@ -183,31 +184,33 @@
             this.label1.TabIndex = 16;
             this.label1.Text = "PENDING ORDERS";
             // 
-            // button1
+            // Btn_ExportPartOrders
             // 
-            this.button1.BackColor = System.Drawing.Color.DarkGray;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(332, 342);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(259, 68);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "EXPORT CAR PARTS ORDER DATA";
-            this.button1.UseVisualStyleBackColor = false;
+            this.Btn_ExportPartOrders.BackColor = System.Drawing.Color.DarkGray;
+            this.Btn_ExportPartOrders.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_ExportPartOrders.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ExportPartOrders.Location = new System.Drawing.Point(332, 342);
+            this.Btn_ExportPartOrders.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_ExportPartOrders.Name = "Btn_ExportPartOrders";
+            this.Btn_ExportPartOrders.Size = new System.Drawing.Size(259, 68);
+            this.Btn_ExportPartOrders.TabIndex = 32;
+            this.Btn_ExportPartOrders.Text = "EXPORT CAR PARTS ORDER DATA";
+            this.Btn_ExportPartOrders.UseVisualStyleBackColor = false;
+            this.Btn_ExportPartOrders.Click += new System.EventHandler(this.Btn_ExportPartOrders_Click);
             // 
-            // button2
+            // Btn_ExportCustomers
             // 
-            this.button2.BackColor = System.Drawing.Color.DarkGray;
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(47, 545);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(259, 68);
-            this.button2.TabIndex = 33;
-            this.button2.Text = "EXPORT CUSTOMER DATA";
-            this.button2.UseVisualStyleBackColor = false;
+            this.Btn_ExportCustomers.BackColor = System.Drawing.Color.DarkGray;
+            this.Btn_ExportCustomers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_ExportCustomers.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ExportCustomers.Location = new System.Drawing.Point(47, 545);
+            this.Btn_ExportCustomers.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_ExportCustomers.Name = "Btn_ExportCustomers";
+            this.Btn_ExportCustomers.Size = new System.Drawing.Size(259, 68);
+            this.Btn_ExportCustomers.TabIndex = 33;
+            this.Btn_ExportCustomers.Text = "EXPORT CUSTOMER DATA";
+            this.Btn_ExportCustomers.UseVisualStyleBackColor = false;
+            this.Btn_ExportCustomers.Click += new System.EventHandler(this.Btn_ExportCustomers_Click);
             // 
             // panel2
             // 
@@ -407,31 +410,33 @@
             this.panel4.Size = new System.Drawing.Size(259, 140);
             this.panel4.TabIndex = 34;
             // 
-            // button3
+            // Btn_ExportCars
             // 
-            this.button3.BackColor = System.Drawing.Color.DarkGray;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(47, 448);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(259, 68);
-            this.button3.TabIndex = 35;
-            this.button3.Text = "EXPORT CAR DATA";
-            this.button3.UseVisualStyleBackColor = false;
+            this.Btn_ExportCars.BackColor = System.Drawing.Color.DarkGray;
+            this.Btn_ExportCars.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_ExportCars.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ExportCars.Location = new System.Drawing.Point(47, 448);
+            this.Btn_ExportCars.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_ExportCars.Name = "Btn_ExportCars";
+            this.Btn_ExportCars.Size = new System.Drawing.Size(259, 68);
+            this.Btn_ExportCars.TabIndex = 35;
+            this.Btn_ExportCars.Text = "EXPORT CAR DATA";
+            this.Btn_ExportCars.UseVisualStyleBackColor = false;
+            this.Btn_ExportCars.Click += new System.EventHandler(this.Btn_ExportCars_Click);
             // 
-            // button4
+            // Btn_ExportCarParts
             // 
-            this.button4.BackColor = System.Drawing.Color.DarkGray;
-            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button4.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(332, 448);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(259, 68);
-            this.button4.TabIndex = 36;
-            this.button4.Text = "EXPORT CAR PART DATA";
-            this.button4.UseVisualStyleBackColor = false;
+            this.Btn_ExportCarParts.BackColor = System.Drawing.Color.DarkGray;
+            this.Btn_ExportCarParts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Btn_ExportCarParts.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Btn_ExportCarParts.Location = new System.Drawing.Point(332, 448);
+            this.Btn_ExportCarParts.Margin = new System.Windows.Forms.Padding(4);
+            this.Btn_ExportCarParts.Name = "Btn_ExportCarParts";
+            this.Btn_ExportCarParts.Size = new System.Drawing.Size(259, 68);
+            this.Btn_ExportCarParts.TabIndex = 36;
+            this.Btn_ExportCarParts.Text = "EXPORT CAR PART DATA";
+            this.Btn_ExportCarParts.UseVisualStyleBackColor = false;
+            this.Btn_ExportCarParts.Click += new System.EventHandler(this.Btn_ExportCarParts_Click);
             // 
             // Btn_updateCarOrder
             // 
@@ -468,16 +473,16 @@
             this.ClientSize = new System.Drawing.Size(1223, 724);
             this.Controls.Add(this.Btn_updateCarPartOrder);
             this.Controls.Add(this.Btn_updateCarOrder);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
+            this.Controls.Add(this.Btn_ExportCarParts);
+            this.Controls.Add(this.Btn_ExportCars);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Btn_ExportCustomers);
+            this.Controls.Add(this.Btn_ExportPartOrders);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Chart_Admin);
-            this.Controls.Add(this.Btn_JobReport);
+            this.Controls.Add(this.Btn_ExportCarOrders);
             this.Name = "AdminOrderList";
             this.Text = "AdminOrderList";
             this.Load += new System.EventHandler(this.AdminOrderList_Load);
@@ -496,7 +501,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Btn_JobReport;
+        private System.Windows.Forms.Button Btn_ExportCarOrders;
         private System.Windows.Forms.DataVisualization.Charting.Chart Chart_Admin;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label Lbl_PendingPart;
@@ -505,8 +510,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label Lbl_Pending;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button Btn_ExportPartOrders;
+        private System.Windows.Forms.Button Btn_ExportCustomers;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label Lbl_ApprovedPart;
         private System.Windows.Forms.Label Lbl_ApprovedCar;
@@ -524,8 +529,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label Lbl_CustomerCount;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button Btn_ExportCars;
+        private System.Windows.Forms.Button Btn_ExportCarParts;
         private System.Windows.Forms.Button Btn_updateCarOrder;
         private System.Windows.Forms.Button Btn_updateCarPartOrder;
     }

@@ -92,10 +92,21 @@ namespace ABCTraders.Controllers
             return orderRepository.GetAllCarOrdersByStatus(status);
         }
 
+        public List<CarOrderModel> GetAllCarOrders()
+        {
+            var orderRepository = new OrderRepository();
+            return orderRepository.GetAllCarOrders();
+        }
+
         public List<CarPartOrderModel> GetAllCarPartOrdersByStaus(int status)
         {
             var orderRepository = new OrderRepository();
             return orderRepository.GetAllCarPartOrdersByStatus(status);
+        }
+        public List<CarPartOrderModel> GetAllCarPartOrders()
+        {
+            var orderRepository = new OrderRepository();
+            return orderRepository.GetAllCarPartOrders();
         }
 
         public List<CarOrderModel> GetAllCarOrdersByCustomer(int customerId)

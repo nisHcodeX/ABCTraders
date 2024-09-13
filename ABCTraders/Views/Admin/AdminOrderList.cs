@@ -54,7 +54,7 @@ namespace ABCTraders.Views.Admin
 
         private void Lbl_CustomerCount_Click(object sender, EventArgs e)
         {
-         
+
         }
 
         private void AdminOrderList_Load(object sender, EventArgs e)
@@ -77,16 +77,16 @@ namespace ABCTraders.Views.Admin
             var pendingCar = controller.GetAllCarOrdersByStatus((int)CarStatus.Pending).Count;
             var approvedCar = controller.GetAllCarOrdersByStatus((int)CarStatus.Approved).Count;
             var deliveredCar = controller.GetAllCarOrdersByStatus((int)CarStatus.Delivered).Count;
-            
-            var pendingPart = controller.GetAllCarPartOrdersByStaus((int) CarStatus.Pending).Count;
-            var approvedPart = controller.GetAllCarPartOrdersByStaus((int) CarStatus.Pending).Count;
-            var deliveredPart = controller.GetAllCarPartOrdersByStaus((int) CarStatus.Pending).Count;
+
+            var pendingPart = controller.GetAllCarPartOrdersByStaus((int)CarStatus.Pending).Count;
+            var approvedPart = controller.GetAllCarPartOrdersByStaus((int)CarStatus.Pending).Count;
+            var deliveredPart = controller.GetAllCarPartOrdersByStaus((int)CarStatus.Pending).Count;
 
             Lbl_PendingCar.Text = pendingCar.ToString();
             Lbl_PendingPart.Text = pendingPart.ToString();
             Lbl_Pending.Text = (pendingCar + pendingPart).ToString();
 
-            Lbl_ApprovedCar.Text = approvedCar.ToString();  
+            Lbl_ApprovedCar.Text = approvedCar.ToString();
             Lbl_ApprovedPart.Text = approvedPart.ToString();
             Lbl_Approved.Text = (approvedCar + approvedPart).ToString();
 
@@ -103,5 +103,84 @@ namespace ABCTraders.Views.Admin
 
         }
 
+        [Obsolete]
+        private void Btn_ExportCars_Click(object sender, EventArgs e)
+        {
+            var exportController = new ExportDataController();
+            var isExported = exportController.ExportCustomers();
+
+            if (isExported)
+            {
+                MessageBox.Show("Export Car Details Successfull");
+            }
+            else
+            {
+                MessageBox.Show("Oops! Something went wrong. Please try again later");
+            }
+        }
+
+        [Obsolete]
+        private void Btn_ExportCustomers_Click(object sender, EventArgs e)
+        {
+            var exportController = new ExportDataController();
+            var isExported = exportController.ExportCustomers();
+
+            if (isExported)
+            {
+                MessageBox.Show("Export Customer Details Successfull");
+            }
+            else
+            {
+                MessageBox.Show("Oops! Something went wrong. Please try again later");
+            }
+        }
+
+        [Obsolete]
+        private void Btn_ExportCarParts_Click(object sender, EventArgs e)
+        {
+            var exportController = new ExportDataController();
+            var isExported = exportController.ExportCarParts();
+
+            if (isExported)
+            {
+                MessageBox.Show("Export Car Parts Details Successfull");
+            }
+            else
+            {
+                MessageBox.Show("Oops! Something went wrong. Please try again later");
+            }
+        }
+
+        [Obsolete]
+        private void Btn_ExportCarOrders_Click(object sender, EventArgs e)
+        {
+            var exportController = new ExportDataController();
+            var isExported = exportController.ExportCarOrders();
+
+            if (isExported)
+            {
+                MessageBox.Show("Export Car Orders Details Successfull");
+            }
+            else
+            {
+                MessageBox.Show("Oops! Something went wrong. Please try again later");
+            }
+        }
+
+        [Obsolete]
+        private void Btn_ExportPartOrders_Click(object sender, EventArgs e)
+        {
+            var exportController = new ExportDataController();
+            var isExported = exportController.ExportCarPartOrders();
+
+            if (isExported)
+            {
+                MessageBox.Show("Export Car Parts Orders Details Successfull");
+            }
+            else
+            {
+                MessageBox.Show("Oops! Something went wrong. Please try again later");
+            }
+        }
     }
 }
